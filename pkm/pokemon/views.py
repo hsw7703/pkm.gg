@@ -59,7 +59,7 @@ def ItemMainAPI(request):
     if request.GET:
         q = Q()
         types = request.GET.getlist('type')
-        if types[0]:
+        if types and types[0]:
             for type in types:
                 q |= Q(type=type)
         item = Item.objects.filter(q).order_by("name_text")
