@@ -82,7 +82,15 @@ def ItemDetailAPI(request, id):
 
 @api_view(['GET'])
 def NewsMainAPI(request):
-    news = News.objects.all()
+    if request.GET:
+        q = Q()
+        types = request.GET.getlist('type')
+        if types and types[0]:
+            for type in types:
+                q |= Q(type=type)
+        news = News.objects.filter(q)
+    else:
+        news = News.objects.all()
     serializer = NewsMainSerializer(news, many=True)
     return Response(serializer.data)
 

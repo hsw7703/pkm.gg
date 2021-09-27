@@ -101,7 +101,7 @@ class ItemDetailSerializer(serializers.ModelSerializer):
 class NewsMainSerializer(serializers.ModelSerializer):
     class Meta:
         model = News
-        fields = ('id', 'title', 'img', 'date', 'url')
+        fields = ('id', 'title', 'img', 'date', 'url', 'type')
 
 #class NewsDetailSerializer(serializers.ModelSerializer):
 #    class Meta:
