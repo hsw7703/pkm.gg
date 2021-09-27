@@ -26,13 +26,13 @@ def pokemonMainAPI(request):
         types = request.GET.getlist("type")
         damage_types = request.GET.getlist("damage_type")
         attack_types = request.GET.getlist("attack_type")
-        if types[0]:
+        if types and types[0]:
             for type in types:
                 type_q |= Q(type=type)
-        if damage_types[0]:
-            for type in damage_types:
-                damage_type_q |= Q(damage_type=type)
-        if attack_types[0]:
+        if damage_types and damage_types[0]:
+                for type in damage_types:
+                    damage_type_q |= Q(damage_type=type)
+        if attack_types and attack_types[0]:
             for type in attack_types:
                 attack_type_q |= Q(attack_type=type)
         q.add(type_q, Q.AND)
@@ -56,7 +56,15 @@ def pokemonDetailAPI(request, pkm_id):
 
 @api_view(['GET'])
 def ItemMainAPI(request):
-    item = Item.objects.order_by("name_text")
+    if request.GET:
+        q = Q()
+        types = request.GET.getlist('type')
+        if types[0]:
+            for type in types:
+                q |= Q(type=type)
+        item = Item.objects.filter(q).order_by("name_text")
+    else:
+        item = Item.objects.order_by("name_text")
     serializer = ItemDetailSerializer(item, many=True)
     return Response(serializer.data)
 
