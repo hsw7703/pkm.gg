@@ -1,0 +1,36 @@
+{% if pokemon %}
+<p>이름 : {{ pokemon.name }} </p>
+<p>이미지 : {{ pokemon.img }} </p>
+<p>타입 : {{ pokemon.type }} </p>
+<p>패시브 스킬 이름 : {{ pokemon.passive_name }} </p>
+<p>패시브 스킬 이미지 : {{ pokemon.passive_img }} </p>
+<p>패시브 스킬 효과 : {{ pokemon.passive_effect }} </p>
+<p>일반 공격 효과 : {{ pokemon.attack_effect }} </p>
+<p>전투 능력 : {{ pokemon.offense }} </p>
+<p>내구 능력 : {{ pokemon.endurance }} </p>
+<p>기동 능력 : {{ pokemon.mobility }} </p>
+<p>득점 능력 : {{ pokemon.scoring }} </p>
+<p>보조 능력 : {{ pokemon.support }} </p>
+<p>이전 포켓몬 레벨 : {{ pokemon.level }} </p>
+<p>이전 포켓몬 id : {{ pokemon.before_id }} </p>
+{% for skill in pokemon.skill_set.all%}
+------------------------------------------
+<p>이름 : {{ skill.name }}</p>
+<p>쿨타임 : {{ skill.cooltime }}</p>
+<p>타입 : {{ skill.type }}</p>
+<p>이미지 : {{ skill.img }}</p>
+<p>레벨 : {{ skill.level }}</p>
+<p>설명 : {{ skill.description }}</p>
+{% endfor %}
+{% for pkm_item in pokemon.pkm_item_set.all %}
+------------------------------------------
+	<p>이름 : {{ pkm_item.item_id.name }}</p>
+	<p>효과 : {{ pkm_item.item_id.effect }}</p>
+	<p>스텟1 : {{ pkm_item.item_id.status_1 }}</p>
+	<p>스텟2 : {{ pkm_item.item_id.status_2  }}</p>
+	<p>스텟3 : {{ pkm_item.item_id.status_3 }}</p>
+	<p>효과1 : {{ pkm_item.item_id.effect_1 }}</p>
+	<p>효과2 : {{ pkm_item.item_id.effect_2 }}</p>
+	<p>효과3 : {{ pkm_item.item_id.effect_3 }}</p>
+{% endfor %}
+{% endif %}

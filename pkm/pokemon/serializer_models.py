@@ -1,0 +1,104 @@
+from .models import Pkm_item, Pkm_battle_item, Skill
+
+class PopupItemModel:
+    def __init__(self, item):
+        self.img = item['item_id__img']
+        self.name = item['item_id__name']
+        self.name_text = item['item_id__name_text']
+
+class PopupBattleItemModel:
+    def __init__(self, item):
+        self.name = item.battle_item_id.name
+        self.name_text = item.battle_item_id.name_text
+        self.img = item.battle_item_id.img
+
+class PopupSkillModel:
+    def __init__(self, skill):
+        self.name = skill.name
+        self.name_text = skill.name_text
+        self.img = skill.img
+        self.level = skill.level
+
+class PokemonMainModel:
+    def __init__(self, pkm):
+        self.id = pkm.id
+        self.name = pkm.name
+        self.name_text = pkm.name_text
+        self.img = pkm.img
+        self.type = pkm.type
+        self.type_text = pkm.type_text
+        self.attack_type = pkm.attack_type
+        self.attack_type_text = pkm.attack_type_text
+        self.damage_type = pkm.damage_type
+        self.damage_type_text = pkm.damage_type_text
+        self.item = []
+        self.skill = []
+#        skills = pkm.skill_set.all().order_by('level', '-count')
+        skills = Skill.objects.filter(pkm_id=pkm.id).order_by('level', '-count')
+        if skills.count() != 0:
+            self.skill.append(PopupSkillModel(skills[0]))
+            self.skill.append(PopupSkillModel(skills[1]))
+            self.skill.append(PopupSkillModel(skills[2]))
+            self.skill.append(PopupSkillModel(skills[4]))
+        items = Pkm_item.objects.select_related("item_id").filter(pkm_id=self.id).order_by('-count')[:3].values('item_id__img', 'item_id__name', 'item_id__name_text')
+        for item in items:
+            self.item.append(PopupItemModel(item))
+        battle = Pkm_battle_item.objects.select_related('battle_item_id').filter(pkm_id=self.id).order_by('-count')
+        if battle:
+            self.battle_item = PopupBattleItemModel(battle[0])
+
+class PokemonEvolutionModel:
+    def __init__(self, evol):
+        self.name = evol.name
+        self.img = evol.img
+        self.level = evol.level
+
+class PokemonDetailModel:
+    def __init__(self, pkm):
+        self.id = pkm.id
+        self.name = pkm.name
+        self.name_text = pkm.name_text
+        self.img = pkm.detail_img
+        self.type = pkm.type
+        self.type_text = pkm.type_text
+        self.attack_type = pkm.attack_type
+        self.attack_type_text = pkm.attack_type_text
+        self.damage_type = pkm.damage_type
+        self.damage_type_text = pkm.damage_type_text
+        self.difficulty = pkm.difficulty
+        self.passive_name = pkm.passive_name
+        self.passive_name_text = pkm.passive_name_text
+        self.passive_img = pkm.passive_img
+        self.passive_effect = pkm.passive_effect
+        self.attack_effect = pkm.attack_effect
+        self.offense = pkm.offense
+        self.endurance = pkm.endurance
+        self.mobility = pkm.mobility
+        self.scoring = pkm.scoring
+        self.support = pkm.support
+        evols = pkm.evolution_set.all()
+        self.evolution = []
+        for evol in evols:
+            self.evolution.append(PokemonEvolutionModel(evol))
+        self.recommend_skill = []
+        skills = pkm.skill_set.all().order_by('level', '-count')
+        if skills.count() != 0:
+            self.recommend_skill.append(PopupSkillModel(skills[0]))
+            self.recommend_skill.append(PopupSkillModel(skills[1]))
+            self.recommend_skill.append(PopupSkillModel(skills[2]))
+            self.recommend_skill.append(PopupSkillModel(skills[4]))
+        self.item = []
+        self.skill = pkm.skill_set.all().order_by('level')
+        items = Pkm_item.objects.filter(pkm_id=self.id).order_by('-count')[:3]
+        for item in items:
+            self.item.append(PopupItemModel(item))
+        self.battle_item = PopupBattleItemModel(Pkm_battle_item.objects.filter(pkm_id=self.id).order_by('-count')[0])
+
+#class ItemMainModel:
+#    def __init__(self, item):
+#        self.name = item.name
+#        self.img = item.img
+#        self.effect_description = item.effect_description
+#        self.effect_1 = item.effect_1
+#        self.effect_2 = item.effect_2
+#        self.effect_3 = item.effect_3
