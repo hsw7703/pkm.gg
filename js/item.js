@@ -14,15 +14,7 @@ function createItemDetail() {
     const tableHeadRow = document.createElement("tr");
     const leftTableHead = document.createElement("th");
     const rightTableHead = document.createElement("th");
-
-    indexDiv.append(detailDiv);
-    detailDiv.append(contentDiv);
-    contentDiv.append(titleDiv, lineDiv, effectDiv, levelTable);
-    titleDiv.append(nameLabelP,typeLabelP);
-    effectDiv.append(descriptionDiv, levelTable);
-    levelTable.append(tableHeadRow);
-    tableHeadRow.append(leftTableHead,rightTableHead);
-
+    
     detailDiv.className = "detail";
     detailDiv.classList.add("hidden");
     titleDiv.className = "title";
@@ -34,19 +26,27 @@ function createItemDetail() {
     leftTableHead.className = "left";
     rightTableHead.className = "right";
     lineDiv.className = "line";
-
+    
     for (let i=0;i<4;i++){
         const tableRow = document.createElement("tr");
         const leftTableData = document.createElement("td");
         const rightTableData = document.createElement("td");
-
+        
         levelTable.append(tableRow);
         tableRow.append(leftTableData, rightTableData);
-
+        
         leftTableData.className = "left";
         rightTableData.className = "right";
     }
-
+    
+    
+    detailDiv.append(contentDiv);
+    contentDiv.append(titleDiv, lineDiv, effectDiv, levelTable);
+    titleDiv.append(nameLabelP,typeLabelP);
+    effectDiv.append(descriptionDiv, levelTable);
+    levelTable.append(tableHeadRow);
+    tableHeadRow.append(leftTableHead,rightTableHead);
+    indexDiv.append(detailDiv);
 }
 
 function createItemData() {

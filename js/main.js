@@ -9,13 +9,7 @@ function createCharacterDetail() {
     const contentDiv = document.createElement("div");
     const lineDiv = document.createElement("div");
     const buildDiv = document.createElement("div");
-
-    indexDiv.append(detailDiv);
-    detailDiv.append(contentDiv);
-    contentDiv.append(detailTitle, lineDiv);
-    detailTitle.append(detailPkmName, detailPkmType);
-    contentDiv.append(buildDiv);
-
+    
     detailDiv.className = "detail";
     detailDiv.classList.add("hidden");
     detailTitle.className = "title";
@@ -24,12 +18,18 @@ function createCharacterDetail() {
     detailPkmType.className = "type-label";
     contentDiv.className = "content";
     buildDiv.className = "build";
-
+    
     module.createCharacterDetailTag(4, buildDiv);
     module.createCharacterDetailTag(3, buildDiv);
     module.createCharacterDetailTag(1, buildDiv);
+    
 
+    detailDiv.append(contentDiv);
+    contentDiv.append(detailTitle, lineDiv);
+    detailTitle.append(detailPkmName, detailPkmType);
     contentDiv.append(buildDiv);
+    contentDiv.append(buildDiv);
+    indexDiv.append(detailDiv);
 }
 
 export function createPokemonData() {

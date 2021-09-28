@@ -19,12 +19,12 @@ function createNews(img, title, date, url) {
 	dateText.innerText = date;
 	titleText.innerText = title;
 
-	newList.append(newsDiv);
 	newsDiv.append(link);
 	link.append(bannerImg);
 	link.append(titleDiv);
 	titleDiv.append(dateText);
 	titleDiv.append(titleText);
+	newList.append(newsDiv);
 }
 
 
