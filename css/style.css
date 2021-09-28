@@ -1,0 +1,214 @@
+@font-face {
+	font-family: 'GmarketSans';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GmarketSans';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GmarketSans';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+:root {
+	/* color */
+	--black: #000000;
+	--white: #ffffff;
+	--orange: #ee9343;
+	--red: #ff0000;
+	--tp-black: rgba(0, 0, 0, 0.1);
+	--deep-dark: #242C5B;
+	--dark-blue: #343C82;
+	--main-blue: #3D49A8;
+	--light-blue: #5463C4;
+	--sky-blue: #6E7DD9;
+
+	/* font */
+	/*font-size: 16px;*/
+	--font-family: 'GmarketSans';
+	--h0: 2.5rem;
+	--h1: 2rem;
+	--h2: 1.5rem;
+	--h3: 1.1875rem;
+	--h4: 1rem;
+	--h5: 0.8125rem;
+	--h6: 0.6875rem;
+}
+
+img {
+	-webkit-user-drag: none;
+	vertical-align: top;
+	max-width: 100%;
+	height: auto;
+}
+
+body {
+	user-select: none;
+	-webkit-user-select: none;
+	background-color: var(--dark-blue);
+	font-family: var(--font-family);
+	color: var(--white);
+}
+
+a:link {color:white; text-decoration: none;}
+a:visited {color:white; text-decoration: none;}
+a:hover {color:white; text-decoration: none;}
+
+header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100px;
+	background-color: var(--main-blue);
+}
+
+header .logo {
+	font-size: var(--h0);
+	color: var(--white);
+	font-weight: bold;
+}
+
+nav {
+	width: 100%;
+}
+
+.navbar {
+	margin: auto;
+	max-width: 650px;
+	display: flex;
+	justify-content: center;
+}
+
+.navbar li {
+	width: 33.3%;
+}
+
+.navbar li a {
+	display: flex;
+	justify-content: center;
+	color:white;
+	padding: var(--h5);
+	/*background-color: var(--dark-blue);*/
+	letter-spacing: 2px;
+	font-size: var(--h4);
+}
+
+.navbar li a.active {
+	background-color: var(--light-blue);
+}
+
+.container {
+	display:flex;
+	flex-wrap: wrap;
+	margin: auto;
+	max-width: 650px;
+}
+
+.ads {
+	max-width: 650px;
+	margin: auto;
+}
+
+footer {
+	width: 100%;
+	padding: 24px;
+	background-color: var(--main-blue);
+}
+
+.copyright {
+	margin: auto;
+	max-width:1000px;
+	text-align: center;
+	line-height: 15px;
+	font-size: 9px;
+}
+
+.hidden {
+	display: none;
+	visibility: hidden;
+}
+
+.line {
+	margin: auto;
+	width: 100%;
+	height: 3px;
+	border-radius: 10px 10px;
+	background-color: var(--tp-black);
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.attacker {
+	background-color: rgb(220, 70, 50);
+}
+.all-rounder {
+	background-color: rgb(120, 70, 180);
+}
+.defender {
+	background-color: rgb(180, 240, 80);
+}
+.speedster {
+	background-color: rgb(30, 130, 230);
+}
+.supporter {
+	background-color: rgb(250, 190, 50);
+}
+
+.content {
+	padding: 1% 5%;
+	max-width: 1000px;
+	margin:auto;
+}
+
+.content .filter {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	margin: auto;
+	justify-content: space-between;
+}
+
+.content .filter .filter-item {
+	font-size: var(--h5);
+	padding: var(--h6) 0;
+	/*margin: 1% 1% 0;*/
+	/*margin-top: 2px;*/
+	width: 19%;
+	/*outline: 1px solid black;*/
+	text-align: center;
+	background-color: var(--main-blue);
+	border-radius: 5px;
+	letter-spacing: 0px;
+}
+
+.content .filter-item.active {
+	background-color: var(--light-blue);
+}
+
+
+.content .filter .filter-item .bar {
+	margin-top: 10px;
+	width: 100%;
+	height: 3px;
+	border-radius: 10px 10px;
+	background-color: var(--tp-black);
+	background-color: rgba(255, 255, 255, 0.1)
+}
+
+.content .filter .filter-item .bar.active {
+	margin-top: 20px;
+	width: 100%;
+	height: 3px;
+	border-radius: 10px 10px;
+	background-color: var(--tp-black);
+	background-color: rgba(255, 255, 255, 0.7)
+}
