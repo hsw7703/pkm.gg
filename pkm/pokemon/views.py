@@ -8,9 +8,13 @@ from rest_framework.decorators import api_view
 from .serializers import PokemonSerializer, PokemonDetailSerializer, ItemMainSerializer, ItemDetailSerializer, BattleItemSerializer, NewsMainSerializer
 from .models import Pokemon, Item, Battle_item, News, Skill, Pkm_item, Pkm_battle_item
 from .serializer_models import PokemonMainModel, PokemonDetailModel
+
 # Create your views here.
 
 app_name = "pokemon"
+
+
+from django.db import connection
 
 from django.db.models import Q
 @api_view(['GET'])
@@ -39,8 +43,10 @@ def pokemonMainAPI(request):
     else:
         pkms = Pokemon.objects.order_by("name_text")
     pokemon = []
+    cursor = connection.cursor()
+    cursor.execute('USE pokemon;')
     for pkm in pkms:
-        pokemon.append(PokemonMainModel(pkm))
+        pokemon.append(PokemonMainModel(pkm, cursor))
     serializer = PokemonSerializer(pokemon, many=True)
     return Response(serializer.data)
 

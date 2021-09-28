@@ -14,13 +14,20 @@ class PopupBattleItemModel:
 
 class PopupSkillModel:
     def __init__(self, skill):
-        self.name = skill.name
-        self.name_text = skill.name_text
-        self.img = skill.img
-        self.level = skill.level
+#        self.name = skill.name
+#        self.name_text = skill.name_text
+#        self.img = skill.img
+#        self.level = skill.level
+        self.name = skill['name']
+        self.name_text = skill['name_text']
+        self.img = skill['img']
+        self.level = skill['level']
+
+
+from django.db import connection
 
 class PokemonMainModel:
-    def __init__(self, pkm):
+    def __init__(self, pkm, cursor):
         self.id = pkm.id
         self.name = pkm.name
         self.name_text = pkm.name_text
@@ -33,8 +40,15 @@ class PokemonMainModel:
         self.damage_type_text = pkm.damage_type_text
         self.item = []
         self.skill = []
-        skills = Skill.objects.filter(pkm_id=pkm.id).order_by('level', '-count')
-        if skills.count() != 0:
+#        skills = Skill.objects.filter(pkm_id=pkm.id).order_by('level', '-count')
+#        print(skills.query)
+        sql = f"SELECT * FROM pokemon_skill WHERE pkm_id_id = {pkm.id} ORDER BY level ASC, count DESC;"
+        if cursor.execute(sql):
+            result = cursor.fetchall()
+            skills = []
+
+            for index in range(0, 7):
+                skills.append({'name_text':result[index][2], 'img':result[index][4], 'level':result[index][5], 'name': result[index][9]})
             self.skill.append(PopupSkillModel(skills[0]))
             self.skill.append(PopupSkillModel(skills[1]))
             self.skill.append(PopupSkillModel(skills[2]))
