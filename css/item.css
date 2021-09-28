@@ -1,8 +1,7 @@
 .content .index {
-	width: 100%;
+	padding:2%;
 	display:flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
 	margin: 2% auto;
 }
 
@@ -10,8 +9,8 @@
 	border-radius: 5px;
 	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
 	position: relative;
-	margin: 2% 0;
-	width: 22%;
+	margin: 2% 2%;
+	width: 21%;
 	height: auto;
 	overflow: hidden;
 }
@@ -45,7 +44,7 @@
 
 .content .index .detail {
 	border-radius: 5px;
-	width: 100%;
+	width: 96%;
 	margin: 2% auto;
 	background-color: var(--main-blue);
 	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);

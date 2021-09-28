@@ -1,50 +1,17 @@
 .content .index {
+	padding:2%;
 	width: 100%;
 	display:flex;
 	flex-wrap: wrap;
-	/*justify-content: space-between;*/
 	margin: 2% auto;
-}
-
-.index .profile-box {
-	width:25%;
-	padding:2%;
-	display:flex;
-	/*background-color: black;*/
-}
-
-.index .profile-box:nth-child(4n) {
-	width:25%;
-	padding:2% 0 2% 2%;
-	/*display:flex;*/
-	/*background-color: red;*/
-}
-.index .profile-box:nth-child(4n + 1) {
-	width:25%;
-	padding:2% 2% 2% 0;
-	/*display:flex;*/
-	/*background-color: yellow;*/
-}
-
-.index .profile-box:nth-child(4n + 2) {
-	width:25%;
-	padding: 1% 1% 1% 1%;
-	/*display:flex;*/
-	/*background-color: orange;*/
-}
-.index .profile-box:nth-child(4n + 3) {
-	width:25%;
-	padding:2% 1%;
-	/*display:flex;*/
-	/*background-color: green;*/
 }
 
 .content .index .profile {
 	border-radius: 5px;
 	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
 	position: relative;
-	/*margin: 2% 0;*/
-	width: 100%;
+	margin: 2% 2%;
+	width: 21%;
 	height: auto;
 	overflow: hidden;
 }
@@ -81,7 +48,7 @@
 
 .content .index .detail {
 	border-radius: 5px;
-	width: 100%;
+	width: 96%;
 	margin: 2% auto;
 	background-color: var(--main-blue);
 	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
