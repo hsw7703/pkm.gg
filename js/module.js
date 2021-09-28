@@ -182,7 +182,7 @@ function createImg(info, detailFunction) {
     
         detailViewP.className = "link";
         detailViewA.setAttribute("href", "./index.html");
-        detailViewA.textContent = "자세히 보기";
+        detailViewA.textContent = "자세히 보기 >";
     
         element.append(detailViewP);
         detailViewP.append(detailViewA);

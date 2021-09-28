@@ -52,7 +52,7 @@ function createItemDetail() {
 function createItemData() {
 
     const myStorage = localStorage;
-    const types = { "score":"스코어", "attack":"공격", "defense":"방어", "etc":"그외", "resetFilter":"필터 초기화" };
+    const types = { "score":"스코어", "attack":"공격", "defense":"방어", "etc":"그외", "resetFilter":"초기화" };
 
     fetch(`https://pkm.gg/api/item/?`, {
         "method": 'GET',
