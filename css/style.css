@@ -79,32 +79,50 @@ header .logo {
 }
 
 nav {
+	padding-top: 10px;
 	width: 100%;
+	background-color: var(--light-blue);
 }
 
 .navbar {
+	padding-left: 4%;
 	margin: auto;
 	max-width: 650px;
 	display: flex;
-	justify-content: center;
+	/*justify-content: space-around;*/
+	/*justify-content: center;*/
+	/*align-items: center;*/
+	align-items: flex-end;
 }
 
 .navbar li {
-	width: 33.3%;
+	width: 20%;
+	margin: 0 1px 0;
 }
 
 .navbar li a {
 	display: flex;
 	justify-content: center;
-	color:white;
-	padding: var(--h5);
-	/*background-color: var(--dark-blue);*/
-	letter-spacing: 2px;
+	padding: var(--h6) 0;
+	letter-spacing: 1px;
 	font-size: var(--h4);
 }
 
 .navbar li a.active {
 	background-color: var(--light-blue);
+	background-color: var(--dark-blue);
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	/*border-radius: 5px;*/
+	/*padding: 0.5rem 0.3rem;*/
+}
+
+.navbar li a:hover {
+	background-color: var(--main-blue);
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	/*border-radius: 5px;*/
+	/*padding: 0.5rem 0.3rem;*/
 }
 
 .container {
@@ -147,24 +165,8 @@ footer {
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
-.attacker {
-	background-color: rgb(220, 70, 50);
-}
-.all-rounder {
-	background-color: rgb(120, 70, 180);
-}
-.defender {
-	background-color: rgb(180, 240, 80);
-}
-.speedster {
-	background-color: rgb(30, 130, 230);
-}
-.supporter {
-	background-color: rgb(250, 190, 50);
-}
-
 .content {
-	padding: 1% 5%;
+	padding: 4% 5%;
 	max-width: 1000px;
 	margin:auto;
 }
@@ -173,27 +175,30 @@ footer {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	margin: auto;
 	justify-content: space-between;
 }
 
 .content .filter .filter-item {
 	font-size: var(--h5);
 	padding: var(--h6) 0;
-	/*margin: 1% 1% 0;*/
-	/*margin-top: 2px;*/
-	width: 19%;
-	/*outline: 1px solid black;*/
+	width: 18%;
+	margin-top: 3%;
 	text-align: center;
+	box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
 	background-color: var(--main-blue);
-	border-radius: 5px;
+	border-radius: 17px;
 	letter-spacing: 0px;
 }
 
 .content .filter-item.active {
 	background-color: var(--light-blue);
+	box-shadow: inset 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
+.content .filter-item:hover {
+	background-color: var(--light-blue);
+	box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+}
 
 .content .filter .filter-item .bar {
 	margin-top: 10px;
