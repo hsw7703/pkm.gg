@@ -1,25 +1,28 @@
 .content .news-list {
+	padding: 2%;
 	display:flex;
 	flex-wrap: wrap;
 	margin: 4% auto;
 }
 
 .content .news:nth-child(1) {
+	margin-top: 0;
 	margin-bottom: 5%;
 }
 
 .content .news:nth-last-child(1) {
 	margin-top: 5%;
+	margin-bottom: 0;
 }
 
 .content .news {
 	position: relative;
 	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
 	border-radius: 5px;
-	width: 100%;
+	width: 96%;
 	height: 0;
-	/*margin: auto;*/
 	padding-bottom: 60%;
+	margin: 5% auto;
 	overflow: hidden;
 }
 
