@@ -4,10 +4,11 @@ function createItemDetail() {
     const indexDiv = document.querySelector(".index");
     const detailDiv = document.createElement("div");
     const titleDiv = document.createElement("div");
-    const itemNameDiv = document.createElement("div");
-    const itemTypeDiv = document.createElement("div");
+    const nameLabelP = document.createElement("p");
+    const typeLabelP = document.createElement("p");
     const contentDiv = document.createElement("div");
     const effectDiv = document.createElement("div");
+    const lineDiv = document.createElement("div");
     const descriptionDiv = document.createElement("p");
     const levelTable = document.createElement("table");
     const tableHeadRow = document.createElement("tr");
@@ -15,9 +16,9 @@ function createItemDetail() {
     const rightTableHead = document.createElement("th");
 
     indexDiv.append(detailDiv);
-    detailDiv.append(titleDiv, contentDiv);
-    titleDiv.append(itemNameDiv, itemTypeDiv);
-    contentDiv.append(effectDiv)
+    detailDiv.append(contentDiv);
+    contentDiv.append(titleDiv, lineDiv, effectDiv, levelTable);
+    titleDiv.append(nameLabelP,typeLabelP);
     effectDiv.append(descriptionDiv, levelTable);
     levelTable.append(tableHeadRow);
     tableHeadRow.append(leftTableHead,rightTableHead);
@@ -25,13 +26,14 @@ function createItemDetail() {
     detailDiv.className = "detail";
     detailDiv.classList.add("hidden");
     titleDiv.className = "title";
-    itemNameDiv.className = "item-name";
-    itemTypeDiv.className = "item-type";
+    nameLabelP.className = "name-label";
+    typeLabelP.className = "type-label";
     contentDiv.className = "content";
     effectDiv.className = "effect";
     levelTable.className = "spec-table";
     leftTableHead.className = "left";
     rightTableHead.className = "right";
+    lineDiv.className = "line";
 
     for (let i=0;i<4;i++){
         const tableRow = document.createElement("tr");

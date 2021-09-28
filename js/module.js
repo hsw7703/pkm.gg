@@ -3,15 +3,15 @@ import item from "./item.js"
 const filtereditemTotalUrl = new URL("https://pkm.gg/api/item/?");
 const filteredcharacterTotalUrl = new URL("https://pkm.gg/api/pokemon/?");
 
-function createCharacterDetailTag(number, contentDiv) {
-    for (let i=0; i<number; i++) {
+function createCharacterDetailTag(number, buildDiv) {
+    for (let i=0; i<number; i++) { 
         const itemDiv = document.createElement("div");
         const itemImg = document.createElement("img");
         const itemName = document.createElement("p");
 
         itemDiv.className = "item";
 
-        contentDiv.append(itemDiv);
+        buildDiv.append(itemDiv);
         itemDiv.append(itemImg, itemName);
     }
 }
@@ -41,14 +41,14 @@ function inputItemData(profileIndex, detailIndex){
     const itemInfo = JSON.parse(info);
     const detailDivArr = document.querySelectorAll(".detail");
     const selectedDetailDiv = detailDivArr[detailIndex];
-    const itemNameDiv = selectedDetailDiv.querySelector(".title > .item-name");
-    const itemTypeDiv = selectedDetailDiv.querySelector(".title > .item-type");
+    const nameLabelP = selectedDetailDiv.querySelector(".title > .name-label");
+    const typeLabelP = selectedDetailDiv.querySelector(".title > .type-label");
     const descriptionP = selectedDetailDiv.querySelector(".content > .effect > p");
     const tableHeadArr = selectedDetailDiv.querySelectorAll(".spec-table > tr > th");
     const tableDataArr = selectedDetailDiv.querySelectorAll(".spec-table > tr > td");
 
-    itemNameDiv.innerText = itemInfo[profileIndex].name_text;
-    itemTypeDiv.innerText = itemInfo[profileIndex].type_text;
+    nameLabelP.innerText = itemInfo[profileIndex].name_text;
+    typeLabelP.innerText = itemInfo[profileIndex].type_text;
     descriptionP.innerText = itemInfo[profileIndex].description;
     tableHeadArr[0].innerText = "레벨";
     tableHeadArr[1].innerText = "효과";
@@ -70,7 +70,7 @@ function inputCharacterData(profileIndex, detailIndex) {
     const selectedCharacter = itemInfo[profileIndex];
 
     const itemNameDiv = selectedDetailDiv.querySelector(".title > .pkm-name");
-    const itemTypeDiv = selectedDetailDiv.querySelector(".title > .pkm-type");
+    const itemTypeDiv = selectedDetailDiv.querySelector(".title > .type-label");
     const itemDivArr = selectedDetailDiv.querySelectorAll(".item");
 
     console.log(selectedCharacter);
@@ -161,6 +161,7 @@ function createImg(info, detailFunction) {
         profileDiv.classList.add = type;
         profileDiv.id = index;
         itemImg.src = info[index].img;
+        itemImg.className = info[index].type;
         if ((itemImg.src).includes("held-items")) {
             profileDiv.infomation = "item";
         }
@@ -172,6 +173,21 @@ function createImg(info, detailFunction) {
         else if (index === info.length-1 && info.length-1 % 4 !== 0)
             detailFunction();
     });
+
+    const detailContent = document.querySelectorAll('.detail > .content');
+
+    detailContent.forEach((element) => {
+        const detailViewP = document.createElement("p");
+        const detailViewA = document.createElement("a");
+    
+        detailViewP.className = "link";
+        detailViewA.setAttribute("href", "./index.html");
+        detailViewA.textContent = "자세히 보기";
+    
+        element.append(detailViewP);
+        detailViewP.append(detailViewA);
+    })
+    
 }
 
 export default {

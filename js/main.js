@@ -7,25 +7,32 @@ function createCharacterDetail() {
     const detailPkmName = document.createElement("div");
     const detailPkmType = document.createElement("div");
     const contentDiv = document.createElement("div");
+    const lineDiv = document.createElement("div");
+    const buildDiv = document.createElement("div");
 
     indexDiv.append(detailDiv);
-    detailDiv.append(detailTitle);
-    detailTitle.append(detailPkmName, detailPkmType);
     detailDiv.append(contentDiv);
+    contentDiv.append(detailTitle, lineDiv);
+    detailTitle.append(detailPkmName, detailPkmType);
+    contentDiv.append(buildDiv);
 
     detailDiv.className = "detail";
     detailDiv.classList.add("hidden");
     detailTitle.className = "title";
+    lineDiv.className = "line";
     detailPkmName.className = "pkm-name";
-    detailPkmType.className = "pkm-type";
+    detailPkmType.className = "type-label";
     contentDiv.className = "content";
+    buildDiv.className = "build";
 
-    module.createCharacterDetailTag(4, contentDiv);
-    module.createCharacterDetailTag(3, contentDiv);
-    module.createCharacterDetailTag(1, contentDiv);
+    module.createCharacterDetailTag(4, buildDiv);
+    module.createCharacterDetailTag(3, buildDiv);
+    module.createCharacterDetailTag(1, buildDiv);
+
+    contentDiv.append(buildDiv);
 }
 
-function createPokemonData() {
+export function createPokemonData() {
 
     const myStorage = localStorage;
     const types = {
@@ -43,7 +50,7 @@ function createPokemonData() {
         myStorage.setItem("info", info);
         module.createImg(data, createCharacterDetail);
         module.filterTagCreate(types);
-
+        
    });
 }
 
