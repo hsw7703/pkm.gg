@@ -83,10 +83,6 @@ class ItemMainSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=20)
     img = serializers.CharField(max_length=50)
     description = serializers.CharField()
-#    effect_description = serializers.CharField(max_length=10)
-#    effect_1 = serializers.CharField(max_length=10)
-#    effect_2 = serializers.CharField(max_length=10)
-#    effect_3 = serializers.CharField(max_length=10)
 
 class BattleItemSerializer(serializers.ModelSerializer):
     class Meta:

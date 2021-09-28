@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 # Create your models here.
 
@@ -167,3 +168,24 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+
+##################################################
+#pokemon item build modify
+#class Pkm_item_test(models.Model):
+#    pkm_id = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
+#    item_id_1 = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="item_id_1")
+#    item_id_2 = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="item_id_2")
+#    item_id_3 = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="item_id_3")
+#    count = models.BigIntegerField()
+#
+#    class Meta:
+#        constraints = [
+#            models.UniqueConstraint(
+#                fields=["pkm_id", "item_id_1", "item_id_2", "item_id_3"],
+#                name = "pokemon item test",
+#            ),
+#        ]
+#
+#    def __str__(self):
+#        return self.pkm_id.name_text

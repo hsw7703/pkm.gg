@@ -93,9 +93,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'pokemon',
         'USER': 'root',
-        'PASSWORD': '42Yamyam1!',
+#        'PASSWORD': '42Yamyam1!',
 #        'PASSWORD': '1234',
-#        'HOST': 'pkm.gg',
+        'HOST': 'pkm.gg',
         'HOST': 'localhost',
         'PORT': '3306'
     }
