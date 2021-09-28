@@ -1,5 +1,6 @@
 .content .index {
 	padding:2%;
+	width: 100%;
 	display:flex;
 	flex-wrap: wrap;
 	margin: 2% auto;
