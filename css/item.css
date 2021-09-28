@@ -30,6 +30,19 @@
 	width: 100%;
 }
 
+.attack {
+	background-color: rgb(220, 70, 50);
+}
+.score {
+	background-color: rgb(120, 70, 180);
+}
+.defense {
+	background-color: rgb(180, 240, 80);
+}
+.etc {
+	background-color: rgb(30, 130, 230);
+}
+
 .content .index .detail {
 	border-radius: 5px;
 	width: 100%;
@@ -112,7 +125,5 @@
 }
 
 .link a {
-	/*background-color: black;*/
-	/*padding: 5px;*/
 	border-radius: 10px;
 }

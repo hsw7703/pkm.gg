@@ -30,6 +30,22 @@
 	width: 100%;
 }
 
+.attacker {
+	background-color: rgb(220, 70, 50);
+}
+.all-rounder {
+	background-color: rgb(120, 70, 180);
+}
+.defender {
+	background-color: rgb(180, 240, 80);
+}
+.speedster {
+	background-color: rgb(30, 130, 230);
+}
+.supporter {
+	background-color: rgb(250, 190, 50);
+}
+
 .content .index .detail {
 	border-radius: 5px;
 	width: 100%;
