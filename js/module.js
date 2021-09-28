@@ -1,4 +1,4 @@
-import item from "./item.js"
+import { createItemDetail } from "./item.js";
 
 const filtereditemTotalUrl = new URL("https://pkm.gg/api/item/?");
 const filteredcharacterTotalUrl = new URL("https://pkm.gg/api/pokemon/?");
@@ -104,7 +104,7 @@ function filterData(url) {
     }).then((response) => (
         response.json()
     )).then((data) => {
-        createImg(data, item.createItemDetail);
+        createImg(data, createItemDetail);
     });
 }
 function filterEvent(e) {

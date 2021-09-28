@@ -66,8 +66,7 @@ function createItemData() {
     });
 }
 
-createItemData();
-
-export default {
-    createItemDetail
+export {
+    createItemDetail,
+    createItemData
 }
