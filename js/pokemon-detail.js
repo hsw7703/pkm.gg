@@ -58,7 +58,7 @@ function createEvolutionDiv(evolutionArray) {
 		evolutionLevel.className = 'evolution_desc';
 
 		evolutionImg.src = element['img'];
-		evolutionName.textContent = element['name'];
+		evolutionName.textContent = element['name_text'];
 		evolutionLevel.textContent = `${element['level']}레벨에 진화`;
 
 		evolutionDiv.append(evolutionImgDiv);
@@ -136,7 +136,7 @@ function createSkillDiv(skillArray) {
 		// skillImage.src = "https://via.placeholder.com/140";
 
 		skillName.textContent = skill['name_text'];
-		skillCoolTime.textContent = skill['cooltime'];
+		skillCoolTime.textContent = `${skill['cooltime']}초`;
 		skillType.textContent = skill['type_text'];
 
 		const descriptionSplit = skill['description'].split('\r\n');
@@ -153,6 +153,10 @@ function createSkillDiv(skillArray) {
 		skillImageDiv.append(skillImage);
 		skillTitle.append(skillName);
 		skillTitle.append(skillSummary);
+		skillSummary.append(skillType);
+		if (skill['cooltime'] != 0) {
+			skillSummary.append(skillCoolTime);
+		}
 
 		skillSection.append(skillArticle);
 	});
