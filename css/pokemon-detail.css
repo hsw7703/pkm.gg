@@ -1,70 +1,3 @@
-@font-face {
-    font-family: 'GmarketSans';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'GmarketSans';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'GmarketSans';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
-    font-weight: 300;
-    font-style: normal;
-}
-
-/* 공통 사항 */
-:root {
-	/* color */
-	--black: #000000;
-	--white: #ffffff;
-	--skill-bg: rgba(0,0,0, 0.7);
-	--bg-blue: #25408e;
-	--menu-blue: #6596f8;
-	--main-blue: #3d56aa;
-	--tab-blue: #5171d1;
-	--skill-blue: #7789c4;
-	--orange: #ee9343;
-	--red: #ff0000;
-	--gauge: #344990;
-	--gauge-green: #dffe62;
-
-	/* font */
-	/*font-size: 16px;*/
-	--font-family: 'GmarketSans';
-	--h0: 2.5rem;
-	--h1: 2rem;
-	--h2: 1.5rem;
-	--h3: 1.1875rem;
-	--h4: 1rem;
-	--h5: 0.8125rem;
-	--h6: 0.6875rem;
-}
-
-a {
-	color: var(--white);
-}
-
-img {
-	-webkit-user-drag: none;
-	max-width: 100%;
-	height: auto;
-	vertical-align: top;
-}
-
-body {
-	user-select: none;
-	background-color: var(--bg-blue);
-	font-family: var(--font-family);
-	color: var(--white);
-}
-
 .wrapper {
 	display: flex;
 	flex-direction: column;
@@ -72,66 +5,6 @@ body {
 }
 
 /* 헤더 영역 */
-header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 100px;
-	background-color: var(--main-blue);
-}
-
-header .logo {
-	font-size: var(--h0);
-	color: var(--white);
-	font-weight: bold;
-}
-
-nav {
-	width: 100%;
-}
-
-.navbar {
-	margin: auto;
-	max-width: 1000px;
-	display: flex;
-	justify-content: center;
-	/*justify-content: space-around;*/
-	/*align-items: center;*/
-}
-
-.navbar li {
-	width: 33.3%;
-	/*width: 25%;*/
-	height: 100%;
-}
-
-.navbar li a {
-	display: flex;
-	justify-content: center;
-	color:white;
-	padding: var(--h5);
-	/*align-items: center;*/
-	/*text-align: center;*/
-	background-color: var(--menu-blue);
-	letter-spacing: 2px;
-	font-size: var(--h3);
-	margin:auto;
-}
-
-.navbar li a.active {
-	background-color: var(--main-blue);
-}
-
-.ads {
-	height:100px;
-	align-content: center;
-	text-align: center;
-	background-color: white;
-}
-
-
-
 
 /* 상단 광고 영역 */
 .ad_box {
@@ -332,14 +205,14 @@ section.build_section {
 }
 
 .tab_title.active {
-	background-color: var(--tab-blue);
+	background-color: var(--main-blue);
 }
 
 .tab_content {
 	display: none;
 	justify-content: space-between;
 	flex-flow: row wrap;
-	background-color: var(--tab-blue);
+	background-color: var(--main-blue);
 	padding: 16px;
 	overflow: hidden;
 }
@@ -365,7 +238,7 @@ section.build_section {
 }
 
 .tab input:checked ~ label {
-	background-color: var(--tab-blue);
+	background-color: var(--main-blue);
 }
 
 .tab input:checked ~ .tab_content {
@@ -445,7 +318,7 @@ section.skill_section {
 footer {
 	width: 100%;
 	padding: 24px 0;
-	background-color: var(--tab-blue);
+	background-color: var(--main-blue);
 	text-align: center;
 }
 
