@@ -44,7 +44,7 @@ class PokemonMainModel:
 #        skills = Skill.objects.filter(pkm_id=pkm.id).order_by('level', '-count')
 #        print(skills.query)
         sql = f"SELECT * FROM pokemon_skill WHERE pkm_id_id = {pkm.id} ORDER BY level ASC, count DESC;"
-        if cursor.execute(sql):
+        if cursor.execute(sql) == 7:
             result = cursor.fetchall()
             skills = []
 
