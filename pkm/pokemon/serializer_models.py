@@ -5,6 +5,7 @@ class PopupItemModel:
         self.img = item['item_id__img']
         self.name = item['item_id__name']
         self.name_text = item['item_id__name_text']
+        self.id = item['item_id']
 
 class PopupBattleItemModel:
     def __init__(self, item):
@@ -53,7 +54,7 @@ class PokemonMainModel:
             self.skill.append(PopupSkillModel(skills[1]))
             self.skill.append(PopupSkillModel(skills[2]))
             self.skill.append(PopupSkillModel(skills[4]))
-        items = Pkm_item.objects.select_related("item_id").filter(pkm_id=self.id).order_by('-count')[:3].values('item_id__img', 'item_id__name', 'item_id__name_text')
+        items = Pkm_item.objects.select_related("item_id").filter(pkm_id=self.id).order_by('-count')[:3].values('item_id__img', 'item_id__name', 'item_id__name_text', 'item_id')
         for item in items:
             self.item.append(PopupItemModel(item))
         battle = Pkm_battle_item.objects.select_related('battle_item_id').filter(pkm_id=self.id).order_by('-count')
@@ -94,7 +95,8 @@ class PokemonDetailModel:
         for evol in evols:
             self.evolution.append(PokemonEvolutionModel(evol))
         self.recommend_skill = []
-        skills = pkm.skill_set.all().order_by('level', '-count')
+
+        skills = pkm.skill_set.all().order_by('level', '-count').values('name', 'name_text', 'img', 'level')
         if skills.count() != 0:
             self.recommend_skill.append(PopupSkillModel(skills[0]))
             self.recommend_skill.append(PopupSkillModel(skills[1]))
@@ -103,7 +105,7 @@ class PokemonDetailModel:
         self.item = []
         self.skill = pkm.skill_set.all().order_by('level')
 
-        items = Pkm_item.objects.select_related("item_id").filter(pkm_id=self.id).order_by('-count')[:3].values('item_id__img', 'item_id__name', 'item_id__name_text')
+        items = Pkm_item.objects.select_related("item_id").filter(pkm_id=self.id).order_by('-count')[:3].values('item_id__img', 'item_id__name', 'item_id__name_text', 'item_id')
         for item in items:
             self.item.append(PopupItemModel(item))
         battle = Pkm_battle_item.objects.select_related('battle_item_id').filter(pkm_id=self.id).order_by('-count')

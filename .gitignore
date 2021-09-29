@@ -1,4 +1,5 @@
 *.DS_Store
 *pycache*
 pkmgg.pem
-templates
+*templates
+*setting.py

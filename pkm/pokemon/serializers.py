@@ -8,6 +8,7 @@ class PopupSkillSerializer(serializers.Serializer):
     level = serializers.IntegerField()
 
 class PopupItemSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
     img = serializers.CharField(max_length=50)
     name = serializers.CharField(max_length=20)
     name_text = serializers.CharField(max_length=20)
