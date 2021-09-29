@@ -174,6 +174,7 @@ function filterEvent(e) {
        console.log(filteredcharacterTotalUrl);
        filterData(filteredcharacterTotalUrl);
     }
+    e.currentTarget.classList.toggle('active');
 }
 
 function hideToggle(e) {
@@ -207,6 +208,10 @@ function hideToggle(e) {
         element.classList.add("hidden");
     })
     selectedDetailBox.classList.toggle("hidden");
+    document.querySelectorAll('.index > .profile').forEach((element) => {
+        element.classList.remove("active");
+    })
+    e.currentTarget.classList.toggle("active");
 }
 
 function createImg(info, detailFunction) {

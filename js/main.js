@@ -45,7 +45,7 @@ export function createPokemonData() {
     const myStorage = localStorage;
     const types = {
         "attacker":["어택형", "type"], "speedster":["스피드형", "type"], "defender":["디펜스형", "type"],
-        "all-arounder":["밸런스형", "type"], "supporter":["서포터형", "type"], "melee":["근거리", "attack_type"],
+        "all-rounder":["밸런스형", "type"], "supporter":["서포터형", "type"], "melee":["근거리", "attack_type"],
         "ranged":["원거리", "attack_type"], "physical":["물리형", "damage_type"], "special":["특수형", "damage_type"],
         "resetFilter":["초기화",""]
     };
