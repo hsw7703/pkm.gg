@@ -5,11 +5,13 @@ from django.contrib import admin
 
 class Pokemon(models.Model):
     name_text = models.CharField(unique=True, max_length=20)
+    name = models.CharField(max_length=50, default="")
     img = models.CharField(max_length=200)
     detail_img = models.CharField(max_length=200, default="")
     attack_type_text = models.CharField(max_length=8, default="")
     attack_type = models.CharField(max_length=10, default="")
     type_text = models.CharField(max_length=10, default="")
+    type = models.CharField(max_length=20, default="")
     damage_type_text = models.CharField(max_length=10, default="")
     damage_type = models.CharField(max_length=10, default="")
     difficulty_text = models.CharField(max_length=10, default="")
@@ -24,8 +26,6 @@ class Pokemon(models.Model):
     mobility = models.IntegerField()
     scoring = models.IntegerField()
     support = models.IntegerField()
-    name = models.CharField(max_length=50, default="")
-    type = models.CharField(max_length=20, default="")
 #    level = models.IntegerField(null=True, default=0)
 #    before_id = models.BigIntegerField(null=True, default=0)
 
@@ -49,11 +49,11 @@ class Evolution(models.Model):
 
 class Skill(models.Model):
     pkm_id = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
-    cooltime = models.CharField(max_length=4)
     name_text = models.CharField(max_length=20)
     name = models.CharField(max_length=20, default="")
     type_text = models.CharField(max_length=20)
     type = models.CharField(max_length=20, default="")
+    cooltime = models.CharField(max_length=4)
     img = models.CharField(max_length=200)
     level = models.IntegerField()
     description = models.TextField(default="")

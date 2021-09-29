@@ -64,6 +64,7 @@ class PokemonMainModel:
 class PokemonEvolutionModel:
     def __init__(self, evol):
         self.name = evol.name
+        self.name_text = evol.name_text
         self.img = evol.img
         self.level = evol.level
 

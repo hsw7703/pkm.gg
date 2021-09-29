@@ -37,6 +37,7 @@ class PokemonSerializer(serializers.Serializer):
 
 class EvolutionSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=20)
+    name_text = serializers.CharField(max_length=20)
     img = serializers.CharField(max_length=50)
     level = serializers.IntegerField()
 
