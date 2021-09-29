@@ -58,6 +58,7 @@
 .detail .content {
 	padding: 0 4%;
 	width: 100%;
+	min-height: auto;
 }
 
 .detail .title {
