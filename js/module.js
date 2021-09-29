@@ -174,7 +174,9 @@ function filterEvent(e) {
        console.log(filteredcharacterTotalUrl);
        filterData(filteredcharacterTotalUrl);
     }
-    e.currentTarget.classList.toggle('active');
+    if (filterName != "resetFilter") {
+        e.currentTarget.classList.toggle('active');
+    }
 }
 
 function hideToggle(e) {
