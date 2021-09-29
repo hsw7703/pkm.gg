@@ -36,9 +36,10 @@ export function createPokemonData() {
 
     const myStorage = localStorage;
     const types = {
-        "attacker":"어택형", "speedster":"스피드형", "defender":"디펜스형",
-        "all-arounder":"밸런스형", "supporter":"서포터형", "melee":"근거리",
-        "ranged":"원거리", "physical":"물리형", "special":"특수형", "resetFilter":"초기화"
+        "attacker":["어택형", "type"], "speedster":["스피드형", "type"], "defender":["디펜스형", "type"],
+        "all-arounder":["밸런스형", "type"], "supporter":["서포터형", "type"], "melee":["근거리", "attack_type"],
+        "ranged":["원거리", "attack_type"], "physical":["물리형", "damage_type"], "special":["특수형", "damage_type"],
+        "resetFilter":["초기화",""]
     };
 
     fetch(`https://pkm.gg/api/pokemon/?`, {

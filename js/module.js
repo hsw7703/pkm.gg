@@ -86,12 +86,14 @@ function filterTagCreate(types) {
     Object.keys(types).forEach((element) => {
         const filterDiv = document.querySelector(".container > .content > .filter");
         const filterItemDiv = document.createElement("div");
-
         filterDiv.append(filterItemDiv);
         filterItemDiv.className = "filter-item";
         filterItemDiv.onclick = filterEvent;
-        filterItemDiv.innerText = types[element];
+        filterItemDiv.innerText = types[element][0];
+        filterItemDiv.typeValue = types[element][1];
         filterItemDiv.typeName = element;
+
+       // if ()
     })
 }
 function filterData(url) {
@@ -108,27 +110,68 @@ function filterData(url) {
     });
 }
 function filterEvent(e) {
+
+    const filterName = e.currentTarget.typeName;
+    const filterTypeValue = e.currentTarget.typeValue;
+
     if (document.URL.includes("item")) {
-        const filterArray = filtereditemTotalUrl.searchParams.getAll("type")
-        const filterName = e.currentTarget.typeName;
-        if (e.currentTarget.typeName === "resetFilter")
+        const filterArray = filtereditemTotalUrl.searchParams.getAll("type");
+        if (e.currentTarget.typeName === "resetFilter") {
             filtereditemTotalUrl.searchParams.delete("type");
-        else if (!filterArray.includes(e.currentTarget.typeName))
-            filtereditemTotalUrl.searchParams.append("type", e.currentTarget.typeName);
+        }
+        else if (!filterArray.includes(filterName)) {
+            filtereditemTotalUrl.searchParams.append("type", filterName);
+        }
         else {
             const filters = filterArray.filter(param => param !== filterName);
             filtereditemTotalUrl.searchParams.delete("type");
             for (const param of filters)
                 filtereditemTotalUrl.searchParams.append("type", param);
-            filterData(filtereditemTotalUrl);
-            console.log(filtereditemTotalUrl);
         }
+        filterData(filtereditemTotalUrl);
+    }
+    else {
+       const filterTypeArr = filteredcharacterTotalUrl.searchParams.getAll("type");
+       const filterAttackTypeArr = filteredcharacterTotalUrl.searchParams.getAll("attack_type");
+       const filterDamageTypeArr = filteredcharacterTotalUrl.searchParams.getAll("damage_type");
+       const filterAllTypeArr = filterTypeArr + filterAttackTypeArr + filterDamageTypeArr;
+       console.log(filterName);
+
+       if (e.currentTarget.typeName === "resetFilter") {
+           filteredcharacterTotalUrl.searchParams.delete("type");
+           filteredcharacterTotalUrl.searchParams.delete("attack_type");
+           filteredcharacterTotalUrl.searchParams.delete("damage_type");
+       }
+       else if (!filterAllTypeArr.includes(filterName)) {
+           if (filterTypeValue === "type")
+               filteredcharacterTotalUrl.searchParams.append("type", filterName);
+           else if (filterTypeValue === "attack_type")
+               filteredcharacterTotalUrl.searchParams.append("attack_type", filterName);
+           else
+               filteredcharacterTotalUrl.searchParams.append("damage_type", filterName);
+       }
+       else {
+           console.log(filterAllTypeArr);
+           const typeFilters = filterTypeArr.filter(param => param !== filterName);
+           const attackTypeFilters = filterAttackTypeArr.filter(param => param !== filterName);
+           const damageTypeFilters = filterDamageTypeArr.filter(param => param !== filterName);
+           filteredcharacterTotalUrl.searchParams.delete("type");
+           filteredcharacterTotalUrl.searchParams.delete("attack_type");
+           filteredcharacterTotalUrl.searchParams.delete("damage_type");
+           for(const param of typeFilters)
+               filteredcharacterTotalUrl.searchParams.append("type", param);
+           for (const param of attackTypeFilters)
+               filteredcharacterTotalUrl.searchParams.append("attack_type", param);
+           for (const param of damageTypeFilters)
+               filteredcharacterTotalUrl.searchParams.append("damage_type", param);
+       }
+       console.log(filteredcharacterTotalUrl);
+       filterData(filteredcharacterTotalUrl);
     }
 }
 
-
-
 function hideToggle(e) {
+    console.log(e.currentTarget);
     const itemIndex = e.currentTarget.id;
     const detailBoxIndex = parseInt(parseInt(itemIndex) / 4);
     if (e.currentTarget.infomation === "item") {
@@ -150,18 +193,19 @@ function createImg(info, detailFunction) {
     const indexDiv = document.createElement("div");
     contentDiv.append(indexDiv);
     indexDiv.className = "index";
-    info.forEach((element, index) => {
+    info.forEach((element) => {
+        const index = element.id;
         const profileDiv = document.createElement("div");
         const itemImg = document.createElement("img");
-        const type = info[index].type;
+        const type = element.type;
         indexDiv.append(profileDiv);
         profileDiv.append(itemImg);
         profileDiv.onclick = hideToggle;
         profileDiv.className = "profile"
         profileDiv.classList.add = type;
         profileDiv.id = index;
-        itemImg.src = info[index].img;
-        itemImg.className = info[index].type;
+        itemImg.src = element.img;
+        itemImg.className = element.type;
         if ((itemImg.src).includes("held-items")) {
             profileDiv.infomation = "item";
         }
