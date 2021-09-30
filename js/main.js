@@ -30,6 +30,14 @@ function createCharacterDetail() {
     contentDiv.append(buildDiv);
     contentDiv.append(buildDiv);
     indexDiv.append(detailDiv);
+
+    const detailViewP = document.createElement("p");
+    const detailViewA = document.createElement("a");
+
+    detailViewP.className = "link";
+    detailViewA.textContent = "자세히 보기 >";
+    detailViewP.append(detailViewA);
+    contentDiv.append(detailViewP);
 }
 
 export function createPokemonData() {

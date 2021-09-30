@@ -25,6 +25,8 @@
 	--white: #ffffff;
 	--orange: #ee9343;
 	--red: #ff0000;
+	--gauge: #344990;
+	--gauge-green: #dffe62;
 	--tp-black: rgba(0, 0, 0, 0.1);
 	--deep-dark: #242C5B;
 	--dark-blue: #343C82;
@@ -170,6 +172,7 @@ footer {
 	max-width: 1000px;
 	margin:auto;
 	width: 100%;
+	min-height: 500px;
 }
 
 .content .filter {

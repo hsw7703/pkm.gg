@@ -1,0 +1,327 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* 헤더 영역 */
+
+/* 상단 광고 영역 */
+.ad_box {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
+/* 메인 영역 */
+main {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	max-width: 1000px;
+	/*max-width: 1126px;*/
+}
+
+/* 캐릭터 정보 영역 */
+section.info_section {
+	width: 80%;
+	overflow: hidden;
+}
+
+.character_image {
+	display: flex;
+	justify-content: center;
+	padding: 10%;
+}
+
+.name_box {
+	height: 50px;
+	display: flex;
+	background-color: var(--orange);
+}
+
+.name_box .character_name {
+	position: relative;
+	display: flex;
+	align-items: center;
+	width: 75%;
+	height: 100%;
+	padding-left: 20px;
+	background-color: var(--black);
+}
+
+.name_box .character_name:after {
+	position: absolute;
+	display: block;
+	content: '';
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	border-left: 20px solid transparent;
+	border-bottom: 50px solid var(--orange);
+}
+
+.name_box .character_name h2 {
+	font-size: var(--h2);
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+.name_box .difficulty {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 70px;
+	width: 20%;
+	height: 100%;
+	background-color: var(--orange);
+}
+
+.name_box .difficulty p {
+	color: var(--black);
+}
+
+.attribute_list {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 6px 0;
+}
+
+.attribute {
+	width: 90%;
+	background-color: var(--main-blue);
+	text-align: center;
+	padding: 15px 0;
+	margin: 0 3px;
+	font-size: var(--h3);
+	letter-spacing: 3px;
+}
+
+.attribute:first-child {
+	margin-left: 0;
+}
+
+.attribute:last-child {
+	margin-right: 0;
+}
+
+.ability_box {
+	padding: 20px;
+	background-color: var(--main-blue);
+}
+
+.ability {
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+.ability:last-child {
+	margin-bottom: 0;
+}
+
+.ability_title {
+	font-size: var(--h5);
+}
+
+.ability_title span {
+	float: right;
+}
+
+.ability_gauge {
+	margin-top: 5px;
+	background-color: var(--gauge);
+}
+
+.ability_gauge .active_gauge {
+	width: 70%;
+	background-color: var(--gauge-green);
+	color: transparent;
+	border-radius: 0 10px 10px 0;
+}
+
+.evolution_box {
+	margin: 8px 20px 50px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.evolution {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.evolution_img {
+	min-width: 100px;
+	min-height: 100px;
+	padding: 12px;
+}
+
+.evolution_img div {
+	display: flex;
+	border-radius: 50%;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	background-color: var(--main-blue);
+}
+
+.evolution_name {
+	margin: 6px 0;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+.evolution_desc {
+	font-size: var(--h5);
+	color: var(--menu-blue);
+}
+
+/* 빌드 영역 */
+section.build_section {
+	position: relative;
+	width: 90%;
+}
+
+.tab_menu {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.tab_title {
+	width: 50%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background-color: var(--main-blue);
+	cursor: pointer;
+}
+
+.tab_title.active {
+	background-color: var(--main-blue);
+}
+
+.tab_content {
+	display: none;
+	justify-content: space-between;
+	flex-flow: row wrap;
+	background-color: var(--main-blue);
+	padding: 16px;
+	overflow: hidden;
+}
+
+.tab_content.active {
+	display: flex;
+}
+
+.tab_content li {
+	position: relative;
+	width: 25%;
+	padding: 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.tab_content li div {
+	position: relative;
+	border-radius: 50%;
+	background-color: black;
+	overflow: hidden;
+}
+
+.tab input:checked ~ label {
+	background-color: var(--main-blue);
+}
+
+.tab input:checked ~ .tab_content {
+	display: flex;
+}
+
+/* 스킬 영역 */
+section.skill_section {
+	position: relative;
+	width: 90%;
+	margin: 35px 0;
+}
+
+.skill {
+	margin-bottom: 15px;
+	padding: 24px;
+	background-color: var(--main-blue);
+}
+
+.skill_top {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.skill_img {
+	width: 75px;
+	height: 75px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.skill_title {
+	margin-left: 20px;
+}
+
+.skill_name {
+	font-size: var(--h2);
+	font-weight: bold;
+	margin-bottom: 12px;
+}
+
+.skill_summary {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.skill_summary li {
+	position: relative;
+	padding: 4px 12px 4px 22px;
+	border-radius: 10px;
+	background-color: var(--skill-blue);
+	font-size: var(--h5);
+	margin-right: 10px;
+}
+.skill_summary li:last-child {
+	margin-right: 0;
+}
+
+.skill_summary li:after {
+	content: "";
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	width: 12px;
+	height: 12px;
+	background-color: var(--white);
+	border-radius: 50%;
+}
+
+.skill_content {
+	margin-top: 16px;
+	line-height: 1.6;
+	font-size: var(--h5);
+}
+
+footer {
+	width: 100%;
+	padding: 24px 0;
+	background-color: var(--main-blue);
+	text-align: center;
+}
+
+.copyright {
+	font-size: var(--h6);
+}

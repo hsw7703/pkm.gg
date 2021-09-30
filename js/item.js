@@ -1,7 +1,7 @@
 import module from "./module.js";
 
 function createItemDetail() {
-    console.log("hi");
+    // console.log("hi");
     const indexDiv = document.querySelector(".index");
     const detailDiv = document.createElement("div");
     const titleDiv = document.createElement("div");
@@ -40,7 +40,6 @@ function createItemDetail() {
         rightTableData.className = "right";
     }
     
-    
     detailDiv.append(contentDiv);
     contentDiv.append(titleDiv, lineDiv, effectDiv, levelTable);
     titleDiv.append(nameLabelP,typeLabelP);
@@ -48,6 +47,14 @@ function createItemDetail() {
     levelTable.append(tableHeadRow);
     tableHeadRow.append(leftTableHead,rightTableHead);
     indexDiv.append(detailDiv);
+
+    const detailViewP = document.createElement("p");
+    const detailViewA = document.createElement("a");
+
+    detailViewP.className = "link";
+    detailViewA.textContent = "자세히 보기 >";
+    detailViewP.append(detailViewA);
+    contentDiv.append(detailViewP);
 }
 
 function createItemData() {

@@ -60,26 +60,32 @@ function inputItemData(profileIndex, detailIndex){
     tableDataArr[5].innerText = itemInfo[profileIndex].status_20.replace('/','\n');
     tableDataArr[6].innerText = "30";
     tableDataArr[7].innerText = itemInfo[profileIndex].status_30.replace('/','\n');
+
+    const detailViewA = selectedDetailDiv.querySelector('.content > .link > a');
+    detailViewA.setAttribute("href", `./index.html?item=${itemInfo[profileIndex].id}`);
 }
 
 function inputCharacterData(profileIndex, detailIndex) {
     const info = localStorage.getItem("info");
-    const itemInfo = JSON.parse(info);
+    const characterInfo = JSON.parse(info);
     const detailDivArr = document.querySelectorAll(".detail");
     const selectedDetailDiv = detailDivArr[detailIndex];
-    const selectedCharacter = itemInfo[profileIndex];
+    const selectedCharacter = characterInfo[profileIndex];
 
     const itemNameDiv = selectedDetailDiv.querySelector(".title > .pkm-name");
     const itemTypeDiv = selectedDetailDiv.querySelector(".title > .type-label");
     const itemDivArr = selectedDetailDiv.querySelectorAll(".item");
 
-    console.log(selectedCharacter);
+    // console.log(selectedCharacter);
     itemNameDiv.innerText = selectedCharacter.name_text;
     itemTypeDiv.innerText = selectedCharacter.attack_type_text + " " +selectedCharacter.damage_type_text;
 
     inputCharacterDetailData(selectedCharacter.skill, 0, itemDivArr);
     inputCharacterDetailData(selectedCharacter.item, 4, itemDivArr);
     inputBattleItemData(selectedCharacter.battle_item, 7, itemDivArr);
+
+    const detailViewA = selectedDetailDiv.querySelector('.content > .link > a');
+    detailViewA.setAttribute("href", `./pokemon-detail.html?pokemon=${characterInfo[profileIndex].id}`);
 }
 
 function filterTagCreate(types) {
@@ -168,16 +174,34 @@ function filterEvent(e) {
        console.log(filteredcharacterTotalUrl);
        filterData(filteredcharacterTotalUrl);
     }
+    if (filterName != "resetFilter") {
+        e.currentTarget.classList.toggle('active');
+    }
 }
 
 function hideToggle(e) {
-    console.log(e.currentTarget);
-    const itemIndex = e.currentTarget.id;
-    const detailBoxIndex = parseInt(parseInt(itemIndex) / 4);
+    let itemIndex = 0;
+    let detailBoxIndex = 0;
     if (e.currentTarget.infomation === "item") {
+        const info = localStorage.getItem("itemInfo");
+        const itemInfo = JSON.parse(info);
+        itemInfo.forEach((data, index) => {
+            if (e.currentTarget.id == data.id) {
+                itemIndex = index;
+            }
+        });
+        detailBoxIndex = parseInt(parseInt(itemIndex) / 4);
         inputItemData(itemIndex, detailBoxIndex);
     }
     else {
+        const info = localStorage.getItem("info");
+        const itemInfo = JSON.parse(info);
+        itemInfo.forEach((data, index) => {
+            if (e.currentTarget.id == data.id) {
+                itemIndex = index;
+            }
+        });
+        detailBoxIndex = parseInt(parseInt(itemIndex) / 4);
         inputCharacterData(itemIndex, detailBoxIndex);
     }
     const detailBoxes = document.querySelectorAll(".detail");
@@ -186,6 +210,10 @@ function hideToggle(e) {
         element.classList.add("hidden");
     })
     selectedDetailBox.classList.toggle("hidden");
+    document.querySelectorAll('.index > .profile').forEach((element) => {
+        element.classList.remove("active");
+    })
+    e.currentTarget.classList.toggle("active");
 }
 
 function createImg(info, detailFunction) {
@@ -193,7 +221,7 @@ function createImg(info, detailFunction) {
     const indexDiv = document.createElement("div");
     contentDiv.append(indexDiv);
     indexDiv.className = "index";
-    info.forEach((element) => {
+    info.forEach((element, childIndex) => {
         const index = element.id;
         const profileDiv = document.createElement("div");
         const itemImg = document.createElement("img");
@@ -212,26 +240,12 @@ function createImg(info, detailFunction) {
         else{
             profileDiv.infomation = "character";
         }
-        if (index !== 0 && index % 4 === 3)
+        if (childIndex !== 0 && childIndex % 4 === 3) {
             detailFunction();
-        else if (index === info.length-1 && info.length-1 % 4 !== 0)
+        }
+        else if (childIndex === info.length-1 && info.length-1 % 4 !== 0)
             detailFunction();
     });
-
-    const detailContent = document.querySelectorAll('.detail > .content');
-
-    detailContent.forEach((element) => {
-        const detailViewP = document.createElement("p");
-        const detailViewA = document.createElement("a");
-    
-        detailViewP.className = "link";
-        detailViewA.setAttribute("href", "./index.html");
-        detailViewA.textContent = "자세히 보기 >";
-    
-        element.append(detailViewP);
-        detailViewP.append(detailViewA);
-    })
-    
 }
 
 export default {
