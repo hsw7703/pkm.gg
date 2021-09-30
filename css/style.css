@@ -99,7 +99,6 @@ nav {
 
 .navbar li {
 	width: 20%;
-	margin: 0 1px 0;
 }
 
 .navbar li a {
@@ -111,23 +110,18 @@ nav {
 }
 
 .navbar li a.active {
-	background-color: var(--light-blue);
 	background-color: var(--dark-blue);
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
-	/*border-radius: 5px;*/
-	/*padding: 0.5rem 0.3rem;*/
 }
 
-.navbar li a:hover {
+/*.navbar li a:hover {
 	background-color: var(--main-blue);
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
-	/*border-radius: 5px;*/
-	/*padding: 0.5rem 0.3rem;*/
-}
+}*/
 
-.container {
+main {
 	display:flex;
 	flex-wrap: wrap;
 	margin: auto;
@@ -159,25 +153,21 @@ footer {
 }
 
 .line {
-	margin: auto;
 	width: 100%;
 	height: 3px;
 	border-radius: 10px 10px;
-	background-color: var(--tp-black);
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
 .content {
-	padding: 4% 0;
-	max-width: 1000px;
+	max-width: 650px;
 	margin:auto;
 	width: 100%;
-	min-height: 500px;
 }
 
 .content .filter {
 	width: 92%;
-	margin:auto;
+	margin: auto;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -197,28 +187,10 @@ footer {
 
 .content .filter-item.active {
 	background-color: var(--light-blue);
-	box-shadow: inset 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
-.content .filter-item:hover {
+/*.content .filter-item:hover {
 	background-color: var(--light-blue);
 	box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
-}
-
-.content .filter .filter-item .bar {
-	margin-top: 10px;
-	width: 100%;
-	height: 3px;
-	border-radius: 10px 10px;
-	background-color: var(--tp-black);
-	background-color: rgba(255, 255, 255, 0.1)
-}
-
-.content .filter .filter-item .bar.active {
-	margin-top: 20px;
-	width: 100%;
-	height: 3px;
-	border-radius: 10px 10px;
-	background-color: var(--tp-black);
-	background-color: rgba(255, 255, 255, 0.7)
-}
+}*/
