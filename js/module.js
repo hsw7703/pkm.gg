@@ -72,11 +72,10 @@ function inputCharacterData(profileIndex, detailIndex) {
     const selectedDetailDiv = detailDivArr[detailIndex];
     const selectedCharacter = characterInfo[profileIndex];
 
-    const itemNameDiv = selectedDetailDiv.querySelector(".title > .pkm-name");
+    const itemNameDiv = selectedDetailDiv.querySelector(".title > .name-label");
     const itemTypeDiv = selectedDetailDiv.querySelector(".title > .type-label");
     const itemDivArr = selectedDetailDiv.querySelectorAll(".item");
 
-    // console.log(selectedCharacter);
     itemNameDiv.innerText = selectedCharacter.name_text;
     itemTypeDiv.innerText = selectedCharacter.attack_type_text + " " +selectedCharacter.damage_type_text;
 
@@ -88,20 +87,6 @@ function inputCharacterData(profileIndex, detailIndex) {
     detailViewA.setAttribute("href", `./pokemon-detail.html?pokemon=${characterInfo[profileIndex].id}`);
 }
 
-function filterTagCreate(types) {
-    Object.keys(types).forEach((element) => {
-        const filterDiv = document.querySelector(".container > .content > .filter");
-        const filterItemDiv = document.createElement("div");
-        filterDiv.append(filterItemDiv);
-        filterItemDiv.className = "filter-item";
-        filterItemDiv.onclick = filterEvent;
-        filterItemDiv.innerText = types[element][0];
-        filterItemDiv.typeValue = types[element][1];
-        filterItemDiv.typeName = element;
-
-       // if ()
-    })
-}
 function filterData(url) {
 
     const contentDiv = document.querySelector(".content");
@@ -119,6 +104,8 @@ function filterEvent(e) {
 
     const filterName = e.currentTarget.typeName;
     const filterTypeValue = e.currentTarget.typeValue;
+    console.log(filterName);
+    console.log(filterTypeValue);
 
     if (document.URL.includes("item")) {
         const filterArray = filtereditemTotalUrl.searchParams.getAll("type");
@@ -157,7 +144,6 @@ function filterEvent(e) {
                filteredcharacterTotalUrl.searchParams.append("damage_type", filterName);
        }
        else {
-           console.log(filterAllTypeArr);
            const typeFilters = filterTypeArr.filter(param => param !== filterName);
            const attackTypeFilters = filterAttackTypeArr.filter(param => param !== filterName);
            const damageTypeFilters = filterDamageTypeArr.filter(param => param !== filterName);
@@ -171,7 +157,6 @@ function filterEvent(e) {
            for (const param of damageTypeFilters)
                filteredcharacterTotalUrl.searchParams.append("damage_type", param);
        }
-       console.log(filteredcharacterTotalUrl);
        filterData(filteredcharacterTotalUrl);
     }
     if (filterName != "resetFilter") {
@@ -251,5 +236,4 @@ function createImg(info, detailFunction) {
 export default {
     createImg,
     createCharacterDetailTag,
-    filterTagCreate
 }

@@ -58,7 +58,6 @@ export function createPokemonData() {
         const info = JSON.stringify(data);
         myStorage.setItem("info", info);
         module.createImg(data, createCharacterDetail);
-        module.filterTagCreate(types);
-        
+
    });
 }

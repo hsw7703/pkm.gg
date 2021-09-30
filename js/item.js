@@ -1,7 +1,6 @@
 import module from "./module.js";
 
 function createItemDetail() {
-    // console.log("hi");
     const indexDiv = document.querySelector(".index");
     const detailDiv = document.createElement("div");
     const titleDiv = document.createElement("div");
@@ -71,7 +70,6 @@ function createItemData() {
         
         myStorage.setItem("itemInfo", info);
         module.createImg(data, createItemDetail);
-        module.filterTagCreate(types);
     });
 }
 
