@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,12 +10,24 @@
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/pokemon-detail.css">
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HZQHSTP2QN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-HZQHSTP2QN');
+	</script>
 </head>
+
 <body>
 	<div class="wrapper">
 		<header>
-			<a class="logo" href="index.html">PKMGG</a>
+			<a class="logo" href="index.html">PKM.GG</a>
 		</header>
+		<div class="ad_box">
+			<img src="img/adExample.png" alt="광고 이미지">
+		</div>
 		<nav>
 			<ul class="navbar">
 				<li><a class="active" href="index.html">포켓몬</a></li>
@@ -22,9 +35,6 @@
 				<li><a href="#">뉴스</a></li>
 			</ul>
 		</nav>
-		<div class="ad_box">
-			<img src="img/adExample.png" alt="광고 이미지">
-		</div>
 		<main>
 			<section class="info_section">
 				<div class="character_image">
@@ -43,7 +53,6 @@
 						</ul>
 					</div>
 				</div>
-				<br><br>
 				<div class="evolution_box">
 				</div>
 			</section>
@@ -58,8 +67,21 @@
 					<ul class="tab_content" id="my_build">
 					</ul>
 				</div>
-
 			</section>
+			<ul class="skill_summary">
+				<li>
+					<div class="skill-type">
+						<img src="img/adExample.png">
+					</div>
+					원거리
+				</li>
+				<li>
+					<div class="skill-type">
+						<img src="img/adExample.png">
+					</div>
+					원거리
+				</li>
+			</ul>
 			<section class="skill_section">
 			</section>
 		</main>
@@ -73,4 +95,5 @@
 	<script src="js/script.js"></script>
 	<script src="js/pokemon-detail.js"></script>
 </body>
+
 </html>

@@ -8,6 +8,14 @@
 	<link rel="stylesheet" href="./css/style.css">
 	<link rel="stylesheet" href="./css/pokemon.css">
 	<title>PKM.GG</title>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HZQHSTP2QN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-HZQHSTP2QN');
+	</script>
 </head>
 
 <body>
@@ -25,7 +33,7 @@
 				<li><a href="./news.html" id="news">뉴스</a></li>
 			</ul>
 		</nav>
-		<div class="container">
+		<main>
 			<article class="content">
 				<div class="filter">
 					<div class="filter-item">어택형</div>
@@ -94,7 +102,7 @@
 				</div> -->
 			</article>
 
-		</div>
+		</main>
 		<script type="module">
 			import { createPokemonData } from './js/main.js';
 			createPokemonData();
