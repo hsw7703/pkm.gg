@@ -61,6 +61,7 @@ function createItemData() {
         response.json()
     )).then((data) => {
         const info = JSON.stringify(data);
+        
         myStorage.setItem("itemInfo", info);
         module.createImg(data, createItemDetail);
         module.filterTagCreate(types);
