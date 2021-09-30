@@ -87,6 +87,11 @@ function inputCharacterData(profileIndex, detailIndex) {
     detailViewA.setAttribute("href", `./pokemon-detail.html?pokemon=${characterInfo[profileIndex].id}`);
 }
 
+function filterCreateEvent {
+    const filterAllDiv = document.querySelectorAll(".filter" > ".filter-item");
+
+}
+
 function filterData(url) {
 
     const contentDiv = document.querySelector(".content");
