@@ -8,8 +8,10 @@ class Pkm_itemAdmin(admin.ModelAdmin):
     list_display = ('item_id', 'pkm_id', 'count')
     search_fields = ['pkm_id__name_text']
 
+class SkillAdmin(admin.ModelAdmin):
+    search_fields = ['name_text', 'pkm_id__name_text']
 
-admin.site.register(Skill)
+admin.site.register(Skill, SkillAdmin)
 admin.site.register(Item)
 admin.site.register(Pkm_item, Pkm_itemAdmin)
 admin.site.register(Pokemon)
@@ -18,7 +20,13 @@ admin.site.register(Battle_item)
 admin.site.register(Evolution)
 admin.site.register(News)
 
+from .models import Build, Update, Skill_build, Item_build, Old_build
 
+admin.site.register(Build)
+admin.site.register(Old_build)
+admin.site.register(Update)
+admin.site.register(Skill_build)
+admin.site.register(Item_build)
 
 ######################################
 # pokemon item build modify

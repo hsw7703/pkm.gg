@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib import admin
+from django.utils import timezone
 
 # Create your models here.
 
@@ -26,8 +27,6 @@ class Pokemon(models.Model):
     mobility = models.IntegerField()
     scoring = models.IntegerField()
     support = models.IntegerField()
-#    level = models.IntegerField(null=True, default=0)
-#    before_id = models.BigIntegerField(null=True, default=0)
 
     class Meta:
         indexes = [
@@ -169,6 +168,44 @@ class News(models.Model):
     def __str__(self):
         return self.title
 
+class Item_build(models.Model):
+    item_id_1 = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="item_id_1")
+    item_id_2 = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="item_id_2")
+    item_id_3 = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="item_id_3")
+
+class Skill_build(models.Model):
+    skill_id_1 = models.ForeignKey(Skill, on_delete=models.CASCADE, related_name="skill_id_1")
+    skill_id_2 = models.ForeignKey(Skill, on_delete=models.CASCADE, related_name="skill_id_2")
+    skill_id_3 = models.ForeignKey(Skill, on_delete=models.CASCADE, related_name="skill_id_3")
+    skill_id_4 = models.ForeignKey(Skill, on_delete=models.CASCADE, related_name="skill_id_4")
+
+class Update(models.Model):
+    date = models.DateField()
+
+class Old_build(models.Model):
+    pkm_id = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
+    update_id = models.ForeignKey(Update, on_delete=models.CASCADE)
+    item_build_id = models.ForeignKey(Item_build, on_delete=models.CASCADE)
+    skill_build_id = models.ForeignKey(Skill_build, on_delete=models.CASCADE)
+    battle_item_id = models.ForeignKey(Battle_item, on_delete=models.CASCADE)
+    count = models.BigIntegerField(default=0)
+    date = models.DateField()
+
+class Build(models.Model):
+    pkm_id = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
+    update_id = models.ForeignKey(Update, on_delete=models.CASCADE)
+    item_build_id = models.ForeignKey(Item_build, on_delete=models.CASCADE)
+    skill_build_id = models.ForeignKey(Skill_build, on_delete=models.CASCADE)
+    battle_item_id = models.ForeignKey(Battle_item, on_delete=models.CASCADE)
+    count = models.BigIntegerField(default=0)
+    date = models.DateField()
+
+    def is_delete():
+        update = Update.objects.fitler(date__gte=date)
+        if update:
+            return timezone.now() >= Update.objects.filter(date__gte=date) >= date
+        else:
+            return False
 
 ##################################################
 #pokemon item build modify

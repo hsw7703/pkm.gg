@@ -104,36 +104,41 @@ def NewsMainAPI(request):
 #    return Response(serializer.data)
 
 
+#
+#from django.views.decorators.csrf import csrf_exempt
+#@csrf_exempt
+#def build(request):
+#    pkm_id = request.POST.get('pkm_id')
+#    for index in range(1, 4):
+#        item_id = request.POST['item_id_' + str(index)]
+#        item = Pkm_item.objects.filter(pkm_id=pkm_id, item_id=item_id)
+#        if item:
+#            item = Pkm_item.objects.get(pkm_id=pkm_id, item_id=item_id)
+#            item.count += 1
+#        else:
+#            item = Pkm_item(pkm_id=Pokemon.objects.get(id=pkm_id), item_id=Item.objects.get(id=item_id), count=1)
+#        item.save()
+#
+#    for index in range(1, 5):
+#        if index != 2:
+#            skill_id = request.POST['skill_id_' + str(index)]
+#            skill = Skill.objects.get(id=skill_id)
+#            skill.count += 1
+#            skill.save()
+#
+#    battle_item_id = request.POST['battle_item_id']
+#    battle = Pkm_battle_item.objects.filter(pkm_id=pkm_id, battle_item_id=battle_item_id)
+#    if battle:
+#        battle[0].count += 1
+#        battle[0].save()
+#    else:
+#        battle = Pkm_battle_item(pkm_id=Pokemon.objects.get(id=pkm_id), battle_item_id=Battle_item.objects.get(id=battle_item_id), count=1)
+#        battle.save()
+#    return HttpResponseRedirect('http://localhost:8000/pokemon/' + pkm_id)
 
-from django.views.decorators.csrf import csrf_exempt
-@csrf_exempt
-def build(request):
-    pkm_id = request.POST.get('pkm_id')
-    for index in range(1, 4):
-        item_id = request.POST['item_id_' + str(index)]
-        item = Pkm_item.objects.filter(pkm_id=pkm_id, item_id=item_id)
-        if item:
-            item = Pkm_item.objects.get(pkm_id=pkm_id, item_id=item_id)
-            item.count += 1
-        else:
-            item = Pkm_item(pkm_id=Pokemon.objects.get(id=pkm_id), item_id=Item.objects.get(id=item_id), count=1)
-        item.save()
 
-    for index in range(1, 5):
-        skill_id = request.POST['skill_id_' + str(index)]
-        skill = Skill.objects.get(id=skill_id)
-        skill.count += 1
-        skill.save()
 
-    battle_item_id = request.POST['battle_item_id']
-    battle = Pkm_battle_item.objects.filter(pkm_id=pkm_id, battle_item_id=battle_item_id)
-    if battle:
-        battle[0].count += 1
-        battle[0].save()
-    else:
-        battle = Pkm_battle_item(pkm_id=Pokemon.objects.get(id=pkm_id), battle_item_id=Battle_item.objects.get(id=battle_item_id), count=1)
-        battle.save()
-    return HttpResponseRedirect('http://localhost:8000/pokemon/' + pkm_id)
+
 
 # item build modify
 
@@ -185,3 +190,65 @@ def build(request):
 #        pokemon.append(PokemonMainTestModel(pkm))
 #    serializer = PokemonSerializer(pokemon, many=True)
 #    return Response(serializer.data)
+from django.utils import timezone
+from .models import Build, Update, Skill_build, Item_build, Old_build
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+
+@csrf_exempt
+def build_test(request):
+    if request.POST:
+        q = Q()
+        item_id = []
+        for i in range(1, 4):
+            item_id.append(int(request.POST['item_id_' + str(i)]))
+        item_id.sort()
+        q = Q(item_id_1 = item_id[0])
+        q &= Q(item_id_2 = item_id[1])
+        q &= Q(item_id_3 = item_id[2])
+        item = Item_build.objects.filter(q)
+
+        skill_id = []
+        for i in range(1, 5):
+            skill_id.append(request.POST['skill_id_' + str(i)])
+        q = Q(skill_id_1 = skill_id[0])
+        q = Q(skill_id_2 = skill_id[1])
+        q = Q(skill_id_3 = skill_id[2])
+        q = Q(skill_id_4 = skill_id[3])
+        skill = Skill_build.objects.filter(q)
+
+        battle_item_id = request.POST['battle_item_id']
+        battle_item = Battle_item.objects.get(id=battle_item_id)
+
+        update = Update.objects.filter(date__lte=timezone.now()).order_by('-date')[0]
+        pkm = Pokemon.objects.get(id=request.POST['pkm_id'])
+        #업데이트 이후 빌드 old_build로 옮기고 count = 0으로 초기화 해야됨
+        if item and skill:
+            build = Build.objects.filter(item_build_id=item[0].id, battle_item_id=battle_item.id, skill_build_id=skill[0].id)
+            if build:
+                build[0].count += 1
+                build[0].save()
+            else:
+                build = Build(pkm_id=pkm, item_build_id=item[0], battle_item_id=battle_item, skill_build_id=skill[0], count=1, date=timezone.now(), update_id=update)
+                build.save()
+        else:
+            build = Build()
+            if not item:
+                item = Item_build(item_id_1=Item.objects.get(id=item_id[0]), item_id_2=Item.objects.get(id=item_id[1]), item_id_3=Item.objects.get(id=item_id[2]))
+                item.save()
+            else:
+                item = item[0]
+            if not skill:
+                skill = Skill_build(skill_id_1=Skill.objects.get(id=skill_id[0]), skill_id_2=Skill.objects.get(id=skill_id[1]), skill_id_3=Skill.objects.get(id=skill_id[2]), skill_id_4=Skill.objects.get(id=skill_id[3]))
+                skill.save()
+            else:
+                skill = skill[0]
+            build.item_build_id = item
+            build.skill_build_id = skill
+            build.battle_item_id = battle_item
+            build.date = timezone.now()
+            build.update_id = update
+            build.count = 1
+            build.pkm_id = pkm
+            build.save()
+    return HttpResponse("success")

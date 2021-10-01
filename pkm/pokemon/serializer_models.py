@@ -81,6 +81,7 @@ class PokemonDetailModel:
         self.damage_type = pkm.damage_type
         self.damage_type_text = pkm.damage_type_text
         self.difficulty = pkm.difficulty
+        self.difficulty_text = pkm.difficulty_text
         self.passive_name = pkm.passive_name
         self.passive_name_text = pkm.passive_name_text
         self.passive_img = pkm.passive_img

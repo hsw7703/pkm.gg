@@ -64,6 +64,7 @@ class PokemonDetailSerializer(serializers.Serializer):
     damage_type = serializers.CharField(max_length=20)
     damage_type_text = serializers.CharField(max_length=20)
     difficulty = serializers.CharField(max_length=10)
+    difficulty_text = serializers.CharField(max_length=10)
     passive_name = serializers.CharField(max_length=20)
     passive_name_text = serializers.CharField(max_length=20)
     passive_img = serializers.CharField(max_length=50)
