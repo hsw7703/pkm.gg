@@ -12,6 +12,7 @@ urlpatterns = [
     path('item/<int:id>/', views.ItemDetailAPI),
     path('battle/', views.BattleItemAPI),
     path('news/', views.NewsMainAPI),
+    path('contact/', views.ContactPage),
 #    path('build/', views.build),
 #    path('test/', views.pokemonMainTestAPI),
 #    path('test_item/', views.buildTest),
