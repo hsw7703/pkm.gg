@@ -1,22 +1,20 @@
 import module from "./module.js"
 
 function createCharacterDetail() {
-    const indexDiv = document.querySelector(".content > .index");
+    const indexDiv = document.querySelector(".index-section > .index");
     const detailDiv = document.createElement("div");
     const detailTitle = document.createElement("div");
-    const detailPkmName = document.createElement("div");
-    const detailPkmType = document.createElement("div");
-    const contentDiv = document.createElement("div");
+    const detailPkmName = document.createElement("p");
+    const detailPkmType = document.createElement("p");
     const lineDiv = document.createElement("div");
-    const buildDiv = document.createElement("div");
+    const buildDiv = document.createElement("ul");
     
     detailDiv.className = "detail";
     detailDiv.classList.add("hidden");
     detailTitle.className = "title";
     lineDiv.className = "line";
-    detailPkmName.className = "pkm-name";
+    detailPkmName.className = "name-label";
     detailPkmType.className = "type-label";
-    contentDiv.className = "content";
     buildDiv.className = "build";
     
     module.createCharacterDetailTag(4, buildDiv);
@@ -24,11 +22,9 @@ function createCharacterDetail() {
     module.createCharacterDetailTag(1, buildDiv);
     
 
-    detailDiv.append(contentDiv);
-    contentDiv.append(detailTitle, lineDiv);
+    detailDiv.append(detailTitle, lineDiv);
     detailTitle.append(detailPkmName, detailPkmType);
-    contentDiv.append(buildDiv);
-    contentDiv.append(buildDiv);
+    detailDiv.append(buildDiv);
     indexDiv.append(detailDiv);
 
     const detailViewP = document.createElement("p");
@@ -37,7 +33,7 @@ function createCharacterDetail() {
     detailViewP.className = "link";
     detailViewA.textContent = "자세히 보기 >";
     detailViewP.append(detailViewA);
-    contentDiv.append(detailViewP);
+    detailDiv.append(detailViewP);
 }
 
 export function createPokemonData() {

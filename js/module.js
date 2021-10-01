@@ -5,11 +5,9 @@ const filteredcharacterTotalUrl = new URL("https://pkm.gg/api/pokemon/?");
 
 function createCharacterDetailTag(number, buildDiv) {
     for (let i=0; i<number; i++) { 
-        const itemDiv = document.createElement("div");
+        const itemDiv = document.createElement("li");
         const itemImg = document.createElement("img");
         const itemName = document.createElement("p");
-
-        itemDiv.className = "item";
 
         buildDiv.append(itemDiv);
         itemDiv.append(itemImg, itemName);
@@ -74,7 +72,7 @@ function inputCharacterData(profileIndex, detailIndex) {
 
     const itemNameDiv = selectedDetailDiv.querySelector(".title > .name-label");
     const itemTypeDiv = selectedDetailDiv.querySelector(".title > .type-label");
-    const itemDivArr = selectedDetailDiv.querySelectorAll(".item");
+    const itemDivArr = selectedDetailDiv.querySelectorAll("li");
 
     itemNameDiv.innerText = selectedCharacter.name_text;
     itemTypeDiv.innerText = selectedCharacter.attack_type_text + " " +selectedCharacter.damage_type_text;
@@ -83,14 +81,14 @@ function inputCharacterData(profileIndex, detailIndex) {
     inputCharacterDetailData(selectedCharacter.item, 4, itemDivArr);
     inputBattleItemData(selectedCharacter.battle_item, 7, itemDivArr);
 
-    const detailViewA = selectedDetailDiv.querySelector('.content > .link > a');
-    detailViewA.setAttribute("href", `./pokemon-detail.html?pokemon=${characterInfo[profileIndex].id}`);
+    const detailViewA = selectedDetailDiv.querySelector('.link > a');
+    detailViewA.setAttribute("href", `./pokemon-detail.html?pokemon=${selectedCharacter.id}`);
 }
 
-function filterCreateEvent {
-    const filterAllDiv = document.querySelectorAll(".filter" > ".filter-item");
+// function filterCreateEvent {
+//     const filterAllDiv = document.querySelectorAll(".filter" > ".filter-item");
 
-}
+// }
 
 function filterData(url) {
 
@@ -191,6 +189,8 @@ function hideToggle(e) {
                 itemIndex = index;
             }
         });
+        console.log(itemIndex);
+        console.log(e.currentTarget.id);
         detailBoxIndex = parseInt(parseInt(itemIndex) / 4);
         inputCharacterData(itemIndex, detailBoxIndex);
     }
@@ -207,13 +207,12 @@ function hideToggle(e) {
 }
 
 function createImg(info, detailFunction) {
-    const contentDiv = document.querySelector(".content");
-    const indexDiv = document.createElement("div");
-    contentDiv.append(indexDiv);
-    indexDiv.className = "index";
+    const indexSection = document.querySelector(".index-section");
+    const indexDiv = document.querySelector(".index");
+    indexSection.append(indexDiv);
     info.forEach((element, childIndex) => {
         const index = element.id;
-        const profileDiv = document.createElement("div");
+        const profileDiv = document.createElement("li");
         const itemImg = document.createElement("img");
         const type = element.type;
         indexDiv.append(profileDiv);
