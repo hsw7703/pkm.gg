@@ -12,7 +12,7 @@ class SkillAdmin(admin.ModelAdmin):
     search_fields = ['name_text', 'pkm_id__name_text']
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('msg', 'is_check')
+    list_display = ('msg', 'is_check', 'date')
 
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(Item)

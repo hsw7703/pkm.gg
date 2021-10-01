@@ -2,6 +2,7 @@
 #from django.views import generic
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse
+from django.utils import timezone
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -122,9 +123,15 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def ContactPage(request):
     if request.POST:
-        email = request.POST['user_email']
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+
+        name = request.POST['user_name']
         msg = request.POST['user_message']
-        Contact(email=email, msg=msg, is_check=False).save()
+        Contact(name=name, msg=msg, is_check=False, date=timezone.now(), ip=ip).save()
         return HttpResponseRedirect('https://pkm.gg/contact.html')
 
     
@@ -219,7 +226,6 @@ def ContactPage(request):
 #        pokemon.append(PokemonMainTestModel(pkm))
 #    serializer = PokemonSerializer(pokemon, many=True)
 #    return Response(serializer.data)
-from django.utils import timezone
 from .models import Build, Update, Skill_build, Item_build, Old_build
 from django.views.decorators.csrf import csrf_exempt
 

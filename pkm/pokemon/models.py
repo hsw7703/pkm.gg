@@ -208,9 +208,11 @@ class Build(models.Model):
             return False
 
 class Contact(models.Model):
-    email = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     msg = models.TextField()
     is_check = models.BooleanField()
+    date = models.DateTimeField()
+    ip = models.CharField(max_length=20, default="")
 
 ##################################################
 #pokemon item build modify
