@@ -186,19 +186,26 @@ function createPokemonData(pokemonIndex) {
 		createEvolutionDiv(data['evolution']);
 		createRecommendBuildData(data['item'], data['battle_item'], data['recommend_skill']);
 
-		const passive = [
+		const characterAttack = [
 			{
-				"passive_name": data['passive_name'],
+				"name": data['passive_name'],
 				"name_text": data['passive_name_text'],
 				"type_text": "패시브",
 				"img": data["passive_img"],
 				"cooltime": "0",
 				"description": data["passive_effect"],
-			}
+			},
+			{
+				"name_text": "일반 공격",
+				"type_text": data['damage_type_text'],
+				"img": `./img/pokemon/${data['name']}/Attack.png`,
+				"cooltime": "0",
+				"description": data["attack_effect"],
+			},
 		];
 
 		
-		createSkillDiv(passive);
+		createSkillDiv(characterAttack);
 		createSkillDiv(data['skill']);
 	})
 }
