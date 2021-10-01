@@ -35,44 +35,48 @@
 		</nav>
 		<main>
 			<article class="content">
-				<div class="filter">
-					<div class="filter-item">공지</div>
-					<div class="filter-item">업데이트</div>
-					<div class="filter-item">이벤트</div>
-					<div class="filter-item">PKMGG</div>
-					<div class="filter-item">초기화</div>
-				</div>
-				<div class="news-list">
-					<!--<div class="news">
-						<a href="https://www.pokemonkorea.co.kr/pokemon-unite/menu127?number=2312&mode=view">
+				<section class="filter-section">
+					<ul class="filter">
+						<li class="filter-item active">공지</li>
+						<li class="filter-item">업데이트</li>
+						<li class="filter-item">이벤트</li>
+						<li class="filter-item">PKMGG</li>
+						<li class="filter-item">초기화</li>
+					</ul>
+				</section>
+				<section class="news-list-section">
+					<ul class="news-list">
+						<li class="news">
+							<a href="https://www.pokemonkorea.co.kr/pokemon-unite/menu127?number=2312&mode=view">
+								<img src="./img/adExample.png">
+								<div class="title-box">
+									<p class="date">2021년 9월 21일</p>
+									<p class="title">Nintendo Switch버전 배포일 결정!</p>
+								</div>
+							</a>
+						</li>
+						<li class="news">
 							<img src="./img/adExample.png">
 							<div class="title-box">
 								<p class="date">2021년 9월 21일</p>
 								<p class="title">Nintendo Switch버전 배포일 결정!</p>
 							</div>
-						</a>
-					</div>
-					<div class="news">
-						<img src="./img/adExample.png">
-						<div class="title-box">
-							<p class="date">2021년 9월 21일</p>
-							<p class="title">Nintendo Switch버전 배포일 결정!</p>
-						</div>
-					</div>
-					<div class="news">
-						<img src="./img/held-items/Energy-Amplifier.png">
-						<div class="title-box">
-							<p class="date">2021년 9월 21일</p>
-							<p class="title">Nintendo Switch버전 배포일 결정!</p>
-						</div>
-					</div>-->
-				</div>
+						</li>
+						<li class="news">
+							<img src="./img/held-items/Energy-Amplifier.png">
+							<div class="title-box">
+								<p class="date">2021년 9월 21일</p>
+								<p class="title">Nintendo Switch버전 배포일 결정!</p>
+							</div>
+						</li>
+					</ul>
+				</section>
 			</article>
 		</main>
-		<script type="module">
+		<!--<script type="module">
 			import { createNewsData } from './js/news.js';
 			createNewsData();
-		</script>
+		</script>-->
 		<div class="ads"><img src="./img/adExample.png"></div>
 		<footer>
 			<p class="copyright">PKM.GG isn’t endorsed by Nintendo and doesn’t reflect the views or opinions of Nintendo
