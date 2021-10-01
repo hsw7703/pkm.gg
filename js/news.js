@@ -1,9 +1,9 @@
 import module from './module.js';
 
 function createNews(img, title, date, url) {
-	const newList = document.querySelector('.news-list');
+	const newsUl = document.querySelector('.news-list');
+	const newsLi = document.createElement('li');
 	const link = document.createElement('a');
-	const newsDiv = document.createElement('div');
 	const bannerImg = document.createElement('img');
 	const titleDiv = document.createElement('div');
 	const dateText = document.createElement('p');
@@ -11,7 +11,7 @@ function createNews(img, title, date, url) {
 
 	link.href = url;
 	link.target = '_blank';
-	newsDiv.className = 'news';
+	newsLi.className = 'news';
 	bannerImg.src = img;
 	titleDiv.className = 'title-box';
 	dateText.className = 'date';
@@ -19,12 +19,10 @@ function createNews(img, title, date, url) {
 	dateText.innerText = date;
 	titleText.innerText = title;
 
-	newsDiv.append(link);
-	link.append(bannerImg);
-	link.append(titleDiv);
-	titleDiv.append(dateText);
-	titleDiv.append(titleText);
-	newList.append(newsDiv);
+	newsUl.append(newsLi);
+	newsLi.append(link);
+	link.append(bannerImg, titleDiv);
+	titleDiv.append(dateText, titleText);
 }
 
 

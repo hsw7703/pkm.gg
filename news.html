@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +16,6 @@
 		gtag('config', 'G-HZQHSTP2QN');
 	</script>
 </head>
-
 <body>
 	<div class="wrap">
 		<header>
@@ -35,48 +33,11 @@
 		</nav>
 		<main>
 			<article class="content">
-				<section class="filter-section">
-					<ul class="filter">
-						<li class="filter-item active">공지</li>
-						<li class="filter-item">업데이트</li>
-						<li class="filter-item">이벤트</li>
-						<li class="filter-item">PKMGG</li>
-						<li class="filter-item">초기화</li>
-					</ul>
-				</section>
 				<section class="news-list-section">
-					<ul class="news-list">
-						<li class="news">
-							<a href="https://www.pokemonkorea.co.kr/pokemon-unite/menu127?number=2312&mode=view">
-								<img src="./img/adExample.png">
-								<div class="title-box">
-									<p class="date">2021년 9월 21일</p>
-									<p class="title">Nintendo Switch버전 배포일 결정!</p>
-								</div>
-							</a>
-						</li>
-						<li class="news">
-							<img src="./img/adExample.png">
-							<div class="title-box">
-								<p class="date">2021년 9월 21일</p>
-								<p class="title">Nintendo Switch버전 배포일 결정!</p>
-							</div>
-						</li>
-						<li class="news">
-							<img src="./img/held-items/Energy-Amplifier.png">
-							<div class="title-box">
-								<p class="date">2021년 9월 21일</p>
-								<p class="title">Nintendo Switch버전 배포일 결정!</p>
-							</div>
-						</li>
-					</ul>
+					<ul class="news-list"></ul>
 				</section>
 			</article>
 		</main>
-		<!--<script type="module">
-			import { createNewsData } from './js/news.js';
-			createNewsData();
-		</script>-->
 		<div class="ads"><img src="./img/adExample.png"></div>
 		<footer>
 			<p class="copyright">PKM.GG isn’t endorsed by Nintendo and doesn’t reflect the views or opinions of Nintendo
@@ -84,6 +45,10 @@
 				trademarks or registered trademarks of Nintendo.</p>
 			<p class="copyright">Copyright 2021 PKM.GG </p>
 		</footer>
+		<script type="module">
+			import { createNewsData } from './js/news.js';
+			createNewsData();
+		</script>
 	</div>
 </body>
 
