@@ -4,50 +4,35 @@
 	align-items: center;
 }
 
-/* 헤더 영역 */
-
-/* 상단 광고 영역 */
-.ad_box {
+.ad-box {
 	display: flex;
 	flex-flow: column;
 	align-items: center;
 }
 
-/* 메인 영역 */
-main {
-	display: flex;
-	/*justify-content: center;*/
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-	max-width: 650px;
-}
-
-/* 캐릭터 정보 영역 */
-section.info_section {
+section.info-section {
 	width: 80%;
+	margin: 0 auto;
 }
 
-.character_image {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: auto;
+.character-image {
+	margin: 0 auto;
 	max-width: 400px;
 	padding: 10%;
+	overflow: hidden;
 }
 
-.character_image img {
+.character-image img {
 	width: 100%;
 }
 
-.name_box {
+.name-box {
 	border-radius: 5px;
 	display: flex;
 	background-color: var(--orange);
 }
 
-.name_box .character_name {
+.name-box .character-name {
 	position: relative;
 	width: 75%;
 	background-color: var(--black);
@@ -56,7 +41,7 @@ section.info_section {
 	padding: 1rem;
 }
 
-.name_box .character_name:after {
+.name-box .character-name:after {
 	position: absolute;
 	content: '';
 	top: 0;
@@ -67,18 +52,18 @@ section.info_section {
 	border-bottom: 3.5rem solid var(--orange);
 }
 
-.name_box .character_name h2 {
+.name-box .character-name h2 {
 	font-size: var(--h2);
 	font-weight: bold;
 	letter-spacing: 1px;
 }
 
-.name_box .difficulty {
+.name-box .difficulty {
 	margin: auto;
 	color: black;
 }
 
-.attribute_list {
+.attribute-list {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
@@ -99,7 +84,7 @@ section.info_section {
 	letter-spacing: 1px;
 }
 
-.ability_box {
+.ability-list {
 	border-radius: 5px;
 	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
 	padding: 4%;
@@ -115,28 +100,28 @@ section.info_section {
 	margin-bottom: 0;
 }
 
-.ability_title {
+.ability-title {
 	font-size: var(--h5);
 }
 
-.ability_title span {
+.ability-title span {
 	float: right;
 }
 
-.ability_gauge {
+.ability-gauge {
 	margin-top: 0.5rem;
 	background-color: var(--gauge);
 }
 
-.ability_gauge .active_gauge {
+.ability-gauge .active-gauge {
 	background-color: var(--gauge-green);
 	color: transparent;
 	border-radius: 0 10px 10px 0;
 }
 
-.evolution_box {
-	margin-top: 5%;
-	margin-bottom: 5%;
+.evolution-list {
+	margin-top: 10%;
+	margin-bottom: 10%;
 	display: flex;
 	justify-content: space-around;
 }
@@ -152,91 +137,79 @@ section.info_section {
 	min-height: 100px;
 	border-radius: 50%;
 	background-color: var(--main-blue);
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
 }
 
-.evolution_name {
+.evolution-name {
 	margin-top: 1rem;
 	font-weight: bold;
 	font-size: var(--h4);
 }
 
-.evolution_desc {
+.evolution-desc {
 	margin-top: 0.5rem;
 	font-size: var(--h5);
 	color: var(--sky-blue);
 }
 
-/* 빌드 영역 */
-section.build_section {
-	border-radius: 5px;
+section.build-section {
+	margin: 0 auto;
 	width: 90%;
+	border-radius: 5px;
 	background-color: var(--main-blue);
-	/*padding: 2%;*/
-	/*position: relative;*/
 	overflow:hidden;
 }
-/* 탭 제목 div*/
-.tab_menu {
+
+.build-tab {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
 }
 
-.tab_title {
+.tab-title {
 	width: 100%;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	text-align: center;
-	background-color: var(--main-blue);
-	/*cursor: pointer;*/
 }
 
-.tab_title.active {
-	background-color: var(--light-blue);
-}
-
-.tab_content {
-	/*background-color: red;*/
-	padding-left: 2%;
-	padding-right: 2%;
-	padding-bottom: 2%;
+.build {
+	padding-left: 4%;
+	padding-right: 4%;
+	padding-bottom: 4%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	width: 100%;
 }
 
-.tab_content.active {
-	display: flex;
-}
-
-.tab_content li {
+.build li {
 	text-align: center;
 	margin-top: 4.5%;
 	width: 21%;
 }
 
-.tab_content li img {
+.build li img {
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.9);
 	border-radius: 50%;
 	box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.13);
 }
 
-.tab input:checked ~ label {
-	background-color: var(--main-blue);
+.build li p {
+	margin-top: 1rem;
+	font-size: var(--h5);
 }
 
-.tab input:checked ~ .tab_content {
-	display: flex;
-}
 
-/* 스킬 영역 */
-section.skill_section {
+section.skill-section {
+	margin: 0 auto;
 	position: relative;
 	width: 90%;
-	/*margin: 35px 0;*/
+}
+
+.skill-list {
+	margin: 5% auto;
 }
 
 .skill {
@@ -248,50 +221,48 @@ section.skill_section {
 	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
 }
 
-.skill_top {
+.skill-top {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 }
 
-.skill_img {
+.skill-top .skill-img {
 	width: 75px;
 	height: 75px;
 	border-radius: 50%;
 	overflow: hidden;
 }
 
-.skill_title {
+.skill-top .skill-title {
 	margin-left: 4%;
 }
 
-.skill_name {
+.skill-top .skill-title .skill-name {
 	font-size: var(--h2);
 	font-weight: bold;
-	/*margin-bottom: 12px;*/
 }
 
-.skill_summary {
+.skill-top .skill-title .skill-summary {
 	margin-top: 0.5rem;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 }
-.skill_summary li {
+.skill-top .skill-title .skill-summary li {
 	display:flex;
-	/*position: relative;*/
-	padding: 5px;
+	padding: 5px 6px;
 	align-items: center;
 	border-radius: 100px;
 	background-color: var(--light-blue);
 	font-size: var(--h5);
 	margin-right: 10px;
 }
-.skill_summary li:last-child {
+.skill-summary li:last-child {
 	margin-right: 0;
 }
 
-.skill_summary li .skill-type {
+.skill-summary li .skill-type {
 	width: 20px;
 	height: 20px;
 	margin-right: 5px;
@@ -299,19 +270,9 @@ section.skill_section {
 	border-radius: 50%;
 }
 
-/*.skill_summary li:after {
-	content: '';
-	position: absolute;
-	left: 4px;
-	top: 4px;
-	width: 12px;
-	height: 12px;
-	background-color: var(--white);
-	border-radius: 50%;
-}*/
-
-.skill_content {
+.skill-content {
 	margin-top: 4%;
 	line-height: var(--h3);
 	font-size: var(--h5);
 }
+
