@@ -83,7 +83,7 @@ header .logo {
 nav {
 	padding-top: 10px;
 	width: 100%;
-	background-color: var(--light-blue);
+	background-color: var(--main-blue);
 }
 
 .navbar {
@@ -124,6 +124,14 @@ main {
 }
 
 .ads {
+	width: 100%;
+	background-color: var(--main-blue);
+	/*max-width: 650px;*/
+	text-align: center;
+	margin: auto;
+}
+
+.ad {
 	max-width: 650px;
 	margin: auto;
 }

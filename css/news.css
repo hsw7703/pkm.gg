@@ -36,7 +36,7 @@ section.news-list-section {
 	left : 0;
 	bottom: 0;
 	padding: 2.5% 2% 2%;
-	background-color: rgba(0,0,0,0.7);
+	background-color: rgb(0,0,0);
 }
 
 .content .news .title {
