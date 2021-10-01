@@ -11,6 +11,9 @@ class Pkm_itemAdmin(admin.ModelAdmin):
 class SkillAdmin(admin.ModelAdmin):
     search_fields = ['name_text', 'pkm_id__name_text']
 
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('msg', 'is_check')
+
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(Item)
 admin.site.register(Pkm_item, Pkm_itemAdmin)
@@ -19,7 +22,7 @@ admin.site.register(Pkm_battle_item)
 admin.site.register(Battle_item)
 admin.site.register(Evolution)
 admin.site.register(News)
-admin.site.register(Contact)
+admin.site.register(Contact, ContactAdmin)
 
 from .models import Build, Update, Skill_build, Item_build, Old_build
 

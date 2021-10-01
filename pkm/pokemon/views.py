@@ -122,8 +122,8 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def ContactPage(request):
     if request.POST:
-        email = request.POST['email']
-        msg = request.POST['msg']
+        email = request.POST['user_email']
+        msg = request.POST['user_message']
         Contact(email=email, msg=msg, is_check=False).save()
         return HttpResponseRedirect('https://pkm.gg/contact.html')
 
