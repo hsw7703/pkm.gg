@@ -14,11 +14,17 @@ function createCharacterDetailTag(number, buildDiv) {
     }
 }
 
-function inputCharacterDetailData(dataType, startIndex, inputArr) {
+function inputCharacterDetailData(dataType, startIndex, inputArr, selectedCharacterIndex = 1) {
 
     dataType.forEach((element, index) => {
     const itemImg = inputArr[startIndex+index].querySelector("img");
     const itemName = inputArr[startIndex+index].querySelector("p");
+
+    if (startIndex === 0) {
+        itemImg.setAttribute('onclick', `location.href='./pokemon-detail.html?pokemon=${selectedCharacterIndex}'`);
+    } else if (startIndex === 4) {
+        itemImg.setAttribute('onclick', `location.href='./item-detail.html?item=${element.id}'`);
+    }
 
     itemImg.src = element.img;
     itemName.innerText = element.name_text;
@@ -91,7 +97,7 @@ function inputCharacterData(profileIndex, detailIndex) {
     itemNameDiv.innerText = selectedCharacter.name_text;
     itemTypeDiv.innerText = selectedCharacter.attack_type_text + " " +selectedCharacter.damage_type_text;
 
-    inputCharacterDetailData(selectedCharacter.skill, 0, itemDivArr);
+    inputCharacterDetailData(selectedCharacter.skill, 0, itemDivArr, selectedCharacter.id);
     inputCharacterDetailData(selectedCharacter.item, 4, itemDivArr);
     inputBattleItemData(selectedCharacter.battle_item, 7, itemDivArr);
 
