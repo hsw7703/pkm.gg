@@ -222,7 +222,14 @@ def build_test(request):
 
         update = Update.objects.filter(date__lte=timezone.now()).order_by('-date')[0]
         pkm = Pokemon.objects.get(id=request.POST['pkm_id'])
+
         #업데이트 이후 빌드 old_build로 옮기고 count = 0으로 초기화 해야됨
+        builds = Build.objects.filter(id=pkm.id)
+        if builds[0].is_delete():
+            for build in builds:
+                Old_build(pkm_id=build.pkm_id, update_id=build.update_id, item_build_id=build.item_build_id, skill_build_id=build.skill_build_id, battle_item_id=build.battle_item_id, count=build.count, date=build.date).save()
+                build.delete()
+
         if item and skill:
             build = Build.objects.filter(item_build_id=item[0].id, battle_item_id=battle_item.id, skill_build_id=skill[0].id)
             if build:

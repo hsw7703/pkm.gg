@@ -200,10 +200,10 @@ class Build(models.Model):
     count = models.BigIntegerField(default=0)
     date = models.DateField()
 
-    def is_delete():
-        update = Update.objects.fitler(date__gte=date)
+    def is_delete(self):
+        update = Update.objects.filter(date__gte=self.date)
         if update:
-            return timezone.now() >= Update.objects.filter(date__gte=date) >= date
+            return timezone.now() >= update[0].date >= self.date
         else:
             return False
 
