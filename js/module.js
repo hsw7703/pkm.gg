@@ -41,17 +41,17 @@ function inputItemData(profileIndex, detailIndex){
     const selectedDetailDiv = detailDivArr[detailIndex];
     const nameLabelP = selectedDetailDiv.querySelector(".title > .name-label");
     const typeLabelP = selectedDetailDiv.querySelector(".title > .type-label");
-    const descriptionP = selectedDetailDiv.querySelector(".content > .effect > p");
-    const tableHeadArr = selectedDetailDiv.querySelectorAll(".spec-table > tr > th");
-    const tableDataArr = selectedDetailDiv.querySelectorAll(".spec-table > tr > td");
+    const descriptionP = selectedDetailDiv.querySelector(".effect");
+    const tableHeadArr = selectedDetailDiv.querySelectorAll(".spec-table > thead > tr > th");
+    const tableDataArr = selectedDetailDiv.querySelectorAll(".spec-table > tbody > tr > td");
 
     nameLabelP.innerText = itemInfo[profileIndex].name_text;
     typeLabelP.innerText = itemInfo[profileIndex].type_text;
     descriptionP.innerText = itemInfo[profileIndex].description;
     tableHeadArr[0].innerText = "레벨";
     tableHeadArr[1].innerText = "효과";
-    tableDataArr[0].innerText = "1";
-    tableDataArr[1].innerText = itemInfo[profileIndex].status_1.replace('/','\n');
+    tableDataArr[0].innerText = "상승 효과";
+    tableDataArr[1].innerText = itemInfo[profileIndex].status_increase.replace('/','\n');
     tableDataArr[2].innerText = "10";
     tableDataArr[3].innerText = itemInfo[profileIndex].status_10.replace('/','\n');
     tableDataArr[4].innerText = "20";
@@ -59,8 +59,9 @@ function inputItemData(profileIndex, detailIndex){
     tableDataArr[6].innerText = "30";
     tableDataArr[7].innerText = itemInfo[profileIndex].status_30.replace('/','\n');
 
-    const detailViewA = selectedDetailDiv.querySelector('.content > .link > a');
-    detailViewA.setAttribute("href", `./index.html?item=${itemInfo[profileIndex].id}`);
+    const detailViewA = selectedDetailDiv.querySelector('.link > a');
+    // detailViewA.setAttribute("href", `./index.html?item=${itemInfo[profileIndex].id}`);
+    detailViewA.setAttribute("onclick", `alert("추후 공개 됩니다.");`);
 }
 
 function inputCharacterData(profileIndex, detailIndex) {
@@ -189,8 +190,6 @@ function hideToggle(e) {
                 itemIndex = index;
             }
         });
-        console.log(itemIndex);
-        console.log(e.currentTarget.id);
         detailBoxIndex = parseInt(parseInt(itemIndex) / 4);
         inputCharacterData(itemIndex, detailBoxIndex);
     }
