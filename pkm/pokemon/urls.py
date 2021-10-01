@@ -17,5 +17,5 @@ urlpatterns = [
 #    path('test_item/', views.buildTest),
 #    path('news/<int:news_id>/', views.NewsDetailAPI),
 
-    path('build_test/', views.build_test),
+    path('build/', views.build),
 ]

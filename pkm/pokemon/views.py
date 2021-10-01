@@ -1,7 +1,7 @@
 #from django.shortcuts import render
 #from django.views import generic
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -19,16 +19,27 @@ from django.db import connection
 from django.db.models import Q
 
 def get_client_ip(request):
+    allow_ips = ['127.0.0.0']
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
         ip = x_forwarded_for.split(',')[0]
     else:
         ip = request.META.get('REMOTE_ADDR')
-    return ip
+    is_allow = False
+    for allow_ip in allow_ips:
+        if allow_ip == ip:
+            is_allow = True
+    if is_allow:
+        return True
+    else:
+        return False
+
 
 @api_view(['GET'])
 def pokemonMainAPI(request):
-    print(get_client_ip(request))
+#    if not get_client_ip(request):
+#        return HttpResponse("Unauthorized", status=401)
+
     if request.GET:
         type_q = Q()
         damage_type_q = Q()
@@ -106,6 +117,12 @@ def NewsMainAPI(request):
         news = News.objects.all()
     serializer = NewsMainSerializer(news, many=True)
     return Response(serializer.data)
+
+def Contact(request):
+    if request.POST:
+        email = request.POST['email']
+        msg = request.POST['msg']
+
     
 #@api_view(['GET'])
 #def NewsDetailAPI(request, news_id):
@@ -203,10 +220,9 @@ def NewsMainAPI(request):
 from django.utils import timezone
 from .models import Build, Update, Skill_build, Item_build, Old_build
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
 
 @csrf_exempt
-def build_test(request):
+def build(request):
     if request.POST:
         q = Q()
         item_id = []
@@ -234,10 +250,11 @@ def build_test(request):
         pkm = Pokemon.objects.get(id=request.POST['pkm_id'])
 
         #업데이트 이후 빌드 old_build로 옮기고 count = 0으로 초기화 해야됨
-        builds = Build.objects.filter(id=pkm.id)
-        if builds[0].is_delete():
-            for build in builds:
-                Old_build(pkm_id=build.pkm_id, update_id=build.update_id, item_build_id=build.item_build_id, skill_build_id=build.skill_build_id, battle_item_id=build.battle_item_id, count=build.count, date=build.date).save()
+        builds = Build.objects.filter(pkm_id=pkm.id)
+        if builds:
+            if builds[0].is_delete():
+                for build in builds:
+                    Old_build(pkm_id=build.pkm_id, update_id=build.update_id, item_build_id=build.item_build_id, skill_build_id=build.skill_build_id, battle_item_id=build.battle_item_id, count=build.count, date=build.date).save()
                 build.delete()
 
         if item and skill:
