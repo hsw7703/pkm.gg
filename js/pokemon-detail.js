@@ -4,7 +4,7 @@ function serachQueryParam(key) {
 
 function createTypeDiv(typeArray) {
 	// 포켓몬 타입 생성
-	const pokeAttributeList = document.querySelector('.attribute_list');
+	const pokeAttributeList = document.querySelector('.attribute-list');
 	for (let index = 0; index < 3; index++) {
 		const pokeAttributeBox = document.createElement('li')
 		pokeAttributeBox.className = 'attribute';
@@ -14,7 +14,7 @@ function createTypeDiv(typeArray) {
 }
 
 function createAbilityDiv(stateDiv) {
-	const pokeAbilityList = document.querySelector('.ability_list');
+	const pokeAbilityList = document.querySelector('.ability-list');
 	for (const property in stateDiv) {
 		const ability = document.createElement('li');
 		const abilityTitle = document.createElement('p')
@@ -23,10 +23,10 @@ function createAbilityDiv(stateDiv) {
 		const activeGuage = document.createElement('div');
 
 		ability.className = 'ability';
-		abilityTitle.className = 'ability_title';
-		abilityLevel.className = 'ability_level';
-		abilityGauge.className = 'ability_gauge';
-		activeGuage.className = 'active_gauge';
+		abilityTitle.className = 'ability-title';
+		abilityLevel.className = 'ability-level';
+		abilityGauge.className = 'ability-gauge';
+		activeGuage.className = 'active-gauge';
 
 		abilityTitle.textContent = property;
 		abilityLevel.textContent = stateDiv[property];
@@ -42,95 +42,86 @@ function createAbilityDiv(stateDiv) {
 }
 
 function createEvolutionDiv(evolutionArray) {
-	const pokeEvolutionBox = document.querySelector('.evolution_box');
+	const pokeEvolutionBox = document.querySelector('.evolution-list');
 	evolutionArray.forEach((element) => {
-		const evolutionDiv = document.createElement('div');
-		const evolutionImgDiv = document.createElement('div');
+		const evolutionList = document.createElement('li');
 		const evolutionImg = document.createElement('img');
 		const evolutionName = document.createElement('h4');
 		const evolutionLevel = document.createElement('p');
 
-		const tempDiv = document.createElement('div');
-
-		evolutionDiv.className = 'evolution';
-		evolutionImgDiv.className = 'evolution_img';
-		evolutionName.className = 'evolution_name';
-		evolutionLevel.className = 'evolution_desc';
+		evolutionList.className = 'evolution';
+		evolutionName.className = 'evolution-name';
+		evolutionLevel.className = 'evolution-desc';
 
 		evolutionImg.src = element['img'];
 		evolutionName.textContent = element['name_text'];
 		evolutionLevel.textContent = `${element['level']}레벨에 진화`;
 
-		evolutionDiv.append(evolutionImgDiv);
-		evolutionDiv.append(evolutionName);
-		evolutionDiv.append(evolutionLevel);
-		tempDiv.append(evolutionImg);
-		evolutionImgDiv.append(tempDiv);
+		evolutionList.append(evolutionImg);
+		evolutionList.append(evolutionName);
+		evolutionList.append(evolutionLevel);
 
-		pokeEvolutionBox.append(evolutionDiv);
+		pokeEvolutionBox.append(evolutionList);
 	});
 }
 
 function createRecommendBuildData(itemBuild, battleItemBuild, recommendSkill) {
-	const recommendDiv = document.querySelector('#recommend');
+	// build-section 작업
+	const recommendDiv = document.querySelector('.build-section > .build');
+	recommendSkill.forEach((item) => {
+		const rawLi = document.createElement('li');
+		const img = document.createElement('img');
+		const p = document.createElement('p');
+		img.src = item['img'];
+		p.textContent = item['name_text'];
+
+		rawLi.append(img, p);
+		recommendDiv.append(rawLi);
+	});
+	
 	itemBuild.forEach((item) => {
 		const rawLi = document.createElement('li');
-		const rawDiv = document.createElement('div');
 		const img = document.createElement('img');
+		const p = document.createElement('p');
 		img.src = item['img'];
-		img.alt = item['name_text'];
+		p.textContent = item['name_text'];
 
-		rawDiv.append(img);
-		rawLi.append(rawDiv);
+		rawLi.append(img, p);
 		recommendDiv.append(rawLi);
 	});
 
 	{
 		const rawLi = document.createElement('li');
-		const rawDiv = document.createElement('div');
 		const img = document.createElement('img');
+		const p = document.createElement('p');
 		img.src = battleItemBuild['img'];
-		img.alt = battleItemBuild['name_text'];
+		p.textContent = battleItemBuild['name_text'];
 
-		rawDiv.append(img);
-		rawLi.append(rawDiv);
+		rawLi.append(img, p);
 		recommendDiv.append(rawLi);
-	}
-
-	recommendSkill.forEach((item) => {
-		const rawLi = document.createElement('li');
-		const rawDiv = document.createElement('div');
-		const img = document.createElement('img');
-		img.src = item['img'];
-		img.alt = item['name_text'];
-
-		rawDiv.append(img);
-		rawLi.append(rawDiv);
-		recommendDiv.append(rawLi);
-	});
+	}	
 }
 
 function createSkillDiv(skillArray) {
-	const skillSection = document.querySelector('.skill_section');
+	const skillSection = document.querySelector('.skill-section > .skill-list');
 	skillArray.forEach((skill) => {
-		const skillArticle = document.createElement('article');
+		const skillArticle = document.createElement('li');
 		const skillTop = document.createElement('div');
 		const skillContent = document.createElement('div');
-		const skillImageDiv = document.createElement('div');
-		const skillTitle = document.createElement('div');
 		const skillImage = document.createElement('img');
+		const skillTitle = document.createElement('div');
 		const skillName = document.createElement('h3');
 		const skillSummary = document.createElement('ul');
 		const skillCoolTime = document.createElement('li');
 		const skillType = document.createElement('li');
 
 		skillArticle.className = 'skill';
-		skillTop.className = 'skill_top';
-		skillContent.className = 'skill_content';
-		skillImageDiv.className = 'skill_img';
-		skillTitle.className = 'skill_title';
-		skillName.className = 'skill_name';
-		skillSummary.className = 'skill_summary';
+		skillTop.className = 'skill-top';
+		skillContent.className = 'skill-content';
+		skillImage.className = 'skill-img';
+		skillTitle.className = 'skill-title';
+		skillName.className = 'skill-name';
+		skillSummary.className = 'skill-summary';
 
 		skillImage.src = skill['img'];
 		// skillImage.src = "https://via.placeholder.com/140";
@@ -148,9 +139,8 @@ function createSkillDiv(skillArray) {
 
 		skillArticle.append(skillTop);
 		skillArticle.append(skillContent);
-		skillTop.append(skillImageDiv);
+		skillTop.append(skillImage);
 		skillTop.append(skillTitle);
-		skillImageDiv.append(skillImage);
 		skillTitle.append(skillName);
 		skillTitle.append(skillSummary);
 		skillSummary.append(skillType);
@@ -169,23 +159,16 @@ function createPokemonData(pokemonIndex) {
 		response.json()
 	)).then((data) => {
 		// 포켓몬 이미지
-		const characterImgDiv = document.querySelector('.character_image');
-		const characterImg = document.createElement('img');
+		const characterImg = document.querySelector('.character-image > img');
 		characterImg.src = data['img'];
-		characterImgDiv.append(characterImg);
 
 		// 포켓몬 이름
-		const pokeNameDiv = document.querySelector('.character_name');
-		const pokeName = document.createElement('h2');
+		const pokeName = document.querySelector('.character-name > h2');
 		pokeName.textContent = data['name_text'];
-		pokeNameDiv.appendChild(pokeName);
 
 		// 포켓몬 난이도
-		const difficultyDiv = document.querySelector('.difficulty');
-		const difficulty = document.createElement('p');
-		// difficulty.textContent = data['']
-		difficulty.textContent = "중급자";
-		difficultyDiv.append(difficulty);
+		const difficulty = document.querySelector('.difficulty > p');
+		difficulty.textContent = data['difficulty_text'];
 
 		// 포켓몬 타입 생성
 		const typeArray = [data['type_text'], data['attack_type_text'], data['damage_type_text']];
@@ -207,42 +190,3 @@ function createPokemonData(pokemonIndex) {
 }
 
 createPokemonData(serachQueryParam('pokemon'));
-
-// function createPokemonDetail() {
-// 	const pokemonIndex = serachQueryParam("pokemon");
-
-// 	fetch(`http://pkm.gg/api/pokemon/${pokemonIndex}`, {
-// 		method: "GET",
-// 	}).then((response) => {
-// 		const infoSection = document.querySelector(".info_section");
-
-// 		// 캐릭터 이미지 생성
-// 		const charImgDiv = document.createElement("div");
-// 		charImgDiv.className = "character_image";
-
-// 		const charImg = document.createElement("img");
-// 		charImg.src = response["img"];
-// 		charImg.alt = "캐릭터 이미지";
-
-// 		charImgDiv.append(charImg);
-// 		infoSection.append(charImgDiv);
-
-// 		// INFOBOX 생성
-// 		const infoBoxDiv = document.createElement("div");
-// 		infoBoxDiv.className = "info_box";
-
-// 		const nameBoxDiv = document.createElement("div");
-// 		nameBoxDiv.className = "name_box";
-
-// 		const charNameDiv = document.createElement("div");
-// 		charNameDiv.className = "character_name";
-// 		const charNameH2 = document.createElement("h2");
-// 		charNameH2.textContent = response["name_text"];
-// 		charNameDiv.append(charNameH2);
-// 		nameBoxDiv.append(charNameDiv);
-
-// 		const difficultyDiv = document.createElement("div");
-// 		difficultyDiv.className = ""
-// 	})
-
-// }
