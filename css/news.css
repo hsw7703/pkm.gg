@@ -1,9 +1,13 @@
+section.news-list-section {
+	width:100%
+}
+
 .content .news-list {
 	padding: 2%;
 	width: 100%;
 	display:flex;
 	flex-wrap: wrap;
-	margin: 4% auto;
+	margin: 2% auto;
 }
 
 .content .news:nth-child(1) {
