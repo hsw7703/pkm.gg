@@ -69,37 +69,28 @@ section.info-section .spec-table {
 	overflow: hidden;
 }
 
-section.info-section .spec-table td {
-	text-align: center;
-	vertical-align: middle;
-	padding: 0.5rem;
+thead {
+	background-color: var(--dark-blue);
 }
 
-section.info-section .spec-table .level {
+thead th {
 	text-align: center;
 	padding: 0.8rem;
 	font-size: var(--h4);
 }
 
-section.info-section .spec-table th {
-	vertical-align: center;
+tbody td {
+	text-align: center;
+	vertical-align: middle;
 	padding: 0.5rem;
-	background-color: var(--dark-blue);
-}
-
-section.info-section .spec-table tr:nth-child(3n + 2) {
-	background-color: var(--tp-black);
-}
-
-section.info-section .spec-table tr:nth-child(3n + 3) {
-	background-color: rgba(0,0,0,0.2);
-}
-
-section.info-section .spec-table tr:nth-child(3n + 1) {
-	background-color: var(--deep-dark);
 }
 
 tr td:nth-child(1) {
+	width: 45%;
+	background-color: var(--tp-black);
+}
+
+tr th:nth-child(1) {
 	width: 45%;
 	background-color: var(--tp-black);
 }
