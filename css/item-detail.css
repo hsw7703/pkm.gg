@@ -1,0 +1,105 @@
+section.info-section {
+	width: 92%;
+	margin: 0 auto;
+}
+
+.item-image {
+	margin: 0 auto;
+	max-width: 400px;
+	padding: 10%;
+	overflow: hidden;
+}
+
+.item-image img {
+	width: 100%;
+}
+
+.name-box {
+	border-radius: 5px;
+	display: flex;
+	background-color: var(--orange);
+}
+
+.name-box .item-name {
+	position: relative;
+	width: 75%;
+	background-color: var(--black);
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	padding: 1rem;
+}
+
+.name-box .item-name:after {
+	position: absolute;
+	content: '';
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	border-left: 1.5rem solid transparent;
+	border-bottom: 3.5rem solid var(--orange);
+}
+
+.name-box .item-name h2 {
+	font-size: var(--h2);
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+.name-box .type {
+	margin: auto;
+	color: black;
+}
+section.info-section .effect {
+	/*margin: 4% auto ;*/
+	margin-top: 4%;
+	padding: 4%;
+	border-radius: 5px;;
+	font-size: var(--h4);
+}
+
+section.info-section .spec-table {
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
+	border-radius: 5px;
+	width: 100%;
+	margin: 4% auto;
+	font-size: var(--h5);
+	line-height: var(--h2);
+	background-color: var(--light-blue);
+	overflow: hidden;
+}
+
+section.info-section .spec-table td {
+	text-align: center;
+	vertical-align: middle;
+	padding: 0.5rem;
+}
+
+section.info-section .spec-table .level {
+	text-align: center;
+	padding: 0.8rem;
+	font-size: var(--h4);
+}
+
+section.info-section .spec-table th {
+	vertical-align: center;
+	padding: 0.5rem;
+	background-color: var(--dark-blue);
+}
+
+section.info-section .spec-table tr:nth-child(3n + 2) {
+	background-color: var(--tp-black);
+}
+
+section.info-section .spec-table tr:nth-child(3n + 3) {
+	background-color: rgba(0,0,0,0.2);
+}
+
+section.info-section .spec-table tr:nth-child(3n + 1) {
+	background-color: var(--deep-dark);
+}
+
+tr td:nth-child(1) {
+	width: 45%;
+	background-color: var(--tp-black);
+}
