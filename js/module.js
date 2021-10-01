@@ -73,8 +73,8 @@ function inputItemData(profileIndex, detailIndex){
     });
 
     const detailViewA = selectedDetailDiv.querySelector('.link > a');
-    // detailViewA.setAttribute("href", `./index.html?item=${itemInfo[profileIndex].id}`);
-    detailViewA.setAttribute("onclick", `alert("추후 공개 됩니다.");`);
+    detailViewA.setAttribute("href", `./item-detail.html?item=${itemInfo[profileIndex].id}`);
+    // detailViewA.setAttribute("onclick", `alert("추후 공개 됩니다.");`);
 }
 
 function inputCharacterData(profileIndex, detailIndex) {
