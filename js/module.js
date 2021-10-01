@@ -44,20 +44,33 @@ function inputItemData(profileIndex, detailIndex){
     const descriptionP = selectedDetailDiv.querySelector(".effect");
     const tableHeadArr = selectedDetailDiv.querySelectorAll(".spec-table > thead > tr > th");
     const tableDataArr = selectedDetailDiv.querySelectorAll(".spec-table > tbody > tr > td");
-
+    
+    const statusIncrease = itemInfo[profileIndex].status_increase.split(' / ');
     nameLabelP.innerText = itemInfo[profileIndex].name_text;
     typeLabelP.innerText = itemInfo[profileIndex].type_text;
     descriptionP.innerText = itemInfo[profileIndex].description;
     tableHeadArr[0].innerText = "레벨";
     tableHeadArr[1].innerText = "효과";
     tableDataArr[0].innerText = "상승 효과";
-    tableDataArr[1].innerText = itemInfo[profileIndex].status_increase.replace('/','\n');
     tableDataArr[2].innerText = "10";
-    tableDataArr[3].innerText = itemInfo[profileIndex].status_10.replace('/','\n');
     tableDataArr[4].innerText = "20";
-    tableDataArr[5].innerText = itemInfo[profileIndex].status_20.replace('/','\n');
     tableDataArr[6].innerText = "30";
-    tableDataArr[7].innerText = itemInfo[profileIndex].status_30.replace('/','\n');
+    tableDataArr[1].innerHTML = "";
+    tableDataArr[3].innerHTML = "";
+    tableDataArr[5].innerHTML = "";
+    tableDataArr[7].innerHTML = "";
+    statusIncrease.forEach((status, index) => {
+        tableDataArr[1].innerHTML += status;
+        tableDataArr[3].innerHTML += status + ' ' + itemInfo[profileIndex].status_10.split(' / ')[index];
+        tableDataArr[5].innerHTML += status + ' ' + itemInfo[profileIndex].status_10.split(' / ')[index];
+        tableDataArr[7].innerHTML += status + ' ' + itemInfo[profileIndex].status_10.split(' / ')[index];
+        if (statusIncrease.length !== index + 1) {
+            tableDataArr[1].innerHTML += '<br>';
+            tableDataArr[3].innerHTML += '<br>';
+            tableDataArr[5].innerHTML += '<br>';
+            tableDataArr[7].innerHTML += '<br>';
+        }
+    });
 
     const detailViewA = selectedDetailDiv.querySelector('.link > a');
     // detailViewA.setAttribute("href", `./index.html?item=${itemInfo[profileIndex].id}`);
