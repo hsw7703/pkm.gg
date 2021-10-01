@@ -132,6 +132,7 @@ main {
 }
 
 .ad {
+	width: inherit;
 	max-width: 650px;
 	margin: auto;
 }
