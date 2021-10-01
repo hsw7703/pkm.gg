@@ -185,6 +185,20 @@ function createPokemonData(pokemonIndex) {
 		createAbilityDiv(abilityDict);
 		createEvolutionDiv(data['evolution']);
 		createRecommendBuildData(data['item'], data['battle_item'], data['recommend_skill']);
+
+		const passive = [
+			{
+				"passive_name": data['passive_name'],
+				"name_text": data['passive_name_text'],
+				"type_text": "패시브",
+				"img": data["passive_img"],
+				"cooltime": "0",
+				"description": data["passive_effect"],
+			}
+		];
+
+		
+		createSkillDiv(passive);
 		createSkillDiv(data['skill']);
 	})
 }
