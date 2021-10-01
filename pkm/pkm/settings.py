@@ -95,8 +95,8 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '42Yamyam1!',
 #        'PASSWORD': '1234',
-        'HOST': 'pkm.gg',
-#        'HOST': 'localhost',
+#        'HOST': 'pkm.gg',
+        'HOST': 'localhost',
         'PORT': '3306'
     }
 }
