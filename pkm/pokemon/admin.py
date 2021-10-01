@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Skill, Item, Pkm_item, Pokemon, Pkm_battle_item, Battle_item, Evolution, News
+from .models import Skill, Item, Pkm_item, Pokemon, Pkm_battle_item, Battle_item, Evolution, News, Contact
 
 class Pkm_itemAdmin(admin.ModelAdmin):
     list_display = ('item_id', 'pkm_id', 'count')
@@ -19,6 +19,7 @@ admin.site.register(Pkm_battle_item)
 admin.site.register(Battle_item)
 admin.site.register(Evolution)
 admin.site.register(News)
+admin.site.register(Contact)
 
 from .models import Build, Update, Skill_build, Item_build, Old_build
 

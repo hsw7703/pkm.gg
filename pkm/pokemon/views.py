@@ -118,6 +118,8 @@ def NewsMainAPI(request):
     serializer = NewsMainSerializer(news, many=True)
     return Response(serializer.data)
 
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
 def ContactPage(request):
     if request.POST:
         email = request.POST['email']
@@ -134,8 +136,6 @@ def ContactPage(request):
 
 
 #
-#from django.views.decorators.csrf import csrf_exempt
-#@csrf_exempt
 #def build(request):
 #    pkm_id = request.POST.get('pkm_id')
 #    for index in range(1, 4):
