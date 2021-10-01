@@ -2,15 +2,18 @@
 	width: 100%;
 }
 
-.content .index {
-	padding:2%;
+section.index-section {
 	width: 100%;
+}
+
+.index {
+	width: 96%;
 	display:flex;
 	flex-wrap: wrap;
 	margin: 2% auto;
 }
 
-.content .index .profile {
+.index .profile {
 	border-radius: 5px;
 	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
 	position: relative;
@@ -20,17 +23,17 @@
 	overflow: hidden;
 }
 
-.content .index .profile .label {
+.index .profile .label {
 	position: absolute;
 	left: 0;
 	bottom: 0;
-	font-size: 10%;
+	font-size: var(--h5);
 	background-color: rgba(0,0,0,0.15);
 	padding: 5px 4px 3px 2px;
 	letter-spacing: 0;
 }
 
-.content .index img {
+.index .profile img {
 	width: 100%;
 }
 
@@ -47,25 +50,21 @@
 	background-color: rgb(30, 130, 230);
 }
 
-.content .index .detail {
+.index .detail {
 	border-radius: 5px;
 	width: 96%;
 	margin: 2% auto;
+	padding: 0 4%;
 	background-color: var(--main-blue);
 	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
-}
-
-.detail .content {
-	padding: 0 4%;
-	width: 100%;
-	min-height: auto;
 }
 
 .detail .title {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin: 4.5% 0 4%;
+	margin-top: 4.5%;
+	margin-bottom: 4%;
 	
 }
 
@@ -77,13 +76,13 @@
 }
 
 .detail .effect {
-	padding-top: 4%;
+	margin-top: 4.5%;
 	font-size: var(--h5);
 	line-height: var(--h3);
 }
 
 .detail .spec-table {
-	margin-top: 4%;
+	margin-top: 4.5%;
 	border-radius: 5px;
 	width: 100%;
 	font-size: var(--h5);
@@ -91,29 +90,27 @@
 	overflow: hidden;
 }
 
-.detail .spec-table td {
-	text-align: center;
-	padding: 0.5rem;
-}
-
 .detail .spec-table th {
-	vertical-align: center;
-	padding: 0.5rem;
+	text-align: center;
+	padding: 0.7rem;
 	background-color: var(--dark-blue);
 }
 
-.detail .spec-table .left {
+.detail .spec-table td {
+	text-align: center;
+	padding: 0.5rem;
+	vertical-align: middle;
+}
+
+.detail .spec-table td:first-child {
 	width: 20%;
 	background-color: rgba(0,0,0,0.2);
-	vertical-align: middle;
 }
 
-.detail .spec-table .right {
+.detail .spec-table td:last-child {
 	width: 80%;
 	background-color: rgba(0,0,0,0.1);
-	vertical-align: middle;
 }
-
 
 .detail .spec-table tr:nth-child(odd) {
 	background-color: var(--main-blue);
@@ -123,8 +120,9 @@
 	background-color: var(--light-blue);
 }
 
-.detail .content .link {
-	margin: 3% 0 2.5%;
+.detail .link {
+	margin-top: 3%;
+	margin-bottom: 2.5%;
 	font-size: var(--h5);
 	text-align: right;
 }
