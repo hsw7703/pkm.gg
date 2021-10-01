@@ -1,4 +1,4 @@
-import module from './module.js';
+// import module from './module.js';
 
 function createNews(img, title, date, url) {
 	const newsUl = document.querySelector('.news-list');
@@ -47,6 +47,6 @@ export function createNewsData() {
 			const url = element.url;
 			createNews(img, title, date, url);
 		});
-        module.filterTagCreate(types);
+        // module.filterTagCreate(types);
 	});
 }
