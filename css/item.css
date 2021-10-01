@@ -3,14 +3,13 @@
 }
 
 section.index-section {
-	width: 100%;
+	width: 96%;
+	margin: 2% auto;
 }
 
 .index {
-	width: 96%;
 	display:flex;
 	flex-wrap: wrap;
-	margin: 2% auto;
 }
 
 .index .profile {
@@ -113,11 +112,11 @@ section.index-section {
 }
 
 .detail .spec-table tr:nth-child(odd) {
-	background-color: var(--main-blue);
+	background-color: var(--light-blue);
 }
 
 .detail .spec-table tr:nth-child(even) {
-	background-color: var(--light-blue);
+	background-color: var(--main-blue);
 }
 
 .detail .link {
