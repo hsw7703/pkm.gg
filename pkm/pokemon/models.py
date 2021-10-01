@@ -180,7 +180,7 @@ class Skill_build(models.Model):
     skill_id_4 = models.ForeignKey(Skill, on_delete=models.CASCADE, related_name="skill_id_4")
 
 class Update(models.Model):
-    date = models.DateField()
+    date = models.DateTimeField()
 
 class Old_build(models.Model):
     pkm_id = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
@@ -189,7 +189,7 @@ class Old_build(models.Model):
     skill_build_id = models.ForeignKey(Skill_build, on_delete=models.CASCADE)
     battle_item_id = models.ForeignKey(Battle_item, on_delete=models.CASCADE)
     count = models.BigIntegerField(default=0)
-    date = models.DateField()
+    date = models.DateTimeField()
 
 class Build(models.Model):
     pkm_id = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
@@ -198,7 +198,7 @@ class Build(models.Model):
     skill_build_id = models.ForeignKey(Skill_build, on_delete=models.CASCADE)
     battle_item_id = models.ForeignKey(Battle_item, on_delete=models.CASCADE)
     count = models.BigIntegerField(default=0)
-    date = models.DateField()
+    date = models.DateTimeField()
 
     def is_delete(self):
         update = Update.objects.filter(date__gte=self.date)
@@ -206,6 +206,11 @@ class Build(models.Model):
             return timezone.now() >= update[0].date >= self.date
         else:
             return False
+
+class Contact(models.Model):
+    email = models.CharField(max_length=100)
+    msg = models.TextField()
+    is_check = models.BooleanField()
 
 ##################################################
 #pokemon item build modify

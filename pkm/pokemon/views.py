@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .serializers import PokemonSerializer, PokemonDetailSerializer, ItemMainSerializer, ItemDetailSerializer, BattleItemSerializer, NewsMainSerializer
-from .models import Pokemon, Item, Battle_item, News, Skill, Pkm_item, Pkm_battle_item
+from .models import Pokemon, Item, Battle_item, News, Skill, Pkm_item, Pkm_battle_item, Contact
 from .serializer_models import PokemonMainModel, PokemonDetailModel
 
 # Create your views here.
@@ -118,10 +118,12 @@ def NewsMainAPI(request):
     serializer = NewsMainSerializer(news, many=True)
     return Response(serializer.data)
 
-def Contact(request):
+def ContactPage(request):
     if request.POST:
         email = request.POST['email']
         msg = request.POST['msg']
+        Contact(email=email, msg=msg, is_check=False).save()
+        return HttpResponseRedirect('https://pkm.gg/contact.html')
 
     
 #@api_view(['GET'])
