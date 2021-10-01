@@ -230,6 +230,8 @@ section.skill-section {
 .skill-top .skill-img {
 	width: 75px;
 	height: 75px;
+	min-width: 75px;
+	min-height: 75px;
 	border-radius: 50%;
 	overflow: hidden;
 }
