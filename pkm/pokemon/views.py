@@ -17,8 +17,18 @@ app_name = "pokemon"
 from django.db import connection
 
 from django.db.models import Q
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
 @api_view(['GET'])
 def pokemonMainAPI(request):
+    print(get_client_ip(request))
     if request.GET:
         type_q = Q()
         damage_type_q = Q()
