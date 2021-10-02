@@ -5,7 +5,7 @@ section.info-section {
 
 .item-image {
 	margin: 0 auto;
-	max-width: 400px;
+	max-width: 300px;
 	padding: 10%;
 	overflow: hidden;
 }
@@ -26,7 +26,7 @@ section.info-section {
 	background-color: var(--black);
 	border-bottom-left-radius: 5px;
 	border-top-left-radius: 5px;
-	padding: 1rem;
+	padding: 0.7rem;
 }
 
 .name-box .item-name:after {
@@ -36,8 +36,8 @@ section.info-section {
 	right: 0;
 	width: 0;
 	height: 0;
-	border-left: 1.5rem solid transparent;
-	border-bottom: 3.5rem solid var(--orange);
+	border-left: 1rem solid transparent;
+	border-bottom: 2.9rem solid var(--orange);
 }
 
 .name-box .item-name h2 {
@@ -51,10 +51,12 @@ section.info-section {
 	color: black;
 }
 section.info-section .effect {
-	/*margin: 4% auto ;*/
+	word-break: keep-all;
 	margin-top: 4%;
-	padding: 4%;
+	padding-left: 3%;
+	padding-right: 3%;
 	border-radius: 5px;;
+	line-height: var(--h2);
 	font-size: var(--h4);
 }
 
@@ -74,23 +76,22 @@ thead {
 }
 
 thead th {
+	min-width: 40%;
 	text-align: center;
-	padding: 0.8rem;
+	padding: 0.6rem;
 	font-size: var(--h4);
 }
 
 tbody td {
 	text-align: center;
 	vertical-align: middle;
-	padding: 0.5rem;
+	padding: 0.4rem;
 }
 
 tr td:nth-child(1) {
-	width: 45%;
 	background-color: var(--tp-black);
 }
 
 tr th:nth-child(1) {
-	width: 45%;
 	background-color: var(--tp-black);
 }

@@ -17,7 +17,7 @@ section.info-section {
 
 .character-image {
 	margin: 0 auto;
-	max-width: 400px;
+	max-width: 300px;
 	padding: 10%;
 	overflow: hidden;
 }
@@ -38,7 +38,7 @@ section.info-section {
 	background-color: var(--black);
 	border-bottom-left-radius: 5px;
 	border-top-left-radius: 5px;
-	padding: 1rem;
+	padding: 0.7rem;
 }
 
 .name-box .character-name:after {
@@ -48,8 +48,8 @@ section.info-section {
 	right: 0;
 	width: 0;
 	height: 0;
-	border-left: 1.5rem solid transparent;
-	border-bottom: 3.5rem solid var(--orange);
+	border-left: 1rem solid transparent;
+	border-bottom: 2.9rem solid var(--orange);
 }
 
 .name-box .character-name h2 {
@@ -78,16 +78,16 @@ section.info-section {
 	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
 	background-color: var(--main-blue);
 	text-align: center;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
-	font-size: var(--h3);
+	padding-top: 0.6rem;
+	padding-bottom: 0.6rem;
+	font-size: var(--h4);
 	letter-spacing: 1px;
 }
 
 .ability-list {
 	border-radius: 5px;
 	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
-	padding: 4%;
+	padding: 6%;
 	background-color: var(--main-blue);
 }
 
@@ -97,7 +97,7 @@ section.info-section {
 }
 
 .ability:last-child {
-	margin-bottom: 0;
+	margin-bottom: 0.3rem;
 }
 
 .ability-title {
@@ -115,6 +115,7 @@ section.info-section {
 
 .ability-gauge .active-gauge {
 	background-color: var(--gauge-green);
+	height: 7px;
 	color: transparent;
 	border-radius: 0 10px 10px 0;
 }
@@ -213,8 +214,8 @@ section.skill-section {
 }
 
 .skill {
-	margin-top: 4%;
-	margin-bottom: 4%;
+	margin-top: 8%;
+	margin-bottom: 8%;
 	padding: 4%;
 	background-color: var(--main-blue);
 	border-radius: 5px;
@@ -241,7 +242,7 @@ section.skill-section {
 }
 
 .skill-top .skill-title .skill-name {
-	font-size: var(--h2);
+	font-size: var(--h3);
 	font-weight: bold;
 }
 
@@ -256,7 +257,7 @@ section.skill-section {
 	padding: 5px 6px;
 	align-items: center;
 	border-radius: 100px;
-	background-color: var(--light-blue);
+	background-color: var(--sky-blue);
 	font-size: var(--h5);
 	margin-right: 10px;
 }
