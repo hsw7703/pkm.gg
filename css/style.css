@@ -67,21 +67,20 @@ a:hover {color:white; text-decoration: none;}
 
 header {
 	display: flex;
-	justify-content: center;
-	align-items: center;
 	width: 100%;
-	height: 100px;
 	background-color: var(--main-blue);
 }
 
 header .logo {
-	font-size: var(--h0);
-	color: var(--white);
+	margin:auto;
+	width: 100%;
+	max-width: 650px;
+	font-size: var(--h2);
+	padding: var(--h4) var(--h5) var(--h6) var(--h5);
 	font-weight: bold;
 }
 
 nav {
-	padding-top: 10px;
 	width: 100%;
 	background-color: var(--main-blue);
 }
@@ -94,7 +93,7 @@ nav {
 }
 
 .navbar li {
-	width: 31%;
+	width: 33.33%;
 }
 
 .navbar li a {
@@ -102,23 +101,18 @@ nav {
 	justify-content: center;
 	padding: var(--h6) 0;
 	letter-spacing: 1px;
-	font-size: var(--h4);
+	font-size: var(--h5);
 }
 
 .navbar li a.active {
-	background-color: var(--dark-blue);
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
+	background-color: var(--light-blue);
+	border-radius: 2px;
+	/*border-top-left-radius: 8px;*/
+	/*border-top-right-radius: 8px;*/
 }
 
-/*.navbar li a:hover {
-	background-color: var(--main-blue);
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
-}*/
-
 main {
-	padding: 2%;
+	padding: 1%;
 	margin: auto;
 	max-width: 650px;
 }
@@ -138,16 +132,20 @@ main {
 }
 
 footer {
+	display: flex;
+	flex-direction: column;
 	width: 100%;
-	padding: 24px;
+	padding: 1rem;
 	background-color: var(--main-blue);
 }
 
 .copyright {
+	width: 100%;
+	max-width: 650px;
+	word-break: break-all;
 	margin: auto;
-	max-width:1000px;
-	text-align: center;
-	line-height: 15px;
+	text-align: left;
+	line-height: 1rem;
 	font-size: 9px;
 }
 
@@ -160,7 +158,8 @@ footer {
 	width: 100%;
 	height: 3px;
 	border-radius: 10px 10px;
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: var(--dark-blue);
+	/*background-color: rgba(0, 0, 0, 0.3);*/
 }
 
 article.content {
