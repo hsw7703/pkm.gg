@@ -22,10 +22,6 @@ section.index-section {
 	overflow: hidden;
 }
 
-.index .profile.active img {
-	box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.13);
-}
-
 .index .profile .label {
 	position: absolute;
 	left: 0;
@@ -38,6 +34,10 @@ section.index-section {
 
 .index .profile img {
 	width: 100%;
+}
+
+.index .profile.active img {
+	box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.13);
 }
 
 .attacker {
@@ -75,6 +75,7 @@ section.index-section {
 
 .detail .title .name-label {
 	font-size: var(--h3);
+	font-weight: 600;
 }
 .detail .title .type-label {
 	font-size: var(--h5);
@@ -94,6 +95,7 @@ section.index-section {
 
 .detail .build li p {
 	margin-top: 1rem;
+	word-break: keep-all;
 	font-size: var(--h5);
 }
 
@@ -104,8 +106,8 @@ section.index-section {
 	box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.13);
 }
 
-.index .detail .link {
-	margin: 3% 0 2.5%;
+.detail .link {
+	margin: 6% auto 4%;
 	font-size: var(--h5);
 	text-align: right;
 }
