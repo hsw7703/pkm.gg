@@ -68,8 +68,8 @@ function inputItemData(profileIndex, detailIndex){
     statusIncrease.forEach((status, index) => {
         tableDataArr[1].innerHTML += status;
         tableDataArr[3].innerHTML += status + ' ' + itemInfo[profileIndex].status_10.split(' / ')[index];
-        tableDataArr[5].innerHTML += status + ' ' + itemInfo[profileIndex].status_10.split(' / ')[index];
-        tableDataArr[7].innerHTML += status + ' ' + itemInfo[profileIndex].status_10.split(' / ')[index];
+        tableDataArr[5].innerHTML += status + ' ' + itemInfo[profileIndex].status_20.split(' / ')[index];
+        tableDataArr[7].innerHTML += status + ' ' + itemInfo[profileIndex].status_30.split(' / ')[index];
         if (statusIncrease.length !== index + 1) {
             tableDataArr[1].innerHTML += '<br>';
             tableDataArr[3].innerHTML += '<br>';
