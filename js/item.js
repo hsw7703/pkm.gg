@@ -54,7 +54,7 @@ function createItemData() {
     const myStorage = localStorage;
     const types = { "score":["스코어", "type"], "attack":["공격", "type"], "defense":["방어", "type"], "etc":["그외", "type"], "resetFilter":["초기화", "type"] };
 
-    fetch(`https://pkm.gg/api/item/?`, {
+    fetch(`https://pkm.gg/api/held-items/?`, {
         "method": 'GET',
     }).then((response) => (
         response.json()
