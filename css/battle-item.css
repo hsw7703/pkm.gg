@@ -1,0 +1,109 @@
+.content {
+	width: 100%;
+}
+
+section.index-section {
+	width: 96%;
+	margin: 2% auto;
+}
+
+.index {
+	display:flex;
+	flex-wrap: wrap;
+}
+
+.index .profile {
+	padding: 1px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
+	position: relative;
+	margin: 2%;
+	width: 21%;
+	height: auto;
+	overflow: hidden;
+	background-color: black;
+}
+
+.index .profile .label {
+	width: 100%;
+	text-align: center;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	font-size: var(--h5);
+	background-color: rgba(0,0,0,0.6);
+	padding-top: 4px;
+	padding-bottom: 4px;
+	border-radius: 1px;
+}
+
+.index .profile img {
+	width: 100%;
+}
+
+.index .profile.active img {
+	box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.13);
+}
+
+.attack {
+	background-color: rgb(220, 70, 50);
+}
+.score {
+	background-color: rgb(120, 70, 180);
+}
+.defense {
+	background-color: rgb(180, 240, 80);
+}
+.etc {
+	background-color: rgb(30, 130, 230);
+}
+
+.index .detail {
+	border-radius: 5px;
+	width: 96%;
+	margin: 2% auto;
+	padding: 0 4%;
+	background-color: var(--main-blue);
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
+}
+
+.detail .title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 4.5%;
+	margin-bottom: 4%;
+	
+}
+
+.title .name-label {
+	font-size: var(--h3);
+	font-weight: 600;
+}
+.title .type-label {
+	font-size: var(--h5);
+}
+
+.detail .unlock {
+	margin-top: 2%;
+	line-height: var(--h2);
+	font-size: var(--h5);
+	color: var(--sky-blue);
+}
+
+.detail .effect {
+	margin-top: 3%;
+	font-size: var(--h5);
+	line-height: var(--h3);
+}
+
+.detail .link {
+	margin: 6% auto 4%;
+	font-size: var(--h5);
+	text-align: right;
+}
+
