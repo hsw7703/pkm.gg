@@ -17,7 +17,7 @@ section.info-section {
 
 .character-image {
 	margin: 0 auto;
-	max-width: 300px;
+	max-width: 250px;
 	padding: 10%;
 	overflow: hidden;
 }
@@ -49,7 +49,7 @@ section.info-section {
 	width: 0;
 	height: 0;
 	border-left: 1rem solid transparent;
-	border-bottom: 2.9rem solid var(--orange);
+	border-bottom: 2.95rem solid var(--orange);
 }
 
 .name-box .character-name h2 {
