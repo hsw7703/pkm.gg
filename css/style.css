@@ -107,6 +107,7 @@ nav {
 
 .navbar li a.active {
 	background-color: var(--light-blue);
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
 	border-radius: 2px;
 }
 
@@ -118,7 +119,6 @@ main {
 
 .ads {
 	width: 100%;
-	background-color: var(--main-blue);
 	text-align: center;
 
 }
