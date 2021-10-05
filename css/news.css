@@ -11,11 +11,9 @@ section.news-list-section {
 
 .content .news:nth-child(1) {
 	margin-top: 2%;
-	margin-bottom: 5%;
 }
 
 .content .news:nth-last-child(1) {
-	margin-top: 2%;
 	margin-bottom: 2%;
 }
 
@@ -26,7 +24,7 @@ section.news-list-section {
 	width: 96%;
 	height: 0;
 	padding-bottom: 60%;
-	margin: 5% auto;
+	margin: 3% auto;
 	overflow: hidden;
 }
 

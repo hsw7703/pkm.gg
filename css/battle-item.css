@@ -49,19 +49,6 @@ section.index-section {
 	box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.13);
 }
 
-.attack {
-	background-color: rgb(220, 70, 50);
-}
-.score {
-	background-color: rgb(120, 70, 180);
-}
-.defense {
-	background-color: rgb(180, 240, 80);
-}
-.etc {
-	background-color: rgb(30, 130, 230);
-}
-
 .index .detail {
 	border-radius: 5px;
 	width: 96%;
@@ -76,7 +63,7 @@ section.index-section {
 	justify-content: space-between;
 	align-items: center;
 	margin-top: 4.5%;
-	margin-bottom: 4%;
+	margin-bottom: 3.5%;
 	
 }
 
@@ -89,14 +76,14 @@ section.index-section {
 }
 
 .detail .unlock {
-	margin-top: 2%;
+	margin-top: 3%;
 	line-height: var(--h2);
 	font-size: var(--h5);
 	color: var(--sky-blue);
 }
 
 .detail .effect {
-	margin-top: 3%;
+	margin-top: 2%;
 	font-size: var(--h5);
 	line-height: var(--h3);
 }
