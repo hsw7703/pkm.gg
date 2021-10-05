@@ -24,6 +24,8 @@ function inputCharacterDetailData(dataType, startIndex, inputArr, selectedCharac
         itemImg.setAttribute('onclick', `location.href='./pokemon-detail.html?pokemon=${selectedCharacterIndex}'`);
     } else if (startIndex === 4) {
         itemImg.setAttribute('onclick', `location.href='./item-detail.html?item=${element.id}'`);
+    } else if (startIndex === 7) {
+        itemImg.setAttribute('onclick', `location.href='./battle-item-detail.html?battle-item=${element.id}'`)
     }
 
     itemImg.src = element.img;
@@ -31,7 +33,7 @@ function inputCharacterDetailData(dataType, startIndex, inputArr, selectedCharac
     });
 }
 
-function inputBattleItemData(dataType, startIndex, inputArr) {
+function inputBattleItemDetailData(dataType, startIndex, inputArr) {
 
     const itemImg = inputArr[startIndex].querySelector("img");
     const itemName = inputArr[startIndex].querySelector("p");
@@ -82,7 +84,25 @@ function inputItemData(profileIndex, detailIndex){
 
     const detailViewA = selectedDetailDiv.querySelector('.link > a');
     detailViewA.setAttribute("href", `./item-detail.html?item=${itemInfo[profileIndex].id}`);
-    // detailViewA.setAttribute("onclick", `alert("추후 공개 됩니다.");`);
+}
+
+function inputBattleItemData(profileIndex, detailIndex){
+    const info = localStorage.getItem("battleItemInfo");
+    const itemInfo = JSON.parse(info);
+    const detailDivArr = document.querySelectorAll(".detail");
+    const selectedDetailDiv = detailDivArr[detailIndex];
+    const nameLabelDiv = selectedDetailDiv.querySelector(".title > .name-label");
+    const typeLabelDiv = selectedDetailDiv.querySelector(".title > .type-label");
+    const unlockDiv = selectedDetailDiv.querySelector('.unlock')
+    const descriptionDiv = selectedDetailDiv.querySelector(".effect");
+
+    nameLabelDiv.textContent = itemInfo[profileIndex].name_text;
+    typeLabelDiv.textContent = `${itemInfo[profileIndex].cooltime}초`;
+    unlockDiv.textContent = `트레이너 레벨 ${itemInfo[profileIndex].level} 달성`;
+    descriptionDiv.textContent = itemInfo[profileIndex].effect;
+
+    const detailViewA = selectedDetailDiv.querySelector('.link > a');
+    detailViewA.setAttribute("href", `./battle-item-detail.html?battle-item=${itemInfo[profileIndex].id}`);
 }
 
 function inputCharacterData(profileIndex, detailIndex) {
@@ -101,7 +121,7 @@ function inputCharacterData(profileIndex, detailIndex) {
 
     inputCharacterDetailData(selectedCharacter.skill, 0, itemDivArr, selectedCharacter.id);
     inputCharacterDetailData(selectedCharacter.item, 4, itemDivArr);
-    inputBattleItemData(selectedCharacter.battle_item, 7, itemDivArr);
+    inputBattleItemDetailData(selectedCharacter.battle_item, 7, itemDivArr);
 
     const detailViewA = selectedDetailDiv.querySelector('.link > a');
     detailViewA.setAttribute("href", `./pokemon-detail.html?pokemon=${selectedCharacter.id}`);
@@ -202,6 +222,16 @@ function hideToggle(e) {
         });
         detailBoxIndex = parseInt(parseInt(itemIndex) / 4);
         inputItemData(itemIndex, detailBoxIndex);
+    } else if (e.currentTarget.infomation === "battle-item") {
+        const info = localStorage.getItem("battleItemInfo");
+        const itemInfo = JSON.parse(info);
+        itemInfo.forEach((data, index) => {
+            if (e.currentTarget.id == data.id) {
+                itemIndex = index;
+            }
+        });
+        detailBoxIndex = parseInt(parseInt(itemIndex) / 4);
+        inputBattleItemData(itemIndex, detailBoxIndex);
     }
     else {
         const info = localStorage.getItem("info");
@@ -249,8 +279,9 @@ function createImg(info, detailFunction) {
         itemImg.className = element.type;
         if ((itemImg.src).includes("held-items")) {
             profileDiv.infomation = "item";
-        }
-        else{
+        } else if ((itemImg.src).includes("battle-items")) {
+            profileDiv.infomation = "battle-item";
+        } else {
             profileDiv.infomation = "character";
         }
         if (childIndex !== 0 && childIndex % 4 === 3) {
