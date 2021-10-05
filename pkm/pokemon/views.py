@@ -100,6 +100,12 @@ def BattleItemAPI(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
+def BattleItemDetailAPI(request, id):
+    battle = get_object_or_404(Battle_item, pk=id)
+    serializer = BattleItemSerializer(battle)
+    return Response(serializer.data)
+
+@api_view(['GET'])
 def ItemDetailAPI(request, id):
     item = get_object_or_404(Item, pk=id)
     serializer = ItemDetailSerializer(item)
