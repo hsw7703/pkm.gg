@@ -80,7 +80,7 @@ section.info-section {
 	text-align: center;
 	padding-top: 0.6rem;
 	padding-bottom: 0.6rem;
-	font-size: var(--h4);
+	font-size: var(--h5);
 	letter-spacing: 1px;
 }
 
@@ -92,12 +92,12 @@ section.info-section {
 }
 
 .ability {
-	margin-bottom: 1.5rem;
+	margin-bottom: 1rem;
 	overflow: hidden;
 }
 
 .ability:last-child {
-	margin-bottom: 0.3rem;
+	margin-bottom: 0;
 }
 
 .ability-title {
@@ -198,8 +198,14 @@ section.build-section {
 }
 
 .build li p {
+	width: 100%;
+	text-align: center;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	margin-top: 1rem;
-	font-size: var(--h5);
+	font-size: var(--h6);
 }
 
 
