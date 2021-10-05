@@ -36,7 +36,9 @@ function inputBattleItemData(dataType, startIndex, inputArr) {
     const itemImg = inputArr[startIndex].querySelector("img");
     const itemName = inputArr[startIndex].querySelector("p");
 
+
     itemImg.src = dataType.img;
+    itemImg.setAttribute('onclick', `location.href='./battle-item-detail.html?battle-item=${dataType['id']}'`);
     itemName.innerText = dataType.name_text;
 }
 

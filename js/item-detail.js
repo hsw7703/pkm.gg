@@ -3,7 +3,7 @@ function serachQueryParam(key) {
 }
 
 function createItemData(itemIndex) {
-	fetch(`https://pkm.gg/api/item/${itemIndex}/`, {
+	fetch(`https://pkm.gg/api/held-items/${itemIndex}/`, {
 		method: 'GET',
 	}).then((response) => (
 		response.json()
