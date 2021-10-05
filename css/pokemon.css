@@ -23,13 +23,20 @@ section.index-section {
 }
 
 .index .profile .label {
+	width: 100%;
+	text-align: center;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	position: absolute;
 	left: 0;
 	bottom: 0;
 	font-size: var(--h5);
 	background-color: rgba(0,0,0,0.6);
-	padding: 5px 4px 3px 2px;
-	letter-spacing: 0;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	border-radius: 1px;
 }
 
 .index .profile img {
@@ -94,9 +101,15 @@ section.index-section {
 }
 
 .detail .build li p {
+	text-align: center;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
 	margin-top: 1rem;
 	word-break: keep-all;
-	font-size: var(--h5);
+	font-size: var(--h6);
 }
 
 .index .detail img {
