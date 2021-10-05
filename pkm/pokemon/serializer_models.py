@@ -9,6 +9,7 @@ class PopupItemModel:
 
 class PopupBattleItemModel:
     def __init__(self, item):
+        self.id = item.battle_item_id.id
         self.name = item.battle_item_id.name
         self.name_text = item.battle_item_id.name_text
         self.img = item.battle_item_id.img

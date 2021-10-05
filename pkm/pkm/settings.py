@@ -56,13 +56,13 @@ MIDDLEWARE = [
 ]
 
 
-#CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:80',
-    'https://localhost:443',
-    'https://pkm.gg',
-]
+#CORS_ALLOWED_ORIGINS = [
+#    'http://localhost:80',
+#    'https://localhost:443',
+#    'https://pkm.gg',
+#]
 
 ROOT_URLCONF = 'pkm.urls'
 
@@ -95,8 +95,8 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '42Yamyam1!',
 #        'PASSWORD': '1234',
-        'HOST': 'pkm.gg',
-#        'HOST': 'localhost',
+#        'HOST': 'pkm.gg',
+        'HOST': 'localhost',
         'PORT': '3306'
     }
 }
