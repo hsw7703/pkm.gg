@@ -27,7 +27,7 @@
 	--red: #ff0000;
 	--gauge: #344990;
 	--gauge-green: #dffe62;
-	--tp-black: rgba(0, 0, 0, 0.1);
+	--tp-black: rgba(0, 0, 0, 0.2);
 	--deep-dark: #242C5B;
 	--dark-blue: #343C82;
 	--main-blue: #3D49A8;
@@ -156,7 +156,7 @@ footer {
 	width: 100%;
 	height: 3px;
 	border-radius: 10px 10px;
-	background-color: var(--dark-blue);
+	background-color: var(--tp-black);
 }
 
 article.content {
@@ -193,4 +193,10 @@ section.filter-section {
 .filter-section .filter .filter-item.active {
 	background-color: var(--light-blue);
 	box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.page-title {
+	margin: 3% 4%;
+	width: 100%;
+	font-size: var(--h3);
 }
