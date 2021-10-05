@@ -51,7 +51,6 @@ section.info-section {
 	color: black;
 }
 section.info-section .effect {
-	word-break: keep-all;
 	margin-top: 4%;
 	padding-left: 3%;
 	padding-right: 3%;
