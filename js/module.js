@@ -235,10 +235,14 @@ function createImg(info, detailFunction) {
         const profileDiv = document.createElement("li");
         const itemImg = document.createElement("img");
         const type = element.type;
+        const nameLabel = document.createElement("p");
+        nameLabel.className = "label";
+        nameLabel.textContent = element.name_text;
         indexDiv.append(profileDiv);
         profileDiv.append(itemImg);
         profileDiv.onclick = hideToggle;
         profileDiv.className = "profile"
+        profileDiv.append(nameLabel);
         profileDiv.classList.add = type;
         profileDiv.id = index;
         itemImg.src = element.img;
