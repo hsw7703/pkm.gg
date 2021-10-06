@@ -137,8 +137,8 @@ def ItemUpgradeCostAPI(request):
         serializer = ItemUpgradeSerializer(ItemUpgradeModel(cost))
         return Response(serializer.data)
 
-#from django.views.decorators.csrf import csrf_exempt
-#@csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
 def ContactPage(request):
     if request.POST:
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -152,100 +152,8 @@ def ContactPage(request):
         Contact(name=name, msg=msg, is_check=False, date=timezone.now(), ip=ip).save()
         return HttpResponseRedirect('https://pkm.gg/contact.html')
 
-    
-#@api_view(['GET'])
-#def NewsDetailAPI(request, news_id):
-#    news = get_object_or_404(News, pk=news_id)
-#    serializer = NewsDetailSerializer(news)
-#    return Response(serializer.data)
 
-
-#
-#def build(request):
-#    pkm_id = request.POST.get('pkm_id')
-#    for index in range(1, 4):
-#        item_id = request.POST['item_id_' + str(index)]
-#        item = Pkm_item.objects.filter(pkm_id=pkm_id, item_id=item_id)
-#        if item:
-#            item = Pkm_item.objects.get(pkm_id=pkm_id, item_id=item_id)
-#            item.count += 1
-#        else:
-#            item = Pkm_item(pkm_id=Pokemon.objects.get(id=pkm_id), item_id=Item.objects.get(id=item_id), count=1)
-#        item.save()
-#
-#    for index in range(1, 5):
-#        if index != 2:
-#            skill_id = request.POST['skill_id_' + str(index)]
-#            skill = Skill.objects.get(id=skill_id)
-#            skill.count += 1
-#            skill.save()
-#
-#    battle_item_id = request.POST['battle_item_id']
-#    battle = Pkm_battle_item.objects.filter(pkm_id=pkm_id, battle_item_id=battle_item_id)
-#    if battle:
-#        battle[0].count += 1
-#        battle[0].save()
-#    else:
-#        battle = Pkm_battle_item(pkm_id=Pokemon.objects.get(id=pkm_id), battle_item_id=Battle_item.objects.get(id=battle_item_id), count=1)
-#        battle.save()
-#    return HttpResponseRedirect('http://localhost:8000/pokemon/' + pkm_id)
-
-
-
-
-
-# item build modify
-
-#from .serializer_models import PokemonMainTestModel
-#from .models import Pkm_item_test
-#@csrf_exempt
-#def buildTest(request):
-#    pkm_id = request.POST.get('pkm_id')
-#    item_id = []
-#    for index in range(1, 4):
-#        item_id.append(int(request.POST['item_id_' + str(index)]))
-#    item_id.sort()
-#    
-#    q = Q()
-#    q &= Q(item_id_1 = item_id[0])
-#    q &= Q(item_id_2 = item_id[1])
-#    q &= Q(item_id_3 = item_id[2])
-#    q &= Q(pkm_id = pkm_id)
-#    item = Pkm_item_test.objects.filter(q)
-#    if item:
-#        item[0].count += 1
-#        item[0].save()
-#    else:
-#        Pkm_item_test(pkm_id=Pokemon.objects.get(id=pkm_id), item_id_1=Item.objects.get(id=item_id[0]), item_id_2=Item.objects.get(id=item_id[1]), item_id_3=Item.objects.get(id=item_id[2]), count=1).save()
-#    for index in range(1, 5):
-#        skill_id = request.POST['skill_id_' + str(index)]
-#        skill = Skill.objects.get(id=skill_id)
-#        skill.count += 1
-#        skill.save()
-#
-#    battle_item_id = request.POST['battle_item_id']
-#    battle = Pkm_battle_item.objects.filter(pkm_id=pkm_id, battle_item_id=battle_item_id)
-#    if battle:
-#        battle[0].count += 1
-#        battle[0].save()
-#    else:
-#        battle = Pkm_battle_item(pkm_id=Pokemon.objects.get(id=pkm_id), battle_item_id=Battle_item.objects.get(id=battle_item_id), count=1)
-#        battle.save()
-#    return HttpResponseRedirect('http://localhost:8000/pokemon/' + pkm_id)
-#
-#
-#    return HttpResponse("hello")
-#
-#@api_view(['GET'])
-#def pokemonMainTestAPI(request):
-#    pkms = Pokemon.objects.filter(id=2).order_by("name_text")
-#    pokemon = []
-#    for pkm in pkms:
-#        pokemon.append(PokemonMainTestModel(pkm))
-#    serializer = PokemonSerializer(pokemon, many=True)
-#    return Response(serializer.data)
 from .models import Build, Update, Skill_build, Item_build, Old_build
-from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def build(request):
