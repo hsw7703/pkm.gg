@@ -26,7 +26,7 @@ function createNews(img, title, date, url) {
 }
 
 
-export function createNewsData() {
+function createNewsData() {
 
 	const types = { "update":["업데이트", "type"], "now_event":["진행이벤트", "type"], "end_event":["종료이벤트", "type"], "notice":["공지", "type"], "resetFilter":["초기화", "type"] };
 	fetch(`https://pkm.gg/api/news/`, {
@@ -44,4 +44,9 @@ export function createNewsData() {
 		});
 		module.filterSetting(types);
 	});
+}
+
+export {
+	createNewsData,
+	createNews
 }

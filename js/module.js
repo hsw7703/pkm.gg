@@ -1,8 +1,10 @@
 import { createItemDetail } from "./item.js";
 import { createCharacterDetail } from "./main.js";
+import { createNews } from "./news.js";
 
 const filtereditemTotalUrl = new URL("https://pkm.gg/api/held-items/?");
 const filteredcharacterTotalUrl = new URL("https://pkm.gg/api/pokemon/?");
+const filterednewsTotalUrl = new URL("https://pkm.gg/api/news/?");
 
 function createCharacterDetailTag(number, buildDiv) {
     for (let i=0; i<number; i++) { 
@@ -157,6 +159,16 @@ function filterData(url) {
     )).then((data) => {
         if (document.URL.includes("item"))
             createImg(data, createItemDetail);
+        else if (document.URL.includes("news")) {
+            data.reverse();
+            data.forEach((element) => {
+                const img = element.img;
+                const title = element.title;
+                const date = element.date;
+                const url = element.url;
+                createNews(img, title, date, url);
+            });
+        }
         else
             createImg(data, createCharacterDetail);
     });
@@ -178,7 +190,7 @@ function filterEvent(e) {
     const filterName = target.typeName;
     const filterTypeValue = target.typeValue;
 
-    if (document.URL.includes("item") || document.URL.includes("news")) {
+    if (document.URL.includes("item")) {
         const filterArray = filtereditemTotalUrl.searchParams.getAll("type");
         if (e.currentTarget.typeName === "resetFilter") {
             filtereditemTotalUrl.searchParams.delete("type");
@@ -193,6 +205,22 @@ function filterEvent(e) {
                 filtereditemTotalUrl.searchParams.append("type", param);
         }
         filterData(filtereditemTotalUrl);
+    }
+    else if (document.URL.includes("news")) {
+        const filterArray = filterednewsTotalUrl.searchParams.getAll("type")
+        if (e.currentTarget.typeName === "resetFilter") {
+            filterednewsTotalUrl.searchParams.delete("type");
+        }
+        else if (!filterArray.includes(filterName)) {
+            filterednewsTotalUrl.searchParams.append("type", filterName);
+        }
+        else {
+            const filters = filterArray.filter(param => param !== filterName);
+            filterednewsTotalUrl.searchParams.delete("type");
+            for (const param of filters)
+                filterednewsTotalUrl.searchParams.append("type", param);
+        }
+        filterData(filterednewsTotalUrl);
     }
     else {
        const filterTypeArr = filteredcharacterTotalUrl.searchParams.getAll("type");
