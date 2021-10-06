@@ -107,7 +107,7 @@ section.index-section {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	width: 100%;
-	margin-top: 1rem;
+	padding-top: 1rem;
 	word-break: keep-all;
 	font-size: var(--h6);
 }

@@ -204,7 +204,7 @@ section.build-section {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	margin-top: 1rem;
+	padding-top: 1rem;
 	font-size: var(--h6);
 }
 
