@@ -112,7 +112,7 @@ nav {
 }
 
 main {
-	padding: 1%;
+	padding: 0 1%;
 	margin: auto;
 	max-width: 650px;
 }
@@ -155,6 +155,7 @@ footer {
 .line {
 	width: 100%;
 	height: 3px;
+	margin: auto;
 	border-radius: 10px 10px;
 	background-color: var(--tp-black);
 }
@@ -196,7 +197,8 @@ section.filter-section {
 }
 
 .page-title {
-	margin: 3% 4%;
+	padding: 4% 4% 3.5%;
+	margin: auto;
 	width: 100%;
 	font-size: var(--h3);
 }
