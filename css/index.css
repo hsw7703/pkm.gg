@@ -37,5 +37,5 @@
 }
 
 .index .profile.active img {
-	box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.13);
+	box-shadow: inset 0rem 0rem 0rem 100rem rgba(0, 0, 0, 0.2);
 }
