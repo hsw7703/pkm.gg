@@ -185,20 +185,39 @@ section.filter-section {
 	width: 18%;
 	margin-top: 3%;
 	text-align: center;
-	box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+	box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.13);
 	background-color: var(--main-blue);
-	border-radius: 17px;
+	border-radius: 3px;
 	letter-spacing: 0px;
+	cursor: pointer;
 }
 
 .filter-section .filter .filter-item.active {
-	background-color: var(--light-blue);
-	box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+	background-color: var(--deep-dark);
+	box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
 }
 
-.page-title {
+section.page-title-section {
+	display: inline-block;
+	vertical-align: middle;
 	padding: 4% 4% 3.5%;
-	margin: auto;
 	width: 100%;
+}
+
+.page-title-section .page-title {
+	float:left;
 	font-size: var(--h3);
+}
+
+.page-title-section .filter-button {
+	line-height: var(--h3);
+	margin-left: 1rem;
+	float:right;
+	padding: 0 .7rem;
+	font-size: var(--h5);
+	/*color: var(--sky-blue);*/
+	background-color: var(--main-blue);
+	box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.13);
+	border-radius: 10px;
+	cursor: pointer;
 }
