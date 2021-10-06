@@ -39,7 +39,6 @@ function inputBattleItemDetailData(dataType, startIndex, inputArr) {
     const itemImg = inputArr[startIndex].querySelector("img");
     const itemName = inputArr[startIndex].querySelector("p");
 
-
     itemImg.src = dataType.img;
     itemImg.setAttribute('onclick', `location.href='./battle-item-detail.html?battle-item=${dataType['id']}'`);
     itemName.innerText = dataType.name_text;
@@ -141,9 +140,16 @@ function filterButtonEvent(e) {
 }
 
 function filterData(url) {
-    const indexDiv = document.querySelector(".index");
-    while (indexDiv.firstChild)
-        indexDiv.removeChild(indexDiv.firstChild);
+    if (document.URL.includes("news")) {
+        const newsUl = document.querySelector(".news-list");
+        while (newsUl.firstChild)
+            newsUl.removeChild(newsUl.firstChild);
+    }
+    else {
+        const indexDiv = document.querySelector(".index");
+        while (indexDiv.firstChild)
+            indexDiv.removeChild(indexDiv.firstChild);
+    }
     fetch(url, {
         "method": 'GET',
     }).then((response) => (
@@ -171,10 +177,8 @@ function filterEvent(e) {
 
     const filterName = target.typeName;
     const filterTypeValue = target.typeValue;
-    console.log(filterName);
-    console.log(filterTypeValue);
 
-    if (document.URL.includes("item")) {
+    if (document.URL.includes("item") || document.URL.includes("news")) {
         const filterArray = filtereditemTotalUrl.searchParams.getAll("type");
         if (e.currentTarget.typeName === "resetFilter") {
             filtereditemTotalUrl.searchParams.delete("type");
@@ -223,7 +227,6 @@ function filterEvent(e) {
                filteredcharacterTotalUrl.searchParams.append("damage_type", param);
        }
        filterData(filteredcharacterTotalUrl);
-       console.log(filteredcharacterTotalUrl);
     }
 }
 function hideToggle(e) {
@@ -240,7 +243,6 @@ function hideToggle(e) {
         element.classList.remove("active");
     })
     target.classList.toggle("active");
-    console.log(target.information);
     if (target.information === "item") {
         inputItemData(infoArr, selectedDetailBox);
     }

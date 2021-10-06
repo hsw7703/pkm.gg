@@ -1,4 +1,4 @@
-// import module from './module.js';
+import module from './module.js';
 
 function createNews(img, title, date, url) {
 	const newsUl = document.querySelector('.news-list');
@@ -28,12 +28,7 @@ function createNews(img, title, date, url) {
 
 export function createNewsData() {
 
-    const myStorage = localStorage;
-    const types = {
-        "notice":"공지", "update":"업데이트", "event":"이벤트",
-		"pkmgg":"PKMGG", "resetFilter":"초기화",
-    };
-
+	const types = { "update":["업데이트", "type"], "now_event":["진행이벤트", "type"], "end_event":["종료이벤트", "type"], "notice":["공지", "type"], "resetFilter":["초기화", "type"] };
 	fetch(`https://pkm.gg/api/news/`, {
 	method: 'GET',
 	}).then((response) => (
@@ -47,6 +42,6 @@ export function createNewsData() {
 			const url = element.url;
 			createNews(img, title, date, url);
 		});
-        // module.filterTagCreate(types);
+		module.filterSetting(types);
 	});
 }
