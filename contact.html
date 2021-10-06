@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/contact.css">
+	<title>PKM.GG</title>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HZQHSTP2QN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-HZQHSTP2QN');
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<header>
+			<a class="logo" href="./index.html">
+				PKM.GG
+			</a>
+		</header>
+		<div class="ads">
+			<img class="ad" alt="광고표시" src="./img/adExample.png">
+		</div>
+		<nav>
+			<ul class="navbar">
+				<li><a href="./index.html" id="pokemon">포켓몬</a></li>
+				<li><a href="./item.html" id="item">아이템</a></li>
+				<li><a href="./news.html" id="news">뉴스</a></li>
+				<li><a href="./news.html" class="active" id="news">건의사항</a></li>
+			</ul>
+		</nav>
+		<main>
+			<article class="content">
+				<section class="contact-section">
+					<form action="https://pkm.gg/api/contact/" method="post">
+						<div>
+						  <label for="name">Name:</label>
+						  <input type="text" id="name" name="user_name">
+						</div>
+						<div>
+						  <label for="msg">Message:</label>
+						  <textarea id="msg" name="user_message"></textarea>
+						</div>
+					  
+						<div class="button">
+						  <button type="submit">Send your message</button>
+						</div>
+					  </form>
+				</section>
+			</article>
+		</main>
+		<div class="ads">
+			<img src="ad" alt="광고표시" src="./img/adExample.png">
+		</div>
+		<footer>
+			<p class="copyright">PKM.GG isn’t endorsed by Nintendo and doesn’t reflect the views or opinions of Nintendo
+				or anyone officially involved in producing or managing Pokémon Unite. Pokémon Unite and Pokémon are
+				trademarks or registered trademarks of Nintendo.</p>
+			<p class="copyright">Copyright 2021 PKM.GG </p>
+		</footer>
+	</div>
+</body>
+
+</html>
