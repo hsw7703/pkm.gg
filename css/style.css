@@ -59,6 +59,7 @@ body {
 	background-color: var(--dark-blue);
 	font-family: var(--font-family);
 	color: var(--white);
+	overflow-x:hidden;
 }
 
 a:link {color:white; text-decoration: none;}
@@ -183,7 +184,8 @@ section.filter-section {
 	padding-top: var(--h6);
 	padding-bottom: var(--h6);
 	width: 18%;
-	margin-top: 2.5%;
+	margin: 1.25% 0;
+	/*margin-top: 2.5%;*/
 	text-align: center;
 	box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.13);
 	background-color: var(--main-blue);
@@ -206,6 +208,7 @@ section.page-title-section {
 
 .page-title-section .page-title {
 	float:left;
+	padding: .2rem 0;
 	font-size: var(--h3);
 }
 
@@ -213,11 +216,17 @@ section.page-title-section {
 	line-height: var(--h3);
 	margin-left: 1rem;
 	float:right;
-	padding: 0 .7rem;
+	padding: .2rem .7rem;
 	font-size: var(--h5);
-	/*color: var(--sky-blue);*/
 	background-color: var(--main-blue);
 	box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.13);
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.page-title-section .filter-button.active {
+	background-color: var(--deep-dark);
+	box-shadow: inset 1px 1px 5px 0px rgba(0, 0, 0, 0.13);
 	border-radius: 10px;
 	cursor: pointer;
 }
