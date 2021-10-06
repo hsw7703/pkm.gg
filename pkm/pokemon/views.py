@@ -137,8 +137,8 @@ def ItemUpgradeCostAPI(request):
         serializer = ItemUpgradeSerializer(ItemUpgradeModel(cost))
         return Response(serializer.data)
 
-from django.views.decorators.csrf import csrf_exempt
-@csrf_exempt
+#from django.views.decorators.csrf import csrf_exempt
+#@csrf_exempt
 def ContactPage(request):
     if request.POST:
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')

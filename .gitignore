@@ -2,4 +2,5 @@
 *pycache*
 pkmgg.pem
 *templates
-*setting.py
+*settings.py
+pkm/pkm/urls.py
