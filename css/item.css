@@ -7,46 +7,6 @@ section.index-section {
 	margin: 2% auto;
 }
 
-.index {
-	display:flex;
-	flex-wrap: wrap;
-}
-
-.index .profile {
-	border-radius: 5px;
-	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
-	position: relative;
-	margin: 2%;
-	width: 21%;
-	height: auto;
-	overflow: hidden;
-}
-
-.index .profile .label {
-	width: 100%;
-	text-align: center;
-	display: block;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	font-size: var(--h5);
-	background-color: rgba(0,0,0,0.6);
-	padding-top: 4px;
-	padding-bottom: 4px;
-	border-radius: 1px;
-}
-
-.index .profile img {
-	width: 100%;
-}
-
-.index .profile.active img {
-	box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.13);
-}
-
 .attack {
 	background-color: rgb(220, 70, 50);
 }
@@ -137,4 +97,3 @@ section.index-section {
 	font-size: var(--h5);
 	text-align: right;
 }
-
