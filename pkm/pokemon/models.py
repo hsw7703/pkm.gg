@@ -114,6 +114,10 @@ class Item(models.Model):
     def __str__(self):
         return self.name_text
 
+class Item_upgrade_cost(models.Model):
+    level = models.IntegerField()
+    cost = models.IntegerField()
+
 class Pkm_item(models.Model):
     pkm_id = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
     item_id = models.ForeignKey(Item, on_delete=models.CASCADE)

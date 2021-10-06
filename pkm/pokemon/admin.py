@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Skill, Item, Pkm_item, Pokemon, Pkm_battle_item, Battle_item, Evolution, News, Contact
+from .models import Skill, Item, Pkm_item, Pokemon, Pkm_battle_item, Battle_item, Evolution, News, Contact, Item_upgrade_cost
 
 class Pkm_itemAdmin(admin.ModelAdmin):
     list_display = ('item_id', 'pkm_id', 'count')
@@ -14,6 +14,9 @@ class SkillAdmin(admin.ModelAdmin):
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('msg', 'is_check', 'date')
 
+class ItemUpgradeCostAdmin(admin.ModelAdmin):
+    list_display = ('level', 'cost')
+
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(Item)
 admin.site.register(Pkm_item, Pkm_itemAdmin)
@@ -22,6 +25,7 @@ admin.site.register(Pkm_battle_item)
 admin.site.register(Battle_item)
 admin.site.register(Evolution)
 admin.site.register(News)
+admin.site.register(Item_upgrade_cost, ItemUpgradeCostAdmin)
 admin.site.register(Contact, ContactAdmin)
 
 from .models import Build, Update, Skill_build, Item_build, Old_build

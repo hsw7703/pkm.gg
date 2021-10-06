@@ -6,9 +6,9 @@ from django.utils import timezone
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .serializers import PokemonSerializer, PokemonDetailSerializer, ItemMainSerializer, ItemDetailSerializer, BattleItemSerializer, NewsMainSerializer
-from .models import Pokemon, Item, Battle_item, News, Skill, Pkm_item, Pkm_battle_item, Contact
-from .serializer_models import PokemonMainModel, PokemonDetailModel
+from .serializers import PokemonSerializer, PokemonDetailSerializer, ItemMainSerializer, ItemDetailSerializer, BattleItemSerializer, NewsMainSerializer, ItemUpgradeSerializer
+from .models import Pokemon, Item, Battle_item, News, Skill, Pkm_item, Pkm_battle_item, Contact, Item_upgrade_cost
+from .serializer_models import PokemonMainModel, PokemonDetailModel, ItemUpgradeModel
 
 # Create your views here.
 
@@ -124,6 +124,18 @@ def NewsMainAPI(request):
         news = News.objects.all()
     serializer = NewsMainSerializer(news, many=True)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def ItemUpgradeCostAPI(request):
+    if request.GET:
+        start_level = request.GET['start_level']
+        end_level = request.GET['end_level']
+        items = Item_upgrade_cost.objects.filter(level__gt=start_level, level__lte=end_level)
+        cost = 0
+        for item in items:
+            cost += item.cost
+        serializer = ItemUpgradeSerializer(ItemUpgradeModel(cost))
+        return Response(serializer.data)
 
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt

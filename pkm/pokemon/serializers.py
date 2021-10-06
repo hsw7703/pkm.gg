@@ -103,6 +103,9 @@ class NewsMainSerializer(serializers.ModelSerializer):
         model = News
         fields = ('id', 'title', 'img', 'date', 'url', 'type')
 
+class ItemUpgradeSerializer(serializers.Serializer):
+    cost = serializers.IntegerField()
+
 #class NewsDetailSerializer(serializers.ModelSerializer):
 #    class Meta:
 #        model = News

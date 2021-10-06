@@ -115,6 +115,9 @@ class PokemonDetailModel:
         if battle:
             self.battle_item = PopupBattleItemModel(battle[0])
 
+class ItemUpgradeModel:
+    def __init__(self, cost):
+        self.cost = cost
 
 #        items = Pkm_item.objects.filter(pkm_id=self.id).order_by('-count')[:3]
 #        print(items[0])

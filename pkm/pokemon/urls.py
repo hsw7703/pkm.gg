@@ -13,11 +13,12 @@ urlpatterns = [
     path('battle-items/', views.BattleItemAPI),
     path('battle-items/<int:id>/', views.BattleItemDetailAPI),
     path('news/', views.NewsMainAPI),
-#    path('contact/', views.ContactPage),
+    path('item-upgrade-cost/', views.ItemUpgradeCostAPI),
+    path('contact/', views.ContactPage),
 #    path('build/', views.build),
 #    path('test/', views.pokemonMainTestAPI),
 #    path('test_item/', views.buildTest),
 #    path('news/<int:news_id>/', views.NewsDetailAPI),
 
-#    path('build/', views.build),
+    path('build/', views.build),
 ]
