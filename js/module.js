@@ -1,6 +1,7 @@
 import { createItemDetail } from "./item.js";
+import { createCharacterDetail } from "./main.js";
 
-const filtereditemTotalUrl = new URL("https://pkm.gg/api/item/?");
+const filtereditemTotalUrl = new URL("https://pkm.gg/api/held-items/?");
 const filteredcharacterTotalUrl = new URL("https://pkm.gg/api/pokemon/?");
 
 function createCharacterDetailTag(number, buildDiv) {
@@ -44,21 +45,19 @@ function inputBattleItemDetailData(dataType, startIndex, inputArr) {
     itemName.innerText = dataType.name_text;
 }
 
-function inputItemData(profileIndex, detailIndex){
+function inputItemData(infoArr, selectedDetailDiv){
     const info = localStorage.getItem("itemInfo");
     const itemInfo = JSON.parse(info);
-    const detailDivArr = document.querySelectorAll(".detail");
-    const selectedDetailDiv = detailDivArr[detailIndex];
     const nameLabelP = selectedDetailDiv.querySelector(".title > .name-label");
     const typeLabelP = selectedDetailDiv.querySelector(".title > .type-label");
     const descriptionP = selectedDetailDiv.querySelector(".effect");
     const tableHeadArr = selectedDetailDiv.querySelectorAll(".spec-table > thead > tr > th");
     const tableDataArr = selectedDetailDiv.querySelectorAll(".spec-table > tbody > tr > td");
     
-    const statusIncrease = itemInfo[profileIndex].status_increase.split(' / ');
-    nameLabelP.innerText = itemInfo[profileIndex].name_text;
-    typeLabelP.innerText = itemInfo[profileIndex].type_text;
-    descriptionP.innerText = itemInfo[profileIndex].description;
+    const statusIncrease = infoArr.status_increase.split(' / ');
+    nameLabelP.innerText = infoArr.name_text;
+    typeLabelP.innerText = infoArr.type_text;
+    descriptionP.innerText = infoArr.description;
     tableHeadArr[0].innerText = "레벨";
     tableHeadArr[1].innerText = "효과";
     tableDataArr[0].innerText = "상승 효과";
@@ -71,9 +70,9 @@ function inputItemData(profileIndex, detailIndex){
     tableDataArr[7].innerHTML = "";
     statusIncrease.forEach((status, index) => {
         tableDataArr[1].innerHTML += status;
-        tableDataArr[3].innerHTML += status + ' ' + itemInfo[profileIndex].status_10.split(' / ')[index];
-        tableDataArr[5].innerHTML += status + ' ' + itemInfo[profileIndex].status_20.split(' / ')[index];
-        tableDataArr[7].innerHTML += status + ' ' + itemInfo[profileIndex].status_30.split(' / ')[index];
+        tableDataArr[3].innerHTML += status + ' ' + infoArr.status_10.split(' / ')[index];
+        tableDataArr[5].innerHTML += status + ' ' + infoArr.status_20.split(' / ')[index];
+        tableDataArr[7].innerHTML += status + ' ' + infoArr.status_30.split(' / ')[index];
         if (statusIncrease.length !== index + 1) {
             tableDataArr[1].innerHTML += '<br>';
             tableDataArr[3].innerHTML += '<br>';
@@ -83,34 +82,26 @@ function inputItemData(profileIndex, detailIndex){
     });
 
     const detailViewA = selectedDetailDiv.querySelector('.link > a');
-    detailViewA.setAttribute("href", `./item-detail.html?item=${itemInfo[profileIndex].id}`);
+    detailViewA.setAttribute("href", `./item-detail.html?item=${infoArr.id}`);
 }
 
-function inputBattleItemData(profileIndex, detailIndex){
-    const info = localStorage.getItem("battleItemInfo");
-    const itemInfo = JSON.parse(info);
-    const detailDivArr = document.querySelectorAll(".detail");
-    const selectedDetailDiv = detailDivArr[detailIndex];
+function inputBattleItemData(infoArr, selectedDetailDiv){
     const nameLabelDiv = selectedDetailDiv.querySelector(".title > .name-label");
     const typeLabelDiv = selectedDetailDiv.querySelector(".title > .type-label");
     const unlockDiv = selectedDetailDiv.querySelector('.unlock')
     const descriptionDiv = selectedDetailDiv.querySelector(".effect");
 
-    nameLabelDiv.textContent = itemInfo[profileIndex].name_text;
-    typeLabelDiv.textContent = `${itemInfo[profileIndex].cooltime}초`;
-    unlockDiv.textContent = `트레이너 레벨 ${itemInfo[profileIndex].level} 달성`;
-    descriptionDiv.textContent = itemInfo[profileIndex].effect;
+    nameLabelDiv.textContent = infoArr.name_text;
+    typeLabelDiv.textContent = `${infoArr.cooltime}초`;
+    unlockDiv.textContent = `트레이너 레벨 ${infoArr.level} 달성`;
+    descriptionDiv.textContent = infoArr.effect;
 
     const detailViewA = selectedDetailDiv.querySelector('.link > a');
-    detailViewA.setAttribute("href", `./battle-item-detail.html?battle-item=${itemInfo[profileIndex].id}`);
+    detailViewA.setAttribute("href", `./battle-item-detail.html?battle-item=${infoArr.id}`);
 }
 
-function inputCharacterData(profileIndex, detailIndex) {
-    const info = localStorage.getItem("info");
-    const characterInfo = JSON.parse(info);
-    const detailDivArr = document.querySelectorAll(".detail");
-    const selectedDetailDiv = detailDivArr[detailIndex];
-    const selectedCharacter = characterInfo[profileIndex];
+function inputCharacterData(infoArr, selectedDetailDiv) {
+    const selectedCharacter = infoArr;
 
     const itemNameDiv = selectedDetailDiv.querySelector(".title > .name-label");
     const itemTypeDiv = selectedDetailDiv.querySelector(".title > .type-label");
@@ -127,28 +118,49 @@ function inputCharacterData(profileIndex, detailIndex) {
     detailViewA.setAttribute("href", `./pokemon-detail.html?pokemon=${selectedCharacter.id}`);
 }
 
-// function filterCreateEvent {
-//     const filterAllDiv = document.querySelectorAll(".filter" > ".filter-item");
-
-// }
+function filterSetting(types) {
+    const filterAllDiv = document.querySelectorAll(".filter-item");
+    const keys = Object.keys(types);
+    const values = Object.values(types);
+    filterAllDiv.forEach((element, index) => {
+        element.onclick = filterEvent;
+        element.typeArr = types;
+        element.typeName = keys[index];
+        element.typeValue = values[index][1];
+    });
+}
 
 function filterData(url) {
-
-    const contentDiv = document.querySelector(".content");
-    const indexDiv = contentDiv.lastChild;
-    contentDiv.removeChild(indexDiv);
+    const indexDiv = document.querySelector(".index");
+    while (indexDiv.firstChild)
+        indexDiv.removeChild(indexDiv.firstChild);
     fetch(url, {
         "method": 'GET',
     }).then((response) => (
         response.json()
     )).then((data) => {
-        createImg(data, createItemDetail);
+        if (document.URL.includes("item"))
+            createImg(data, createItemDetail);
+        else
+            createImg(data, createCharacterDetail);
     });
 }
+
 function filterEvent(e) {
 
-    const filterName = e.currentTarget.typeName;
-    const filterTypeValue = e.currentTarget.typeValue;
+    const target = e.currentTarget;
+    const filterArr = target.parentNode.querySelectorAll("li");
+    if (!(target.typeName === "resetFilter")) {
+        target.classList.toggle("active");
+    }
+    else {
+        filterArr.forEach(element => {
+            element.classList.remove(("active"));
+        });
+    }
+
+    const filterName = target.typeName;
+    const filterTypeValue = target.typeValue;
     console.log(filterName);
     console.log(filterTypeValue);
 
@@ -173,8 +185,6 @@ function filterEvent(e) {
        const filterAttackTypeArr = filteredcharacterTotalUrl.searchParams.getAll("attack_type");
        const filterDamageTypeArr = filteredcharacterTotalUrl.searchParams.getAll("damage_type");
        const filterAllTypeArr = filterTypeArr + filterAttackTypeArr + filterDamageTypeArr;
-       console.log(filterName);
-
        if (e.currentTarget.typeName === "resetFilter") {
            filteredcharacterTotalUrl.searchParams.delete("type");
            filteredcharacterTotalUrl.searchParams.delete("attack_type");
@@ -203,48 +213,14 @@ function filterEvent(e) {
                filteredcharacterTotalUrl.searchParams.append("damage_type", param);
        }
        filterData(filteredcharacterTotalUrl);
-    }
-    if (filterName != "resetFilter") {
-        e.currentTarget.classList.toggle('active');
+       console.log(filteredcharacterTotalUrl);
     }
 }
-
 function hideToggle(e) {
-    let itemIndex = 0;
-    let detailBoxIndex = 0;
-    if (e.currentTarget.infomation === "item") {
-        const info = localStorage.getItem("itemInfo");
-        const itemInfo = JSON.parse(info);
-        itemInfo.forEach((data, index) => {
-            if (e.currentTarget.id == data.id) {
-                itemIndex = index;
-            }
-        });
-        detailBoxIndex = parseInt(parseInt(itemIndex) / 4);
-        inputItemData(itemIndex, detailBoxIndex);
-    } else if (e.currentTarget.infomation === "battle-item") {
-        const info = localStorage.getItem("battleItemInfo");
-        const itemInfo = JSON.parse(info);
-        itemInfo.forEach((data, index) => {
-            if (e.currentTarget.id == data.id) {
-                itemIndex = index;
-            }
-        });
-        detailBoxIndex = parseInt(parseInt(itemIndex) / 4);
-        inputBattleItemData(itemIndex, detailBoxIndex);
-    }
-    else {
-        const info = localStorage.getItem("info");
-        const itemInfo = JSON.parse(info);
-        itemInfo.forEach((data, index) => {
-            if (e.currentTarget.id == data.id) {
-                itemIndex = index;
-            }
-        });
-        detailBoxIndex = parseInt(parseInt(itemIndex) / 4);
-        inputCharacterData(itemIndex, detailBoxIndex);
-    }
-    const detailBoxes = document.querySelectorAll(".detail");
+    const target = e.currentTarget;
+    const infoArr = target.dataArr;
+    const detailBoxes = target.parentNode.querySelectorAll(".detail");
+    const detailBoxIndex = parseInt(parseInt(target.dataIndex) / 4);
     const selectedDetailBox = detailBoxes[detailBoxIndex];
     detailBoxes.forEach((element) => {
         element.classList.add("hidden");
@@ -253,7 +229,17 @@ function hideToggle(e) {
     document.querySelectorAll('.index > .profile').forEach((element) => {
         element.classList.remove("active");
     })
-    e.currentTarget.classList.toggle("active");
+    target.classList.toggle("active");
+    console.log(target.information);
+    if (target.information === "item") {
+        inputItemData(infoArr, selectedDetailBox);
+    }
+    else if (target.information === "battle-item") {
+        inputBattleItemData(infoArr, selectedDetailBox);
+    }
+    else {
+        inputCharacterData(infoArr, selectedDetailBox);
+    }
 }
 
 function createImg(info, detailFunction) {
@@ -275,14 +261,16 @@ function createImg(info, detailFunction) {
         profileDiv.append(nameLabel);
         profileDiv.classList.add = type;
         profileDiv.id = index;
+        profileDiv.dataIndex = childIndex;
+        profileDiv.dataArr = element;
         itemImg.src = element.img;
         itemImg.className = element.type;
         if ((itemImg.src).includes("held-items")) {
-            profileDiv.infomation = "item";
+            profileDiv.information = "item";
         } else if ((itemImg.src).includes("battle-items")) {
-            profileDiv.infomation = "battle-item";
+            profileDiv.information = "battle-item";
         } else {
-            profileDiv.infomation = "character";
+            profileDiv.information = "character";
         }
         if (childIndex !== 0 && childIndex % 4 === 3) {
             detailFunction();
@@ -295,4 +283,5 @@ function createImg(info, detailFunction) {
 export default {
     createImg,
     createCharacterDetailTag,
+    filterSetting
 }

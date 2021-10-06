@@ -60,8 +60,8 @@ function createItemData() {
         response.json()
     )).then((data) => {
         const info = JSON.stringify(data);
-        
         myStorage.setItem("itemInfo", info);
+        module.filterSetting(types);
         module.createImg(data, createItemDetail);
     });
 }

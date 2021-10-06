@@ -36,13 +36,13 @@ function createCharacterDetail() {
     detailDiv.append(detailViewP);
 }
 
-export function createPokemonData() {
+function createPokemonData() {
 
     const myStorage = localStorage;
     const types = {
-        "attacker":["어택형", "type"], "speedster":["스피드형", "type"], "defender":["디펜스형", "type"],
-        "all-rounder":["밸런스형", "type"], "supporter":["서포터형", "type"], "melee":["근거리", "attack_type"],
-        "ranged":["원거리", "attack_type"], "physical":["물리형", "damage_type"], "special":["특수형", "damage_type"],
+        "attacker":["어택형", "type"],  "defender":["디펜스형", "type"], "speedster":["스피드형", "type"],
+        "all-rounder":["밸런스형", "type"], "supporter":["서포터형", "type"], "physical":["물리형", "damage_type"],
+        "special":["특수형", "damage_type"], "melee":["근거리", "attack_type"],  "ranged":["원거리", "attack_type"],
         "resetFilter":["초기화",""]
     };
 
@@ -53,7 +53,12 @@ export function createPokemonData() {
     )).then((data) => {
         const info = JSON.stringify(data);
         myStorage.setItem("info", info);
+        module.filterSetting(types);
         module.createImg(data, createCharacterDetail);
-
    });
+}
+
+export {
+    createCharacterDetail,
+    createPokemonData
 }
