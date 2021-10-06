@@ -46,8 +46,6 @@ function inputBattleItemDetailData(dataType, startIndex, inputArr) {
 }
 
 function inputItemData(infoArr, selectedDetailDiv){
-    const info = localStorage.getItem("itemInfo");
-    const itemInfo = JSON.parse(info);
     const nameLabelP = selectedDetailDiv.querySelector(".title > .name-label");
     const typeLabelP = selectedDetailDiv.querySelector(".title > .type-label");
     const descriptionP = selectedDetailDiv.querySelector(".effect");
@@ -120,14 +118,26 @@ function inputCharacterData(infoArr, selectedDetailDiv) {
 
 function filterSetting(types) {
     const filterAllDiv = document.querySelectorAll(".filter-item");
+    const filterButton = document.querySelector(".filter-button");
+    const filterSection = document.querySelector(".filter-section");
     const keys = Object.keys(types);
     const values = Object.values(types);
+    filterSection.classList.add("hidden");
+    filterButton.onclick = filterButtonEvent;
     filterAllDiv.forEach((element, index) => {
         element.onclick = filterEvent;
         element.typeArr = types;
         element.typeName = keys[index];
         element.typeValue = values[index][1];
     });
+}
+
+function filterButtonEvent(e) {
+    const target = e.currentTarget;
+    const filterSection = document.querySelector(".filter-section");
+    target.classList.toggle("active");
+    filterSection.classList.toggle("hidden");
+
 }
 
 function filterData(url) {
