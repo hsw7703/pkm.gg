@@ -266,19 +266,28 @@ function hideToggle(e) {
     detailBoxes.forEach((element) => {
         element.classList.add("hidden");
     })
-    selectedDetailBox.classList.toggle("hidden");
-    document.querySelectorAll('.index > .profile').forEach((element) => {
-        element.classList.remove("active");
-    })
-    target.classList.toggle("active");
-    if (target.information === "item") {
-        inputItemData(infoArr, selectedDetailBox);
-    }
-    else if (target.information === "battle-item") {
-        inputBattleItemData(infoArr, selectedDetailBox);
-    }
-    else {
-        inputCharacterData(infoArr, selectedDetailBox);
+    if (target.id !== selectedDetailBox.id) {
+        detailBoxes.forEach((element) => {
+            element.id = 0;
+        })
+        selectedDetailBox.classList.toggle("hidden");
+        selectedDetailBox.id = target.id;
+        document.querySelectorAll('.index > .profile').forEach((element) => {
+            element.classList.remove("active");
+        })
+        target.classList.toggle("active");
+        if (target.information === "item") {
+            inputItemData(infoArr, selectedDetailBox);
+        }
+        else if (target.information === "battle-item") {
+            inputBattleItemData(infoArr, selectedDetailBox);
+        }
+        else {
+            inputCharacterData(infoArr, selectedDetailBox);
+        }
+    } else {
+        selectedDetailBox.id = 0;
+        target.classList.remove("active");
     }
 }
 
