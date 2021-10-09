@@ -257,6 +257,20 @@ function filterEvent(e) {
        filterData(filteredcharacterTotalUrl);
     }
 }
+
+function calcButtonEvent(e) {
+    const target = e.currentTarget;
+    const filterSection = document.querySelector(".cost-calc-section");
+    target.classList.toggle("active");
+    filterSection.classList.toggle("hidden");
+
+}
+
+function calcSetting() {
+    const calcButton = document.querySelectorAll('.filter-button')[1];
+    calcButton.onclick = calcButtonEvent;
+}
+
 function hideToggle(e) {
     const target = e.currentTarget;
     const infoArr = target.dataArr;
@@ -331,6 +345,7 @@ function createImg(info, detailFunction) {
 
 export default {
     createImg,
+    calcSetting,
     createCharacterDetailTag,
     filterSetting
 }

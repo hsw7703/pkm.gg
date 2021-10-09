@@ -62,6 +62,7 @@ function createItemData() {
         const info = JSON.stringify(data);
         myStorage.setItem("itemInfo", info);
         module.filterSetting(types);
+        module.calcSetting();
         module.createImg(data, createItemDetail);
     });
 }
