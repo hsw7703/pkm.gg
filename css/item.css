@@ -97,3 +97,32 @@ section.index-section {
 	font-size: var(--h5);
 	text-align: right;
 }
+
+section.cost-calc-section {
+	width: 92%;
+	margin: 2% auto;
+	/*background-color: red;*/
+}
+
+.cost-calc-section .cost-calc {
+	padding: .5rem;
+	display: flex;
+	align-items: center;
+	background-color: var(--light-blue);
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
+	border-radius: 5px;
+}
+
+select {
+	padding: .5em .5em;
+	/*border: 1px solid #999;*/
+	font-family: inherit;
+	border-radius: 0px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+select::-ms-expand {
+	display: none;
+}
