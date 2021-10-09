@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
 		gtag('config', 'G-HZQHSTP2QN');
 	</script>
 </head>
+
 <body>
 	<div class="wrap">
 		<header>
@@ -22,39 +24,46 @@
 				PKM.GG
 			</a>
 		</header>
-		<div class="ads">
-			<img class="ad" alt="광고표시" src="./img/adExample.png">
-		</div>
 		<nav>
 			<ul class="navbar">
 				<li><a href="./index.html" id="pokemon">포켓몬</a></li>
-				<li><a href="./item.html" id="item">아이템</a></li>
+				<li><a href="./item.html" id="item">지닌물건</a></li>
+				<li><a href="./battle-item.html" id="battle-item">배틀아이템</a></li>
 				<li><a href="./news.html" id="news">뉴스</a></li>
-				<li><a href="./news.html" class="active" id="news">건의사항</a></li>
 			</ul>
 		</nav>
+		<div class="ads">
+			<img class="ad" alt="광고표시" src="./img/adExample.png">
+		</div>
 		<main>
 			<article class="content">
+				<section class="page-title-section">
+					<p class="page-title">건의사항</p>
+				</section>
+				<div class="line"></div>
 				<section class="contact-section">
 					<form action="https://pkm.gg/api/contact/" method="post">
-						<div>
-						  <label for="name">Name:</label>
-						  <input type="text" id="name" name="user_name">
+						<div class="name-form">
+							<div class="label">
+								<label for="name">닉네임</label>
+							</div>
+							<input type="text" id="name" name="user_name">
 						</div>
-						<div>
-						  <label for="msg">Message:</label>
-						  <textarea id="msg" name="user_message"></textarea>
+						<div class="msg-form">
+							<div class="label">
+								<label for="msg">내용</label>
+							</div>
+							<textarea id="msg" name="user_message"></textarea>
 						</div>
-					  
 						<div class="button">
-						  <button type="submit">Send your message</button>
+							<button type="submit">확인</button>
 						</div>
-					  </form>
+					</form>
 				</section>
 			</article>
 		</main>
 		<div class="ads">
-			<img src="ad" alt="광고표시" src="./img/adExample.png">
+			<img class="ad" alt="광고표시" src="./img/adExample.png">
 		</div>
 		<footer>
 			<p class="copyright">PKM.GG isn’t endorsed by Nintendo and doesn’t reflect the views or opinions of Nintendo

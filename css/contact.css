@@ -3,64 +3,59 @@ section.contact-section {
 }
 
 form {
-	/* Just to center the form on the page */
-background-color: var(--light-blue);
-margin: 4% auto;
-width: 92%;
-
-/* To see the limits of the form */
-padding: 1rem;
-border-radius: 5px;
+	margin: 0 auto;
+	width: 92%;
 }
 
-div + div {
-margin-top: 1em;
+form .name-form {
+	width: 100%;
+	margin: 5% 0;
 }
 
-label {
-width: 100%;
-margin: 2% auto;
-text-align: center;
+form .msg-form {
+	margin: 0 auto;
+}
+
+.label {
+	/*margin: auto;*/
+	/*text-align: center;*/
+	margin-bottom: 2%;
 }
 
 input, textarea {
-/* To make sure that all text field have the same font settings
-		By default, textarea are set with a monospace font */
-font: 1em sans-serif;
+	width: 100%;
+	color: white;
+	border:none;
+	border-radius: 5px;
+	background-color: var(--light-blue);
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 
-/* To give the same size to all text field */
-width: 100%;
-
--moz-box-sizing: border-box;
-		box-sizing: border-box;
-
-/* To harmonize the look & feel of text field border */
-border: 1px solid #999;
 }
-
+/*
 input:focus, textarea:focus {
-/* To give a little highligh on active elements */
-border-color: #000;
-}
+	border-color: #000;
+	border-radius: 5px;
+	border: none;
+}*/
 
 textarea {
-/* To properly align multiline text field with their label */
-vertical-align: top;
-
-/* To give enough room to type some text */
-height: 20rem;
-
-/* To allow users to resize any textarea vertically
-		It works only on Chrome, Firefox and Safari */
-resize: vertical;
+	vertical-align: top;
+	height: 20rem;
+	resize: vertical;
 }
 
 .button {
-	margin: 5% auto;
+	text-align: center;
+	width: 100%;
 }
 
 button {
-/* This extra margin represent the same space as the space between
-		the labels and their text fields */
-margin-left: .5em;
+	color: white;
+	padding: .5rem 1rem;
+	font-size: var(--h4);
+	margin: 4%;
+	background-color: var(--light-blue);
+	border: none;
+	border-radius: 5px;
 }
