@@ -31,18 +31,17 @@ section.index-section {
 
 .detail .title {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
-	margin-top: 4.5%;
+	margin-top: 5%;
 	margin-bottom: 4%;
-	
 }
 
-.title .name-label {
+.detail .title .name-label {
 	font-size: var(--h3);
-	font-weight: 600;
+	font-weight: bold;
 }
-.title .type-label {
+.detail .title .type-label {
+	margin-left: auto;
 	font-size: var(--h5);
 }
 
