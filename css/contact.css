@@ -17,8 +17,6 @@ form .msg-form {
 }
 
 .label {
-	/*margin: auto;*/
-	/*text-align: center;*/
 	margin-bottom: 2%;
 }
 
@@ -30,14 +28,9 @@ input, textarea {
 	background-color: var(--light-blue);
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-
+	line-height: var(--h2);
+	
 }
-/*
-input:focus, textarea:focus {
-	border-color: #000;
-	border-radius: 5px;
-	border: none;
-}*/
 
 textarea {
 	vertical-align: top;
