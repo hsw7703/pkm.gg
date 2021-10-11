@@ -23,7 +23,10 @@
           user_message: $('#msg').val(),
         };
 
-        console.log(formData);
+        if (formData.user_name === '' || formData.user_message === '') {
+          alert('내용을 채워주세요.');
+          return;
+        }
 
         $.ajax({
             cache : false,
@@ -34,10 +37,11 @@
             data : formData, 
             success : function(data) {
                 alert('전송 되었습니다. 감사합니다.');
+                location.reload();
             },
             error : function(xhr, status, error) {
                 alert('전송 실패 하였습니다.');
-                alert(error);
+                location.reload();
             }
         });
       }
