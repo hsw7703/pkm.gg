@@ -210,6 +210,9 @@ class Build(models.Model):
             return timezone.now() >= update[0].date >= self.date
         else:
             return False
+    
+    def __str__(self):
+        return self.pkm_id.name_text
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)

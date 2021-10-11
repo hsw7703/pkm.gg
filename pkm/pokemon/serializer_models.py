@@ -6,6 +6,10 @@ class PopupItemModel:
         self.name = item['item_id__name']
         self.name_text = item['item_id__name_text']
         self.id = item['item_id']
+#        self.img = item.img
+#        self.name = item.name
+#        self.name_text = item.name_text
+#        self.id = item.id
 
 class PopupBattleItemModel:
     def __init__(self, item):
@@ -13,20 +17,27 @@ class PopupBattleItemModel:
         self.name = item.battle_item_id.name
         self.name_text = item.battle_item_id.name_text
         self.img = item.battle_item_id.img
+#        self.id = item.id
+#        self.name = item.name
+#        self.name_text = item.name_text
+#        self.img = item.img
 
 class PopupSkillModel:
     def __init__(self, skill):
-#        self.name = skill.name
-#        self.name_text = skill.name_text
-#        self.img = skill.img
-#        self.level = skill.level
         self.name = skill['name']
         self.name_text = skill['name_text']
         self.img = skill['img']
         self.level = skill['level']
+#        self.name = skill.name
+#        self.name_text = skill.name_text
+#        self.img = skill.img
+#        self.level = skill.level
+
 
 
 from django.db import connection
+
+from .models import Build
 
 class PokemonMainModel:
     def __init__(self, pkm, cursor):
@@ -42,8 +53,6 @@ class PokemonMainModel:
         self.damage_type_text = pkm.damage_type_text
         self.item = []
         self.skill = []
-#        skills = Skill.objects.filter(pkm_id=pkm.id).order_by('level', '-count')
-#        print(skills.query)
         sql = f"SELECT * FROM pokemon_skill WHERE pkm_id_id = {pkm.id} ORDER BY level ASC, count DESC;"
         if cursor.execute(sql) == 7:
             result = cursor.fetchall()
@@ -61,6 +70,18 @@ class PokemonMainModel:
         battle = Pkm_battle_item.objects.select_related('battle_item_id').filter(pkm_id=self.id).order_by('-count')
         if battle:
             self.battle_item = PopupBattleItemModel(battle[0])
+
+#        builds = Build.objects.filter(pkm_id=pkm.id).order_by('-count')
+#        if builds:
+#            build = builds[0]
+#            self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_1))
+#            self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_2))
+#            self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_3))
+#            self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_4))
+#            self.item.append(PopupItemModel(build.item_build_id.item_id_1))
+#            self.item.append(PopupItemModel(build.item_build_id.item_id_2))
+#            self.item.append(PopupItemModel(build.item_build_id.item_id_3))
+#            self.battle_item = PopupBattleItemModel(build.battle_item_id)
 
 class PokemonEvolutionModel:
     def __init__(self, evol):

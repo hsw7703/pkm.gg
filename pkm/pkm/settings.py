@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2yn#3gjp@4ecjt*ki98e1^7xglj*6n%=bjbt6lm85!nq*&+m7_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -100,7 +100,7 @@ DATABASES = {
         'PORT': '3306'
     }
 }
-
+DATABASE_OPTIONS = {'charset': 'utf8'}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

@@ -146,7 +146,6 @@ def ContactPage(request):
             ip = x_forwarded_for.split(',')[0]
         else:
             ip = request.META.get('REMOTE_ADDR')
-
         name = request.POST['user_name']
         msg = request.POST['user_message']
         Contact(name=name, msg=msg, is_check=False, date=timezone.now(), ip=ip).save()
