@@ -9,12 +9,39 @@
 	<link rel="stylesheet" href="./css/contact.css">
 	<title>PKM.GG</title>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HZQHSTP2QN"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() { dataLayer.push(arguments); }
 		gtag('js', new Date());
 		gtag('config', 'G-HZQHSTP2QN');
 	</script>
+  <script type="text/javascript">
+    function contactSubmit(){
+        var formData = {
+          user_name: $('#name').val(),
+          user_message: $('msg').val(),
+        }
+
+        // alert(formData);
+
+        $.ajax({
+            cache : false,
+            url : "https://pkm.gg/api/contact/",
+            type : 'POST',
+            contentType: "application/x-www-form-urlencoded;",
+            encode: true,
+            data : formData, 
+            success : function(data) {
+                alert('전송 되었습니다. 감사합니다.');
+            },
+            error : function(xhr, status, error) {
+                alert('전송 실패 하였습니다.');
+                alert(error);
+            }
+        });
+      }
+  </script>
 </head>
 
 <body>
@@ -43,7 +70,7 @@
 				</section>
 				<div class="line"></div>
 				<section class="contact-section">
-					<form action="https://pkm.gg/api/contact/" method="post">
+					<form action="https://pkm.gg/api/contact/" method="post" id="contact">
 						<div class="name-form">
 							<div class="label">
 								<label for="name">닉네임</label>
