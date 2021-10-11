@@ -71,7 +71,7 @@ header {
 	display: flex;
 	align-items: center;
 	width: 100%;
-	max-width: 650px;
+	/*max-width: 650px;*/
 	margin: auto;
 	padding: 1rem;
 	background-color: var(--main-blue);
