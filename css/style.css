@@ -69,16 +69,17 @@ a:hover {color:white; text-decoration: none;}
 
 header {
 	display: flex;
+	align-items: center;
 	width: 100%;
+	max-width: 650px;
+	margin: auto;
+	padding: 1rem;
 	background-color: var(--main-blue);
 }
 
 header .logo {
-	margin:auto;
-	width: 100%;
-	max-width: 650px;
 	font-size: var(--h2);
-	padding: var(--h4) var(--h5) var(--h5);
+	margin:auto;
 	font-weight: bold;
 }
 
