@@ -20,10 +20,10 @@
     function contactSubmit(){
         var formData = {
           user_name: $('#name').val(),
-          user_message: $('msg').val(),
-        }
+          user_message: $('#msg').val(),
+        };
 
-        // alert(formData);
+        console.log(formData);
 
         $.ajax({
             cache : false,
