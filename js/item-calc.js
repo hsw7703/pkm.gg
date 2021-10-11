@@ -10,6 +10,6 @@ function calculateCost() {
 		response.json()
 	)).then((data) => {
 		const costP = document.querySelector('.cost-calc > #cost');
-		costP.textContent = data['cost'];
+		costP.textContent = `${data['cost']}개`;
 	});
 }
