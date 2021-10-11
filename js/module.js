@@ -104,10 +104,12 @@ function inputCharacterData(infoArr, selectedDetailDiv) {
 
     const itemNameDiv = selectedDetailDiv.querySelector(".title > .name-label");
     const itemTypeDiv = selectedDetailDiv.querySelector(".title > .type-label");
+    const lineAreaImg = selectedDetailDiv.querySelector('.title > img');
     const itemDivArr = selectedDetailDiv.querySelectorAll("li");
 
     itemNameDiv.innerText = selectedCharacter.name_text;
     itemTypeDiv.innerText = selectedCharacter.attack_type_text + " " +selectedCharacter.damage_type_text;
+    lineAreaImg.src = `./img/positions/${selectedCharacter.position}.png`;
 
     inputCharacterDetailData(selectedCharacter.skill, 0, itemDivArr, selectedCharacter.id);
     inputCharacterDetailData(selectedCharacter.item, 4, itemDivArr);

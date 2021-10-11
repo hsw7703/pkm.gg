@@ -8,6 +8,7 @@ function createCharacterDetail() {
     const detailPkmType = document.createElement("p");
     const lineDiv = document.createElement("div");
     const buildDiv = document.createElement("ul");
+    const lineAreaImg = document.createElement("img");
     
     detailDiv.className = "detail";
     detailDiv.classList.add("hidden");
@@ -23,7 +24,7 @@ function createCharacterDetail() {
     
 
     detailDiv.append(detailTitle, lineDiv);
-    detailTitle.append(detailPkmName, detailPkmType);
+    detailTitle.append(lineAreaImg, detailPkmName, detailPkmType);
     detailDiv.append(buildDiv);
     indexDiv.append(detailDiv);
 
