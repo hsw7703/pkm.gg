@@ -176,12 +176,32 @@ class Item_build(models.Model):
     item_id_1 = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="item_id_1")
     item_id_2 = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="item_id_2")
     item_id_3 = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="item_id_3")
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["item_id_1", "item_id_2", "item_id_3"],
+                name = "pokemon build item",
+            ),
+        ]
+
+    def __str__(self):
+        return self.item_id_1.name_text + ", " + self.item_id_2.name_text + ", " + self.item_id_3.name_text
 
 class Skill_build(models.Model):
     skill_id_1 = models.ForeignKey(Skill, on_delete=models.CASCADE, related_name="skill_id_1")
     skill_id_2 = models.ForeignKey(Skill, on_delete=models.CASCADE, related_name="skill_id_2")
     skill_id_3 = models.ForeignKey(Skill, on_delete=models.CASCADE, related_name="skill_id_3")
     skill_id_4 = models.ForeignKey(Skill, on_delete=models.CASCADE, related_name="skill_id_4")
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["skill_id_1", "skill_id_2", "skill_id_3", "skill_id_4"],
+                name = "pokemon build skill",
+            ),
+        ]
+
+    def __str__(self):
+        return self.skill_id_1.name_text + ", " + self.skill_id_2.name_text + ", " + self.skill_id_3.name_text + ", " + self.skill_id_4.name_text
 
 class Update(models.Model):
     date = models.DateTimeField()
@@ -201,8 +221,18 @@ class Build(models.Model):
     item_build_id = models.ForeignKey(Item_build, on_delete=models.CASCADE)
     skill_build_id = models.ForeignKey(Skill_build, on_delete=models.CASCADE)
     battle_item_id = models.ForeignKey(Battle_item, on_delete=models.CASCADE)
+    position = models.CharField(max_length=10, default="")
     count = models.BigIntegerField(default=0)
     date = models.DateTimeField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["pkm_id", "item_build_id", "skill_build_id", "battle_item_id", "position"],
+                name = "pokemon build",
+            ),
+        ]
+
 
     def is_delete(self):
         update = Update.objects.filter(date__gte=self.date)

@@ -2,36 +2,36 @@ from .models import Pkm_item, Pkm_battle_item, Skill
 
 class PopupItemModel:
     def __init__(self, item):
-        self.img = item['item_id__img']
-        self.name = item['item_id__name']
-        self.name_text = item['item_id__name_text']
-        self.id = item['item_id']
-#        self.img = item.img
-#        self.name = item.name
-#        self.name_text = item.name_text
-#        self.id = item.id
+#        self.img = item['item_id__img']
+#        self.name = item['item_id__name']
+#        self.name_text = item['item_id__name_text']
+#        self.id = item['item_id']
+        self.img = item.img
+        self.name = item.name
+        self.name_text = item.name_text
+        self.id = item.id
 
 class PopupBattleItemModel:
     def __init__(self, item):
-        self.id = item.battle_item_id.id
-        self.name = item.battle_item_id.name
-        self.name_text = item.battle_item_id.name_text
-        self.img = item.battle_item_id.img
-#        self.id = item.id
-#        self.name = item.name
-#        self.name_text = item.name_text
-#        self.img = item.img
+#        self.id = item.battle_item_id.id
+#        self.name = item.battle_item_id.name
+#        self.name_text = item.battle_item_id.name_text
+#        self.img = item.battle_item_id.img
+        self.id = item.id
+        self.name = item.name
+        self.name_text = item.name_text
+        self.img = item.img
 
 class PopupSkillModel:
     def __init__(self, skill):
-        self.name = skill['name']
-        self.name_text = skill['name_text']
-        self.img = skill['img']
-        self.level = skill['level']
-#        self.name = skill.name
-#        self.name_text = skill.name_text
-#        self.img = skill.img
-#        self.level = skill.level
+#        self.name = skill['name']
+#        self.name_text = skill['name_text']
+#        self.img = skill['img']
+#        self.level = skill['level']
+        self.name = skill.name
+        self.name_text = skill.name_text
+        self.img = skill.img
+        self.level = skill.level
 
 
 
@@ -53,35 +53,36 @@ class PokemonMainModel:
         self.damage_type_text = pkm.damage_type_text
         self.item = []
         self.skill = []
-        sql = f"SELECT * FROM pokemon_skill WHERE pkm_id_id = {pkm.id} ORDER BY level ASC, count DESC;"
-        if cursor.execute(sql) == 7:
-            result = cursor.fetchall()
-            skills = []
+#        sql = f"SELECT * FROM pokemon_skill WHERE pkm_id_id = {pkm.id} ORDER BY level ASC, count DESC;"
+#        if cursor.execute(sql) == 7:
+#            result = cursor.fetchall()
+#            skills = []
+#
+#            for index in range(0, 7):
+#                skills.append({'name_text':result[index][2], 'img':result[index][4], 'level':result[index][5], 'name': result[index][9]})
+#            self.skill.append(PopupSkillModel(skills[0]))
+#            self.skill.append(PopupSkillModel(skills[1]))
+#            self.skill.append(PopupSkillModel(skills[2]))
+#            self.skill.append(PopupSkillModel(skills[4]))
+#        items = Pkm_item.objects.select_related("item_id").filter(pkm_id=self.id).order_by('-count')[:3].values('item_id__img', 'item_id__name', 'item_id__name_text', 'item_id')
+#        for item in items:
+#            self.item.append(PopupItemModel(item))
+#        battle = Pkm_battle_item.objects.select_related('battle_item_id').filter(pkm_id=self.id).order_by('-count')
+#        if battle:
+#            self.battle_item = PopupBattleItemModel(battle[0])
 
-            for index in range(0, 7):
-                skills.append({'name_text':result[index][2], 'img':result[index][4], 'level':result[index][5], 'name': result[index][9]})
-            self.skill.append(PopupSkillModel(skills[0]))
-            self.skill.append(PopupSkillModel(skills[1]))
-            self.skill.append(PopupSkillModel(skills[2]))
-            self.skill.append(PopupSkillModel(skills[4]))
-        items = Pkm_item.objects.select_related("item_id").filter(pkm_id=self.id).order_by('-count')[:3].values('item_id__img', 'item_id__name', 'item_id__name_text', 'item_id')
-        for item in items:
-            self.item.append(PopupItemModel(item))
-        battle = Pkm_battle_item.objects.select_related('battle_item_id').filter(pkm_id=self.id).order_by('-count')
-        if battle:
-            self.battle_item = PopupBattleItemModel(battle[0])
-
-#        builds = Build.objects.filter(pkm_id=pkm.id).order_by('-count')
-#        if builds:
-#            build = builds[0]
-#            self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_1))
-#            self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_2))
-#            self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_3))
-#            self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_4))
-#            self.item.append(PopupItemModel(build.item_build_id.item_id_1))
-#            self.item.append(PopupItemModel(build.item_build_id.item_id_2))
-#            self.item.append(PopupItemModel(build.item_build_id.item_id_3))
-#            self.battle_item = PopupBattleItemModel(build.battle_item_id)
+        builds = Build.objects.filter(pkm_id=pkm.id).order_by('-count')
+        if builds:
+            build = builds[0]
+            self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_1))
+            self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_2))
+            self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_3))
+            self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_4))
+            self.item.append(PopupItemModel(build.item_build_id.item_id_1))
+            self.item.append(PopupItemModel(build.item_build_id.item_id_2))
+            self.item.append(PopupItemModel(build.item_build_id.item_id_3))
+            self.battle_item = PopupBattleItemModel(build.battle_item_id)
+            self.position = build.position
 
 class PokemonEvolutionModel:
     def __init__(self, evol):
@@ -120,21 +121,36 @@ class PokemonDetailModel:
             self.evolution.append(PokemonEvolutionModel(evol))
         self.recommend_skill = []
 
-        skills = pkm.skill_set.all().order_by('level', '-count').values('name', 'name_text', 'img', 'level')
-        if skills.count() != 0:
-            self.recommend_skill.append(PopupSkillModel(skills[0]))
-            self.recommend_skill.append(PopupSkillModel(skills[1]))
-            self.recommend_skill.append(PopupSkillModel(skills[2]))
-            self.recommend_skill.append(PopupSkillModel(skills[4]))
-        self.item = []
+#        skills = pkm.skill_set.all().order_by('level', '-count').values('name', 'name_text', 'img', 'level')
+#        if skills.count() != 0:
+#            self.recommend_skill.append(PopupSkillModel(skills[0]))
+#            self.recommend_skill.append(PopupSkillModel(skills[1]))
+#            self.recommend_skill.append(PopupSkillModel(skills[2]))
+#            self.recommend_skill.append(PopupSkillModel(skills[4]))
+#        self.item = []
         self.skill = pkm.skill_set.all().order_by('level')
+#
+#        items = Pkm_item.objects.select_related("item_id").filter(pkm_id=self.id).order_by('-count')[:3].values('item_id__img', 'item_id__name', 'item_id__name_text', 'item_id')
+#        for item in items:
+#            self.item.append(PopupItemModel(item))
+#        battle = Pkm_battle_item.objects.select_related('battle_item_id').filter(pkm_id=self.id).order_by('-count')
+#        if battle:
+#            self.battle_item = PopupBattleItemModel(battle[0])
 
-        items = Pkm_item.objects.select_related("item_id").filter(pkm_id=self.id).order_by('-count')[:3].values('item_id__img', 'item_id__name', 'item_id__name_text', 'item_id')
-        for item in items:
-            self.item.append(PopupItemModel(item))
-        battle = Pkm_battle_item.objects.select_related('battle_item_id').filter(pkm_id=self.id).order_by('-count')
-        if battle:
-            self.battle_item = PopupBattleItemModel(battle[0])
+        builds = Build.objects.filter(pkm_id=pkm.id).order_by('-count')
+        if builds:
+            self.item = []
+            build = builds[0]
+            self.recommend_skill.append(PopupSkillModel(build.skill_build_id.skill_id_1))
+            self.recommend_skill.append(PopupSkillModel(build.skill_build_id.skill_id_2))
+            self.recommend_skill.append(PopupSkillModel(build.skill_build_id.skill_id_3))
+            self.recommend_skill.append(PopupSkillModel(build.skill_build_id.skill_id_4))
+            self.item.append(PopupItemModel(build.item_build_id.item_id_1))
+            self.item.append(PopupItemModel(build.item_build_id.item_id_2))
+            self.item.append(PopupItemModel(build.item_build_id.item_id_3))
+            self.battle_item = PopupBattleItemModel(build.battle_item_id)
+            self.position = build.position
+
 
 class ItemUpgradeModel:
     def __init__(self, cost):

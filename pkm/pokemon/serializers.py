@@ -32,6 +32,7 @@ class PokemonSerializer(serializers.Serializer):
     attack_type_text = serializers.CharField(max_length=20)
     damage_type = serializers.CharField(max_length=20)
     damage_type_text = serializers.CharField(max_length=20)
+    position = serializers.CharField(max_length=10, required=False)
     skill = PopupSkillSerializer(many=True)
     item = PopupItemSerializer(many=True)
     battle_item = PopupBattleItemSerializer(required=False)
