@@ -71,7 +71,7 @@ class PokemonMainModel:
 #        if battle:
 #            self.battle_item = PopupBattleItemModel(battle[0])
 
-        builds = Build.objects.filter(pkm_id=pkm.id).order_by('-count')
+        builds = Build.objects.filter(pkm_id=pkm.id).select_related("skill_build_id__skill_id_1", "skill_build_id__skill_id_2", "skill_build_id__skill_id_3", "skill_build_id__skill_id_4", "item_build_id__item_id_1", "item_build_id__item_id_2", "item_build_id__item_id_3", "battle_item_id").order_by('-count')
         if builds:
             build = builds[0]
             self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_1))
