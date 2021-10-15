@@ -4,12 +4,6 @@
 	align-items: center;
 }
 
-.ad-box {
-	display: flex;
-	flex-flow: column;
-	align-items: center;
-}
-
 section.info-section {
 	width: 80%;
 	margin: 0 auto;
@@ -122,6 +116,7 @@ section.info-section {
 }
 
 .evolution img {
+	padding: 10px;
 	width: 100%;
 	min-width: 100px;
 	min-height: 100px;
@@ -189,7 +184,7 @@ section.build-section {
 
 .build li img {
 	width: 100%;
-	background-color: rgba(0, 0, 0, 0.9);
+	background-color: var(--black);
 	border-radius: 50%;
 	box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.13);
 }
@@ -213,12 +208,11 @@ section.skill-section {
 }
 
 .skill-list {
-	margin: 5% auto;
+	margin: 1% auto;
 }
 
 .skill {
-	margin-top: 8%;
-	margin-bottom: 8%;
+	margin-top: 6%;
 	padding: 4%;
 	background-color: var(--main-blue);
 	border-radius: 5px;
@@ -284,28 +278,33 @@ section.skill-section {
 }
 
 .select-box {
-	overflow: hidden;
-	background-color: var(--dark-blue);
 	border-radius: 5px;
 	width: 100%;
 	margin: 5% auto 0;
+	background-color: var(--dark-blue);
+}
+
+.select-box p.title {
+	padding: 5px;
 }
 
 .select-box .skill-select {
+	/*margin-top: 1%;*/
+	border-radius: 5px;
+	overflow: hidden;
 	display:flex;
 	justify-content: space-between;
 }
 
 .select-box .skill-select li {
-	/*box-shadow: inset 0 0 9px 0 rgba(0,0,0,0.13);*/
 	overflow: hidden;
-	width: 33.3%;
+	width: 100%;
 	margin-top: 0;
-	background-color: var(--dark-blue);
 }
 
 .select-box li p.level {
-	font-size: var(--h4);
+	font-size: var(--h5);
+	line-height: var(--h2);
 	margin-bottom: 10%;
 	background-color: var(--deep-dark);
 }
@@ -313,26 +312,70 @@ section.skill-section {
 	font-size: var(--h6);
 	padding: 5%;
 	margin-bottom: 5%;
-	/*background-color: var(--dark-blue);*/
 }
 
 .select-box .skill-select li img {
 	width: 60%;
 }
+
 .select-box li img.active {
 	box-shadow: 0 0 9px 3px rgba(255,255,255,0.9);
 }
 
-.select-box .item-list {
+.select-box .held-item-list {
+	border-radius: 5px;
+	padding: 1%;
 	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+	margin: auto;
 }
 
-.item-list li {
-	width: 15%;
+.select-box .battle-item-list {
+	border-radius: 5px;
+	padding: 1%;
+	width: 100%;
+	margin: auto;
+}
+
+.select-box .held-item-list li {
+	display:inline-block;
+	margin: 1.5% 1%;
+	padding: 2%;
+	width: 17%;
 	background-color: var(--light-blue);
 	box-shadow: 0 0 9px 0 rgba(0,0,0,0.13);
 	border-radius: 5px;
+}
+
+.select-box .battle-item-list li {
+	display:inline-block;
+	margin: 1.5% 1%;
+	padding: 2%;
+	width: 17%;
+	background-color: var(--light-blue);
+	box-shadow: 0 0 9px 0 rgba(0,0,0,0.13);
+	border-radius: 5px;
+}
+
+.select-box .held-item-list li img {
+	width: 100%;
+	padding: 3px;
+	box-shadow: 0 0 9px 0 rgba(0,0,0,0.13);
+}
+
+.select-box .battle-item-list li img {
+	width: 100%;
+	box-shadow: 0 0 9px 0 rgba(0,0,0,0.13);
+}
+
+.build-lane {
+	display: flex;
+	margin-top: 5%;
+	text-align: center;
+}
+
+.build-lane p {
+	background-color: var(--light-blue);
+	padding: .3rem .5rem;
+	border-radius: 10px;
+	font-size: var(--h6);
 }
