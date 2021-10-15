@@ -170,9 +170,13 @@ section.build-section {
 	padding-left: 4%;
 	padding-right: 4%;
 	padding-bottom: 4%;
-	display: flex;
+	display: none;
 	flex-wrap: wrap;
 	justify-content: space-between;
+}
+
+.build.active {
+	display: flex;
 }
 
 .build li {
@@ -278,10 +282,15 @@ section.skill-section {
 }
 
 .select-box {
+	display: none;
 	border-radius: 5px;
 	width: 100%;
 	margin: 5% auto 0;
 	background-color: var(--dark-blue);
+}
+
+.select-box.active {
+	display: block;
 }
 
 .select-box p.title {
@@ -292,7 +301,7 @@ section.skill-section {
 	/*margin-top: 1%;*/
 	border-radius: 5px;
 	overflow: hidden;
-	display:flex;
+	display: flex;
 	justify-content: space-between;
 }
 
