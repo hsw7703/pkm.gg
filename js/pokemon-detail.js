@@ -67,7 +67,7 @@ function createEvolutionDiv(evolutionArray) {
 
 function createRecommendBuildData(itemBuild, battleItemBuild, recommendSkill) {
 	// build-section 작업
-	const recommendDiv = document.querySelector('.build-section > .build');
+	const recommendDiv = document.querySelectorAll('.build-section > .build')[0];
 	recommendSkill.forEach((item) => {
 		const rawLi = document.createElement('li');
 		const img = document.createElement('img');
@@ -152,12 +152,149 @@ function createSkillDiv(skillArray) {
 	});
 }
 
+const tabMenu = document.querySelectorAll(".build-section .build-tab li");
+const tabCon = document.querySelectorAll(".build");
+function tabOff(items) {
+    items.forEach((item) => {
+        item.classList.remove("active");
+    });
+}
+
+function tabHandler(tab, index) {
+    tab.addEventListener("click", () => {
+        tabOff(tabMenu);
+        tabOff(tabCon);
+        tabMenu[index].classList.add("active");
+        tabCon[index].classList.add("active");
+    });
+}
+function tabSwitch() {
+    tabMenu.forEach((tab, index) => tabHandler(tab, index));
+}
+
+function selectSkillBuild(selectBox, pokemonSkillInfo) {
+  const selectSkillList = selectBox.querySelectorAll('.skill-select li');
+
+  selectSkillList.forEach((selectLevelSkill, index) => {
+    const skillImgList = selectLevelSkill.querySelectorAll('img');
+    const skillNameList = selectLevelSkill.querySelectorAll('p');
+
+    for (let i = 0; i < 2; ++i) {
+      skillImgList[i].src = pokemonSkillInfo[index * 2 + i]['img'];
+      skillImgList[i].setAttribute('id', `${pokemonSkillInfo[index * 2 + i]['name']}`);
+      skillNameList[i + 1].textContent = pokemonSkillInfo[index * 2 + i]['name_text'];
+    };
+  });
+
+  const fillBuild = document.querySelectorAll('.build')[1];
+  const fillSkillList = fillBuild.querySelectorAll('li');
+  selectSkillList[0].querySelectorAll('img').forEach((img) => {
+    img.addEventListener("click", (event) => {
+      const parentNode = event.currentTarget.parentNode.querySelectorAll('img');
+      const fillSkill1 = fillSkillList[0].querySelector('img');
+      const fillSkill1Name = fillSkillList[0].querySelector('p');
+      const fillSkill2 = fillSkillList[1].querySelector('img');
+      const fillSkill2Name = fillSkillList[1].querySelector('p');
+
+      parentNode.forEach((node) => {
+        node.classList.remove("active");
+      });
+      event.currentTarget.classList.add("active");
+      
+      if (parentNode[0] == event.currentTarget) {
+        fillSkill1.src = parentNode[0].src;
+        fillSkill1.setAttribute('id', `selected_${parentNode[0].getAttribute('id')}`);
+        fillSkill1Name.textContent = pokemonSkillInfo[0].name_text;
+        fillSkill2.src = parentNode[1].src;
+        fillSkill2.setAttribute('id', `selected_${parentNode[1].getAttribute('id')}`);
+        fillSkill2Name.textContent = pokemonSkillInfo[1].name_text;
+      } else {
+        fillSkill1.src = parentNode[1].src;
+        fillSkill1.setAttribute('id', `selected_${parentNode[1].getAttribute('id')}`);
+        fillSkill1Name.textContent = pokemonSkillInfo[1].name_text;
+        fillSkill2.src = parentNode[0].src;
+        fillSkill2.setAttribute('id', `selected_${parentNode[0].getAttribute('id')}`);
+        fillSkill2Name.textContent = pokemonSkillInfo[0].name_text;
+      }
+    })
+  });
+  selectSkillList[1].querySelectorAll('img').forEach((img) => {
+    img.addEventListener("click", (event) => {
+      const parentNode = event.currentTarget.parentNode.querySelectorAll('img');
+      const fillSkill = fillSkillList[2].querySelector('img');
+      const fillSkillName = fillSkillList[2].querySelector('p');
+
+      parentNode.forEach((node) => {
+        node.classList.remove("active");
+      });
+      event.currentTarget.classList.add("active");
+
+      fillSkill.src = event.currentTarget.src;
+      fillSkill.setAttribute('id', event.currentTarget.getAttribute('id'));
+      if (parentNode[0] == event.currentTarget) {
+        fillSkillName.textContent = pokemonSkillInfo[2].name_text;
+      } else {
+        fillSkillName.textContent = pokemonSkillInfo[3].name_text;
+      }
+    });
+  });
+  selectSkillList[2].querySelectorAll('img').forEach((img) => {
+    img.addEventListener("click", (event) => {
+      const parentNode = event.currentTarget.parentNode.querySelectorAll('img');
+      const fillSkill = fillSkillList[3].querySelector('img');
+      const fillSkillName = fillSkillList[3].querySelector('p');
+      
+      parentNode.forEach((node) => {
+        node.classList.remove("active");
+      });
+      event.currentTarget.classList.add("active");
+
+      fillSkill.src = event.currentTarget.src;
+      fillSkill.setAttribute('id', event.currentTarget.getAttribute('id'));
+      if (parentNode[0] == event.currentTarget) {
+        fillSkillName.textContent = pokemonSkillInfo[4].name_text;
+      } else {
+        fillSkillName.textContent = pokemonSkillInfo[5].name_text;
+      }
+    });
+  });
+}
+
+function selectBuild() {
+  const myStorage = localStorage;
+  const buildList = tabCon[1].querySelectorAll('li');
+  const selectBoxList = tabCon[1].querySelectorAll(".select-box");
+  const pokemonInfo = JSON.parse(myStorage.getItem("pokemonDetailInfo"));
+
+  const skillSelectList = selectBoxList[0].querySelectorAll('.skill-select li');
+  skillSelectList.forEach((listBox, index) => {
+    const levelP = listBox.querySelector('.level');
+    levelP.textContent = `${pokemonInfo['skill'][index * 2]['level']}레벨`;
+  });
+
+  for (let i = 0; i < 4; ++i) {
+    buildList[i].addEventListener("click", () => {
+      selectBoxList.forEach((selectBox) => {
+        selectBox.classList.remove("active");
+      });
+      selectBoxList[0].classList.add("active");
+    })
+  }
+
+  selectSkillBuild(selectBoxList[0], pokemonInfo['skill']);
+}
+
 function createPokemonData(pokemonIndex) {
+  const myStorage = localStorage;
+
 	fetch(`https://pkm.gg/api/pokemon/${pokemonIndex}/`, {
 		method: 'GET',
 	}).then((response) => (
 		response.json()
 	)).then((data) => {
+    const pokemonDetailInfo = JSON.stringify(data);
+    myStorage.setItem("pokemonDetailInfo", pokemonDetailInfo);
+
 		// 포켓몬 이미지
 		const characterImg = document.querySelector('.character-image > img');
 		characterImg.src = data['img'];
@@ -207,6 +344,10 @@ function createPokemonData(pokemonIndex) {
 		
 		createSkillDiv(characterAttack);
 		createSkillDiv(data['skill']);
+
+
+    tabSwitch();
+    selectBuild();
 	})
 }
 
