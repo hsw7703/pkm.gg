@@ -41,17 +41,6 @@ section.info-section {
 	padding: 0.7rem;
 }
 
-/*.name-box .character-name:after {
-	position: absolute;
-	content: '';
-	top: 0;
-	right: 0;
-	width: 0;
-	height: 0;
-	border-left: 1rem solid transparent;
-	border-bottom: 2.95rem solid var(--orange);
-}*/
-
 .name-box .character-name h2 {
 	font-size: var(--h2);
 	font-weight: bold;
@@ -159,6 +148,7 @@ section.build-section {
 	border-radius: 5px;
 	background-color: var(--main-blue);
 	overflow:hidden;
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
 }
 
 .build-tab {
@@ -166,13 +156,19 @@ section.build-section {
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
+	cursor: pointer;
 }
 
 .tab-title {
+	background-color: var(--deep-dark);
 	width: 100%;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	text-align: center;
+}
+
+.tab-title.active {
+	background-color: var(--main-blue);
 }
 
 .build {
@@ -185,6 +181,7 @@ section.build-section {
 }
 
 .build li {
+	position: relative;
 	text-align: center;
 	margin-top: 4.5%;
 	width: 21%;
@@ -286,3 +283,56 @@ section.skill-section {
 	font-size: var(--h5);
 }
 
+.select-box {
+	overflow: hidden;
+	background-color: var(--dark-blue);
+	border-radius: 5px;
+	width: 100%;
+	margin: 5% auto 0;
+}
+
+.select-box .skill-select {
+	display:flex;
+	justify-content: space-between;
+}
+
+.select-box .skill-select li {
+	/*box-shadow: inset 0 0 9px 0 rgba(0,0,0,0.13);*/
+	overflow: hidden;
+	width: 33.3%;
+	margin-top: 0;
+	background-color: var(--dark-blue);
+}
+
+.select-box li p.level {
+	font-size: var(--h4);
+	margin-bottom: 10%;
+	background-color: var(--deep-dark);
+}
+.select-box li p {
+	font-size: var(--h6);
+	padding: 5%;
+	margin-bottom: 5%;
+	/*background-color: var(--dark-blue);*/
+}
+
+.select-box .skill-select li img {
+	width: 60%;
+}
+.select-box li img.active {
+	box-shadow: 0 0 9px 3px rgba(255,255,255,0.9);
+}
+
+.select-box .item-list {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.item-list li {
+	width: 15%;
+	background-color: var(--light-blue);
+	box-shadow: 0 0 9px 0 rgba(0,0,0,0.13);
+	border-radius: 5px;
+}
