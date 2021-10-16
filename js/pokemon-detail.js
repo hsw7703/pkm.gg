@@ -261,6 +261,7 @@ function selectSkillBuild(selectBox, pokemonSkillInfo) {
 }
 
 function selectHeldItemBuild(selectBox) {
+  const heldItemsInfo = JSON.parse(localStorage.getItem('heldItemsInfo'));
   const heldItemList = selectBox.querySelectorAll('.held-item-list > li');
   let fillHeldsItems = Array();
   tabCon[1].childNodes.forEach((childNode) => {
@@ -272,9 +273,8 @@ function selectHeldItemBuild(selectBox) {
   
   heldItemList.forEach((heldItemBox) => {
     heldItemBox.addEventListener("click", (event) => {
-      const isSelectedIndex = selectedHeldItemsList.indexOf(event.currentTarget);
 
-      console.log(isSelectedIndex);
+      const isSelectedIndex = selectedHeldItemsList.indexOf(event.currentTarget);
 
       if (isSelectedIndex !== -1) {
         selectedHeldItemsList.splice(isSelectedIndex, 1);
@@ -287,18 +287,24 @@ function selectHeldItemBuild(selectBox) {
       }
 
       selectedHeldItemsList.forEach((selectedHeldItem, index) => {
+        const selectHeldItem = heldItemsInfo.find((heldItem) => (
+          heldItem['name'] === selectedHeldItem.childNodes[0].getAttribute('id')
+        ));
+
         const viewImg = fillHeldsItems[index].querySelector('img');
-        viewImg.src = selectedHeldItem.childNodes[0].src;
-        viewImg.setAttribute('id', `selected_${selectedHeldItem.childNodes[0].getAttribute('id')}`)
+        const viewName = fillHeldsItems[index].querySelector('p');
+        viewImg.src = selectHeldItem['img'];
+        viewImg.setAttribute('id', `selected_${selectHeldItem['name']}`);
+        viewName.textContent = selectHeldItem['name_text'];
       })
 
       for (let i = selectedHeldItemsList.length; i < 3; ++i) {
         const viewImg = fillHeldsItems[i].querySelector('img');
+        const viewName = fillHeldsItems[i].querySelector('p');
         viewImg.src = './img/plus.png';
         viewImg.removeAttribute('id');
+        viewName.textContent = '';
       }
-
-      console.log(selectedHeldItemsList);
     })
   })
 }
@@ -359,9 +365,10 @@ function createHeldItemList() {
     data.forEach((heldItem) => {
       const heldItemLi = document.createElement('li');
       const heldItemImg = document.createElement('img');
+      const heldItemName = document.createElement('p');
       heldItemImg.setAttribute('id', heldItem['name']);
       heldItemImg.src = heldItem['img'];
-      heldItemLi.append(heldItemImg);
+      heldItemLi.append(heldItemImg, heldItemName);
       heldItemList.append(heldItemLi);
     });
 
@@ -370,6 +377,7 @@ function createHeldItemList() {
 }
 
 function selectedBattleItemBuild(selectBox) {
+  const battleItemsInfo = JSON.parse(localStorage.getItem('battleItemsInfo'));
   const battleItemList = selectBox.querySelectorAll('.battle-item-list > li');
 
   let fillBuild = Array();
@@ -382,8 +390,14 @@ function selectedBattleItemBuild(selectBox) {
   battleItemList.forEach((battleItemBox) => {
     battleItemBox.addEventListener("click", (event) => {
         const viewImg = fillBattleItem.querySelector('img');
-        viewImg.src = event.currentTarget.childNodes[0].src;
-        viewImg.setAttribute('id', `selected_${event.currentTarget.childNodes[0].getAttribute('id')}`)
+        const viewName = fillBattleItem.querySelector('p');
+        const selectBattleItem = battleItemsInfo.find((battleItem) => (
+          battleItem['name'] === event.currentTarget.childNodes[0].getAttribute('id')
+        ));
+
+        viewImg.src = selectBattleItem['img'];
+        viewImg.setAttribute('id', `selected_${selectBattleItem['name']}`)
+        viewName.textContent = selectBattleItem['name_text'];
     });
   });
 }
@@ -404,9 +418,10 @@ function createBattleItemList() {
     data.forEach((battleItem) => {
       const battleItemLi = document.createElement('li');
       const battleItemImg = document.createElement('img');
+      const battleItemName = document.createElement('p');
       battleItemImg.setAttribute('id', battleItem['name']);
       battleItemImg.src = battleItem['img'];
-      battleItemLi.append(battleItemImg);
+      battleItemLi.append(battleItemImg, battleItemName);
       battleItemList.append(battleItemLi);
     });
 
