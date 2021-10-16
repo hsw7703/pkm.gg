@@ -377,8 +377,12 @@ section.skill-section {
 }
 
 .build-lane {
+	padding: 2%;
+	/*background-color: var(--dark-blue);*/
+	width: 100%;
 	display: flex;
-	margin-top: 5%;
+	/*justify-content: space-between;*/
+	margin: 0 auto;
 	text-align: center;
 }
 
@@ -387,4 +391,15 @@ section.skill-section {
 	padding: .3rem .5rem;
 	border-radius: 10px;
 	font-size: var(--h6);
+}
+
+.submit {
+	box-shadow: 0 0 9px 0px rgba(0,0,0,0.13);
+	width: 20%;
+	text-align: center;
+	background-color: var(--light-blue);
+	padding: .3rem .5rem;
+	border-radius: 10px;
+	font-size: var(--h6);
+	margin: 0 auto .5rem;
 }
