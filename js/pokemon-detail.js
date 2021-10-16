@@ -260,9 +260,52 @@ function selectSkillBuild(selectBox, pokemonSkillInfo) {
   });
 }
 
+function selectHeldItemBuild(selectBox) {
+  const heldItemList = selectBox.querySelectorAll('.held-item-list > li');
+  let fillHeldsItems = Array();
+  tabCon[1].childNodes.forEach((childNode) => {
+    if (childNode.localName === "li")
+     fillHeldsItems.push(childNode);
+  })
+ fillHeldsItems = fillHeldsItems.slice(4, 7);
+  const selectedHeldItemsList = Array();
+  
+  heldItemList.forEach((heldItemBox) => {
+    heldItemBox.addEventListener("click", (event) => {
+      const isSelectedIndex = selectedHeldItemsList.indexOf(event.currentTarget);
+
+      console.log(isSelectedIndex);
+
+      if (isSelectedIndex !== -1) {
+        selectedHeldItemsList.splice(isSelectedIndex, 1);
+      } else {
+        if (selectedHeldItemsList.length === 3) {
+          selectedHeldItemsList[2] = event.currentTarget;
+        } else {
+          selectedHeldItemsList.push(event.currentTarget);
+        }
+      }
+
+      selectedHeldItemsList.forEach((selectedHeldItem, index) => {
+        const viewImg = fillHeldsItems[index].querySelector('img');
+        viewImg.src = selectedHeldItem.childNodes[0].src;
+        viewImg.setAttribute('id', `selected_${selectedHeldItem.childNodes[0].getAttribute('id')}`)
+      })
+
+      for (let i = selectedHeldItemsList.length; i < 3; ++i) {
+        const viewImg = fillHeldsItems[i].querySelector('img');
+        viewImg.src = './img/plus.png';
+        viewImg.removeAttribute('id');
+      }
+
+      console.log(selectedHeldItemsList);
+    })
+  })
+}
+
 function selectBuild() {
   const myStorage = localStorage;
-  const buildList = tabCon[1].querySelectorAll('li');
+  const buildList = tabCon[1].querySelectorAll('.build > li');
   const selectBoxList = tabCon[1].querySelectorAll(".select-box");
   const pokemonInfo = JSON.parse(myStorage.getItem("pokemonDetailInfo"));
 
@@ -281,7 +324,94 @@ function selectBuild() {
     })
   }
 
+  for (let i = 4; i < 7; ++i) {
+    buildList[i].addEventListener("click", () => {
+      selectBoxList.forEach((selectBox) => {
+        selectBox.classList.remove("active");
+      })
+      selectBoxList[1].classList.add("active");
+    })
+  }
+
+  buildList[7].addEventListener("click", () => {
+    selectBoxList.forEach((selectBox) => {
+      selectBox.classList.remove("active");
+    })
+    selectBoxList[2].classList.add("active");
+  })
+
   selectSkillBuild(selectBoxList[0], pokemonInfo['skill']);
+}
+
+function createHeldItemList() {
+  fetch(`https://pkm.gg/api/held-items/`, {
+    method: 'GET',
+  }).then((response) => (
+    response.json()
+  )).then((data) => {
+    const myStorage = localStorage;
+    const heldItemsInfo = JSON.stringify(data);
+    myStorage.setItem('heldItemsInfo', heldItemsInfo);
+
+    const heldItemSelectBox = document.getElementById('held-item-select');
+    const heldItemList = heldItemSelectBox.querySelector('.held-item-list');
+
+    data.forEach((heldItem) => {
+      const heldItemLi = document.createElement('li');
+      const heldItemImg = document.createElement('img');
+      heldItemImg.setAttribute('id', heldItem['name']);
+      heldItemImg.src = heldItem['img'];
+      heldItemLi.append(heldItemImg);
+      heldItemList.append(heldItemLi);
+    });
+
+    selectHeldItemBuild(heldItemSelectBox);
+  })
+}
+
+function selectedBattleItemBuild(selectBox) {
+  const battleItemList = selectBox.querySelectorAll('.battle-item-list > li');
+
+  let fillBuild = Array();
+  tabCon[1].childNodes.forEach((childNode) => {
+    if (childNode.localName === "li")
+     fillBuild.push(childNode);
+  })
+ fillBattleItem = fillBuild[7];
+
+  battleItemList.forEach((battleItemBox) => {
+    battleItemBox.addEventListener("click", (event) => {
+        const viewImg = fillBattleItem.querySelector('img');
+        viewImg.src = event.currentTarget.childNodes[0].src;
+        viewImg.setAttribute('id', `selected_${event.currentTarget.childNodes[0].getAttribute('id')}`)
+    });
+  });
+}
+
+function createBattleItemList() {
+  fetch(`https://pkm.gg/api/battle-items/`, {
+    method: 'GET',
+  }).then((response) => (
+    response.json()
+  )).then((data) => {
+    const myStorage = localStorage;
+    const battleItemsInfo = JSON.stringify(data);
+    myStorage.setItem('battleItemsInfo', battleItemsInfo);
+
+    const battleItemSelectBox = document.getElementById('battle-item-select');
+    const battleItemList = battleItemSelectBox.querySelector('.battle-item-list');
+
+    data.forEach((battleItem) => {
+      const battleItemLi = document.createElement('li');
+      const battleItemImg = document.createElement('img');
+      battleItemImg.setAttribute('id', battleItem['name']);
+      battleItemImg.src = battleItem['img'];
+      battleItemLi.append(battleItemImg);
+      battleItemList.append(battleItemLi);
+    });
+
+    selectedBattleItemBuild(battleItemSelectBox);
+  })
 }
 
 function createPokemonData(pokemonIndex) {
@@ -345,6 +475,8 @@ function createPokemonData(pokemonIndex) {
 		createSkillDiv(characterAttack);
 		createSkillDiv(data['skill']);
 
+    createHeldItemList();
+    createBattleItemList();
 
     tabSwitch();
     selectBuild();
