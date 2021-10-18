@@ -239,4 +239,4 @@ def build(request):
             build.position = position
             build.save()
         return HttpResponse("success")
-    return HttpResponse("fail")
+    raise BadRequest('Invalid request.')
