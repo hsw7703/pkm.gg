@@ -273,16 +273,18 @@ function selectHeldItemBuild(selectBox) {
   
   heldItemList.forEach((heldItemBox) => {
     heldItemBox.addEventListener("click", (event) => {
-
+      
       const isSelectedIndex = selectedHeldItemsList.indexOf(event.currentTarget);
-
+      
       if (isSelectedIndex !== -1) {
         selectedHeldItemsList.splice(isSelectedIndex, 1);
+        heldItemBox.classList.remove('active');
       } else {
-        if (selectedHeldItemsList.length === 3) {
-          selectedHeldItemsList[2] = event.currentTarget;
-        } else {
+        if (selectedHeldItemsList.length < 3) {
           selectedHeldItemsList.push(event.currentTarget);
+          heldItemBox.classList.add('active');
+        } else {
+          return ;
         }
       }
 
@@ -389,6 +391,10 @@ function selectedBattleItemBuild(selectBox) {
 
   battleItemList.forEach((battleItemBox) => {
     battleItemBox.addEventListener("click", (event) => {
+      battleItemList.forEach((battleItemBox) => {
+        battleItemBox.classList.remove("active");
+      });
+      battleItemBox.classList.add("active");
         const viewImg = fillBattleItem.querySelector('img');
         const viewName = fillBattleItem.querySelector('p');
         const selectBattleItem = battleItemsInfo.find((battleItem) => (
