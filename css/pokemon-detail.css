@@ -157,8 +157,8 @@ section.build-section {
 .tab-title {
 	background-color: var(--deep-dark);
 	width: 100%;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+	padding-top: .7rem;
+	padding-bottom: .7rem;
 	text-align: center;
 }
 
@@ -387,23 +387,6 @@ section.skill-section {
 	box-shadow: 0 0 9px 0 rgba(0,0,0,0.13);
 }
 
-.build-lane {
-	padding: 2%;
-	/*background-color: var(--dark-blue);*/
-	width: 100%;
-	display: flex;
-	/*justify-content: space-between;*/
-	margin: 0 auto;
-	text-align: center;
-}
-
-.build-lane p {
-	background-color: var(--light-blue);
-	padding: .3rem .5rem;
-	border-radius: 10px;
-	font-size: var(--h6);
-}
-
 .select-box-top {
 	display: flex;
 	justify-content: space-around;
@@ -424,6 +407,7 @@ section.skill-section {
 	box-shadow: inset 0 0 9px 0px rgba(0,0,0,0.13);
 	background-color: var(--dark-blue);
 }
+
 .submit {
 	width: 20%;
 	box-shadow: 0 0 9px 0px rgba(0,0,0,0.13);
