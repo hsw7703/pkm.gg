@@ -238,4 +238,4 @@ def build(request):
             build.pkm_id = pkm
             build.position = position
             build.save()
-    return HttpResponse("success")
+        return HttpResponse("success")
