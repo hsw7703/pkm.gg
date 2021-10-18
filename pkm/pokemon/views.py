@@ -162,6 +162,7 @@ from django.core.exceptions import BadRequest
 def build(request):
     if request.POST:
         data = json.loads(request.body)
+        position = data['position']
         if len(data['item_id']) != 3:
             raise BadRequest('Invalid request.')
         q = Q()
@@ -209,12 +210,12 @@ def build(request):
                 build.delete()
 
         if item and skill:
-            build = models.Build.objects.filter(item_build_id=item[0].id, battle_item_id=battle_item.id, skill_build_id=skill[0].id)
+            build = models.Build.objects.filter(item_build_id=item[0].id, battle_item_id=battle_item.id, skill_build_id=skill[0].id, position=position)
             if build:
                 build[0].count += 1
                 build[0].save()
             else:
-                build = models.Build(pkm_id=pkm, item_build_id=item[0], battle_item_id=battle_item, skill_build_id=skill[0], count=1, date=timezone.now(), update_id=update)
+                build = models.Build(pkm_id=pkm, item_build_id=item[0], battle_item_id=battle_item, skill_build_id=skill[0], count=1, date=timezone.now(), update_id=update, position=position)
                 build.save()
         else:
             build = models.Build()
@@ -235,5 +236,6 @@ def build(request):
             build.update_id = update
             build.count = 1
             build.pkm_id = pkm
+            build.position = position
             build.save()
     return HttpResponse("success")
