@@ -38,7 +38,6 @@ section.build-list-section {
 
 .build .build-desc {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 	padding: 1% 2% 2%;
@@ -51,7 +50,16 @@ section.build-list-section {
 	line-height: var(--h2);
 }
 
+.build .build-desc li:first-child {
+	margin-right: 2%;
+}
+.build .build-desc li:nth-child(2) {
+	color: var(--sky-blue);
+	font-size: var(--h6);
+}
+
 .link {
+	margin-left: auto;
 	background-color: var(--light-blue);
 	box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.13);
 	border-radius: 10px;
