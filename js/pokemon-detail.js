@@ -230,7 +230,7 @@ function selectSkillBuild(selectBox, pokemonSkillInfo) {
       event.currentTarget.classList.add("active");
 
       fillSkill.src = event.currentTarget.src;
-      fillSkill.setAttribute('id', event.currentTarget.getAttribute('id'));
+      fillSkill.setAttribute('id', `selected_${event.currentTarget.getAttribute('id')}`);
       if (parentNode[0] == event.currentTarget) {
         fillSkillName.textContent = pokemonSkillInfo[2].name_text;
       } else {
@@ -250,7 +250,7 @@ function selectSkillBuild(selectBox, pokemonSkillInfo) {
       event.currentTarget.classList.add("active");
 
       fillSkill.src = event.currentTarget.src;
-      fillSkill.setAttribute('id', event.currentTarget.getAttribute('id'));
+      fillSkill.setAttribute('id', `selected_${event.currentTarget.getAttribute('id')}`);
       if (parentNode[0] == event.currentTarget) {
         fillSkillName.textContent = pokemonSkillInfo[4].name_text;
       } else {
@@ -313,6 +313,7 @@ function selectHeldItemBuild(selectBox) {
 
 function selectBuild() {
   const myStorage = localStorage;
+  const lineSelectList = tabCon[1].querySelectorAll('.build > .select-box-top > p')
   const buildList = tabCon[1].querySelectorAll('.build > li');
   const selectBoxList = tabCon[1].querySelectorAll(".select-box");
   const pokemonInfo = JSON.parse(myStorage.getItem("pokemonDetailInfo"));
@@ -346,6 +347,16 @@ function selectBuild() {
       selectBox.classList.remove("active");
     })
     selectBoxList[2].classList.add("active");
+  })
+
+  lineSelectList.forEach((lineSelect) => {
+    lineSelect.addEventListener("click", (event) => {
+      lineSelectList.forEach((lineSelect) => {
+        lineSelect.classList.remove("active");
+      });
+
+      event.currentTarget.classList.add("active")
+    })
   })
 
   selectSkillBuild(selectBoxList[0], pokemonInfo['skill']);
@@ -435,6 +446,82 @@ function createBattleItemList() {
   })
 }
 
+function buildSubmitHandler() {
+  const myStorage = localStorage;
+
+  const buildBox = document.querySelectorAll('.build')[1];
+  const submitButton = buildBox.querySelector('.submit');
+  const pokemonDetailInfo = JSON.parse(myStorage.getItem('pokemonDetailInfo'));
+  const heldItemsInfo = JSON.parse(myStorage.getItem('heldItemsInfo'));
+  const battleItemsInfo = JSON.parse(myStorage.getItem('battleItemsInfo'));
+
+  submitButton.addEventListener("click", () => {
+    const postBody = {};
+    const selected = buildBox.querySelectorAll("[id^='selected_']");
+    
+    const selectedSkill = [];
+    const selectedHeldItems = [];
+
+    try {
+      for (let i = 0; i < 4; ++i) {
+        pokemonDetailInfo['skill'].forEach((skill) => {
+          if (skill['name'] === selected[i].getAttribute('id').substring(9)) {
+            selectedSkill.push(parseInt(skill['id']));
+          }
+        });
+      }
+  
+      for (let i = 4; i < 7; ++i) {
+        heldItemsInfo.forEach((heldItem) => {
+          if (heldItem['name'] === selected[i].getAttribute('id').substring(9)) {
+            selectedHeldItems.push(parseInt(heldItem['id']));
+          }
+        });
+      }
+  
+      battleItemsInfo.forEach((battleItem) => {
+        if (battleItem['name'] === selected[7].getAttribute('id').substring(9)) {
+          postBody['battle_item_id'] = parseInt(battleItem['id']);
+        }
+      })
+      
+      postBody['pkm_id'] = parseInt(pokemonDetailInfo['id']);
+      postBody['skill_id'] = selectedSkill;
+      postBody['item_id'] = selectedHeldItems;
+  
+      // test
+      postBody['position'] = document.querySelector('.area.active').getAttribute('id');
+
+      if (!postBody['position']) {
+        throw new Error('Need To Line Select');
+      }
+    } catch (e) {
+      alert('빌드를 선택 해 주세요');
+      return ;
+    }
+
+    fetch(`https://pkm.gg/api/build/`, {
+      method: 'POST',
+      cache: 'no-cache',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(postBody),
+    })
+    .then((response) => {
+      if (!response.ok) {
+        console.error(response.body);
+        throw new Error('error');
+      }
+      alert('추천되었습니다.');
+      location.reload();
+    }).catch((error) => {
+      alert('전송이 실패하였습니다.');
+    })
+  })
+}
+
 function createPokemonData(pokemonIndex) {
   const myStorage = localStorage;
 
@@ -501,6 +588,8 @@ function createPokemonData(pokemonIndex) {
 
     tabSwitch();
     selectBuild();
+
+    buildSubmitHandler();
 	})
 }
 
