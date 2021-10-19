@@ -94,6 +94,7 @@ section.build-list-section {
 .build .list img {
 	background-color: black;
 	border-radius: 50%;
+	cursor: pointer;
 }
 
 .lane-icon {
