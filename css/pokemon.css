@@ -96,21 +96,21 @@ section.index-section {
 .detail-button-list {
 	/*margin: 4% 0 0;*/
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: center;
 	width: 100%;
-	padding: 1%;
+	padding: 1.5%;
 	background-color: var(--light-blue);
+	box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.13);
 	border-radius: 5px;
 }
 
 .detail-button-list li {
-	/*margin: 0 2%;*/
 	border-left: 1px solid var(--sky-blue);
 	/*background-color: var(--light-blue);*/
 	/*box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.13);*/
 	/*border-radius: 5px;*/
-	width: 49.5%;
+	width: 100%;
 	padding: 0 .7rem;
 	text-align: center;
 	font-size: var(--h5);
