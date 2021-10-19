@@ -35,7 +35,7 @@ function createCharacterDetail() {
 
     detailButtonList.className = "detail-button-list";
     buildListP.textContent = "빌드 목록";
-    detailViewP.textContent = "캐릭터 정보";
+    detailViewP.textContent = "포켓몬 정보";
     
     buildListLi.append(buildListP);
     detailViewLi.append(detailViewP);
