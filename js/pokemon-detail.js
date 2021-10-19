@@ -67,7 +67,7 @@ function createEvolutionDiv(evolutionArray) {
 
 function createRecommendBuildData(itemBuild, battleItemBuild, recommendSkill) {
 	// build-section 작업
-	const recommendDiv = document.querySelectorAll('.build-section > .build')[0];
+	const recommendDiv = document.querySelectorAll('.build-section > .build')[1];
 	recommendSkill.forEach((item) => {
 		const rawLi = document.createElement('li');
 		const img = document.createElement('img');
@@ -186,7 +186,7 @@ function selectSkillBuild(selectBox, pokemonSkillInfo) {
     };
   });
 
-  const fillBuild = document.querySelectorAll('.build')[1];
+  const fillBuild = document.querySelectorAll('.build')[0];
   const fillSkillList = fillBuild.querySelectorAll('li');
   selectSkillList[0].querySelectorAll('img').forEach((img) => {
     img.addEventListener("click", (event) => {
@@ -264,7 +264,7 @@ function selectHeldItemBuild(selectBox) {
   const heldItemsInfo = JSON.parse(localStorage.getItem('heldItemsInfo'));
   const heldItemList = selectBox.querySelectorAll('.held-item-list > li');
   let fillHeldsItems = Array();
-  tabCon[1].childNodes.forEach((childNode) => {
+  tabCon[0].childNodes.forEach((childNode) => {
     if (childNode.localName === "li")
      fillHeldsItems.push(childNode);
   })
@@ -313,9 +313,9 @@ function selectHeldItemBuild(selectBox) {
 
 function selectBuild() {
   const myStorage = localStorage;
-  const lineSelectList = tabCon[1].querySelectorAll('.build > .select-box-top > p')
-  const buildList = tabCon[1].querySelectorAll('.build > li');
-  const selectBoxList = tabCon[1].querySelectorAll(".select-box");
+  const lineSelectList = tabCon[0].querySelectorAll('.build > .select-box-top > p')
+  const buildList = tabCon[0].querySelectorAll('.build > li');
+  const selectBoxList = tabCon[0].querySelectorAll(".select-box");
   const pokemonInfo = JSON.parse(myStorage.getItem("pokemonDetailInfo"));
 
   const skillSelectList = selectBoxList[0].querySelectorAll('.skill-select li');
@@ -378,10 +378,9 @@ function createHeldItemList() {
     data.forEach((heldItem) => {
       const heldItemLi = document.createElement('li');
       const heldItemImg = document.createElement('img');
-      const heldItemName = document.createElement('p');
       heldItemImg.setAttribute('id', heldItem['name']);
       heldItemImg.src = heldItem['img'];
-      heldItemLi.append(heldItemImg, heldItemName);
+      heldItemLi.append(heldItemImg);
       heldItemList.append(heldItemLi);
     });
 
@@ -394,7 +393,7 @@ function selectedBattleItemBuild(selectBox) {
   const battleItemList = selectBox.querySelectorAll('.battle-item-list > li');
 
   let fillBuild = Array();
-  tabCon[1].childNodes.forEach((childNode) => {
+  tabCon[0].childNodes.forEach((childNode) => {
     if (childNode.localName === "li")
      fillBuild.push(childNode);
   })
@@ -449,7 +448,7 @@ function createBattleItemList() {
 function buildSubmitHandler() {
   const myStorage = localStorage;
 
-  const buildBox = document.querySelectorAll('.build')[1];
+  const buildBox = document.querySelectorAll('.build')[0];
   const submitButton = buildBox.querySelector('.submit');
   const pokemonDetailInfo = JSON.parse(myStorage.getItem('pokemonDetailInfo'));
   const heldItemsInfo = JSON.parse(myStorage.getItem('heldItemsInfo'));

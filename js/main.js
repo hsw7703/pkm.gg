@@ -6,14 +6,17 @@ function createCharacterDetail() {
     const detailTitle = document.createElement("div");
     const detailPkmName = document.createElement("p");
     const detailPkmType = document.createElement("p");
-    const lineDiv = document.createElement("div");
     const buildDiv = document.createElement("ul");
     const lineAreaImg = document.createElement("img");
+    const detailButtonList = document.createElement('ul');
+    const buildListLi = document.createElement('li');
+    const buildListP = document.createElement('p');
+    const detailViewLi = document.createElement('li');
+    const detailViewP = document.createElement("p");
     
     detailDiv.className = "detail";
     detailDiv.classList.add("hidden");
     detailTitle.className = "title";
-    lineDiv.className = "line";
     detailPkmName.className = "name-label";
     detailPkmType.className = "type-label";
     buildDiv.className = "build";
@@ -24,18 +27,19 @@ function createCharacterDetail() {
     module.createCharacterDetailTag(1, buildDiv);
     
 
-    detailDiv.append(detailTitle, lineDiv);
+    detailDiv.append(detailTitle, detailButtonList);
     detailTitle.append(lineAreaImg, detailPkmName, detailPkmType);
     detailDiv.append(buildDiv);
     indexDiv.append(detailDiv);
 
-    const detailViewP = document.createElement("p");
-    const detailViewA = document.createElement("a");
 
-    detailViewP.className = "link";
-    detailViewA.textContent = "자세히 보기 >";
-    detailViewP.append(detailViewA);
-    detailDiv.append(detailViewP);
+    detailButtonList.className = "detail-button-list";
+    buildListP.textContent = "빌드 목록";
+    detailViewP.textContent = "캐릭터 정보";
+    
+    buildListLi.append(buildListP);
+    detailViewLi.append(detailViewP);
+    detailButtonList.append(buildListLi, detailViewLi);
 }
 
 function createPokemonData() {

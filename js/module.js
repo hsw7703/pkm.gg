@@ -105,7 +105,7 @@ function inputCharacterData(infoArr, selectedDetailDiv) {
     const itemNameDiv = selectedDetailDiv.querySelector(".title > .name-label");
     const itemTypeDiv = selectedDetailDiv.querySelector(".title > .type-label");
     const lineAreaImg = selectedDetailDiv.querySelector('.title > img');
-    const itemDivArr = selectedDetailDiv.querySelectorAll("li");
+    const itemDivArr = selectedDetailDiv.querySelectorAll(".build > li");
 
     itemNameDiv.innerText = selectedCharacter.name_text;
     itemTypeDiv.innerText = selectedCharacter.attack_type_text + " " +selectedCharacter.damage_type_text;
@@ -115,8 +115,11 @@ function inputCharacterData(infoArr, selectedDetailDiv) {
     inputCharacterDetailData(selectedCharacter.item, 4, itemDivArr);
     inputBattleItemDetailData(selectedCharacter.battle_item, 7, itemDivArr);
 
-    const detailViewA = selectedDetailDiv.querySelector('.link > a');
-    detailViewA.setAttribute("href", `./pokemon-detail.html?pokemon=${selectedCharacter.id}`);
+    const detailButtonList = selectedDetailDiv.querySelectorAll('.detail-button-list > li');
+    const buildListP = detailButtonList[0].querySelector('p');
+    const detailViewP = detailButtonList[1].querySelector('p');
+    buildListP.setAttribute("onclick", `location.href='./build-list.html?pokemon=${selectedCharacter.id}'`);
+    detailViewP.setAttribute("onclick", `location.href='./pokemon-detail.html?pokemon=${selectedCharacter.id}'`);
 }
 
 function filterSetting(types) {
