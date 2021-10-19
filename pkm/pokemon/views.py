@@ -7,7 +7,6 @@ from django.utils import timezone
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .serializers import PokemonSerializer, PokemonDetailSerializer, ItemMainSerializer, ItemDetailSerializer, BattleItemSerializer, NewsMainSerializer, ItemUpgradeSerializer
-#from .models import Pokemon, Item, Battle_item, News, Skill, Pkm_item, Pkm_battle_item, Contact, Item_upgrade_cost
 from .serializer_models import PokemonMainModel, PokemonDetailModel, ItemUpgradeModel
 
 from . import models
@@ -22,79 +21,37 @@ from django.db import connection
 
 from django.db.models import Q
 
+from . import filter
+
 def get_client_ip(request):
-    allow_ips = ['127.0.0.0']
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
         ip = x_forwarded_for.split(',')[0]
     else:
         ip = request.META.get('REMOTE_ADDR')
-    is_allow = False
-    for allow_ip in allow_ips:
-        if allow_ip == ip:
-            is_allow = True
-    if is_allow:
-        return True
-    else:
-        return False
-
 
 @api_view(['GET'])
 def pokemonMainAPI(request):
-#    if not get_client_ip(request):
-#        return HttpResponse("Unauthorized", status=401)
-
+    pkms = models.Pokemon.objects.order_by("name_text")
     if request.GET:
-        type_q = Q()
-        damage_type_q = Q()
-        attack_type_q = Q()
-        q = Q()
-        types = request.GET.getlist("type")
-        damage_types = request.GET.getlist("damage_type")
-        attack_types = request.GET.getlist("attack_type")
-        if types and types[0]:
-            for type in types:
-                type_q |= Q(type=type)
-        if damage_types and damage_types[0]:
-                for type in damage_types:
-                    damage_type_q |= Q(damage_type=type)
-        if attack_types and attack_types[0]:
-            for type in attack_types:
-                attack_type_q |= Q(attack_type=type)
-        q.add(type_q, Q.AND)
-        q.add(damage_type_q, Q.AND)
-        q.add(attack_type_q, Q.AND)
-        pkms = models.Pokemon.objects.order_by("name_text").filter(q)
-    else:
-        pkms = models.Pokemon.objects.order_by("name_text")
+        pkms = pkms.filter(filter.pokemon_filter(request.GET))
     pokemon = []
     cursor = connection.cursor()
     cursor.execute('USE pokemon;')
     for pkm in pkms:
         pokemon.append(PokemonMainModel(pkm, cursor))
-    serializer = PokemonSerializer(pokemon, many=True)
-    return Response(serializer.data)
+    return Response(PokemonSerializer(pokemon, many=True).data)
 
 @api_view(['GET'])
 def pokemonDetailAPI(request, pkm_id):
-    pkm = PokemonDetailModel(get_object_or_404(models.Pokemon, pk=pkm_id))
-
-    serializer = PokemonDetailSerializer(pkm)
-    return Response(serializer.data)
+    return Response(PokemonDetailSerializer(PokemonDetailModel(get_object_or_404(models.Pokemon, pk=pkm_id))).data)
 
 @api_view(['GET'])
 def ItemMainAPI(request):
+    item = models.Item.objects.order_by("name_text")
     if request.GET:
-        q = Q()
-        types = request.GET.getlist('type')
-        if types and types[0]:
-            for type in types:
-                q |= Q(type=type)
-        item = models.Item.objects.filter(q).order_by("name_text")
-    else:
-        item = models.Item.objects.order_by("name_text")
-    serializer = ItemDetailSerializer(item, many=True)
-    return Response(serializer.data)
+        item = item.filter(filter.item_filter(request.GET.getlist('type')))
+    return Response(ItemDetailSerializer(item, many=True).data)
 
 @api_view(['GET'])
 def BattleItemAPI(request):
@@ -116,29 +73,20 @@ def ItemDetailAPI(request, id):
 
 @api_view(['GET'])
 def NewsMainAPI(request):
+    news = models.News.objects.all()
     if request.GET:
-        q = Q()
-        types = request.GET.getlist('type')
-        if types and types[0]:
-            for type in types:
-                q |= Q(type=type)
-        news = models.News.objects.filter(q)
-    else:
-        news = models.News.objects.all()
+        news = news.filter(filter.news_filter(request.GET.getlist('type')))
     serializer = NewsMainSerializer(news, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def ItemUpgradeCostAPI(request):
     if request.GET:
-        start_level = request.GET['start_level']
-        end_level = request.GET['end_level']
-        items = models.Item_upgrade_cost.objects.filter(level__gt=start_level, level__lte=end_level)
+        items = models.Item_upgrade_cost.objects.filter(level__gt=request.GET['start_level'], level__lte=request.GET['end_level'])
         cost = 0
         for item in items:
             cost += item.cost
-        serializer = ItemUpgradeSerializer(ItemUpgradeModel(cost))
-        return Response(serializer.data)
+        return Response(ItemUpgradeSerializer(ItemUpgradeModel(cost)).data)
 
 @csrf_exempt
 def ContactPage(request):
@@ -152,7 +100,6 @@ def ContactPage(request):
         msg = request.POST['user_message']
         models.Contact(name=name, msg=msg, is_check=False, date=timezone.now(), ip=ip).save()
         return HttpResponseRedirect('https://pkm.gg/contact.html')
-
 
 from .models import Build, Update, Skill_build, Item_build, Old_build
 import json
@@ -245,14 +192,16 @@ from .serializer_models import BuildModel
 from .serializers import BuildSerializer
 
 @api_view(['GET'])
-def build_list(response, pkm_id):
+def build_list(request, pkm_id):
+    if request.GET:
+        size = request.GET['size']
     builds = Build.objects.filter(pkm_id=pkm_id).select_related("skill_build_id__skill_id_1", "skill_build_id__skill_id_2", "skill_build_id__skill_id_3", "skill_build_id__skill_id_4", "item_build_id__item_id_1", "item_build_id__item_id_2", "item_build_id__item_id_3", "battle_item_id").order_by('-count')
     if not builds:
         raise BadRequest('Invalid request.')
     count = 0
     for build in builds:
         count += build.count
-    build = builds[:5]
+    build = builds[:size]
     build_list = BuildModel(build, count)
     serializer = BuildSerializer(build_list)
     return Response(serializer.data)
