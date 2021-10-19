@@ -16,7 +16,7 @@ section.build-list-section {
 	display: flex;
 	margin: auto;
 	margin-top: 1%;
-	padding: .3;
+	padding: .3rem 0;
 	justify-content: space-between;
 }
 
@@ -38,9 +38,10 @@ section.build-list-section {
 
 .build .build-desc {
 	display: flex;
+	/*vertical-align: middle;*/
 	align-items: center;
 	width: 100%;
-	padding: 1% 2% 2%;
+	padding: 2% 2% 3%;
 	margin: auto;
 }
 
@@ -51,7 +52,8 @@ section.build-list-section {
 }
 
 .build .build-desc li:first-child {
-	margin-right: 2%;
+	margin-right: 3%;
+	font-size: var(--h4);
 }
 .build .build-desc li:nth-child(2) {
 	color: var(--sky-blue);
