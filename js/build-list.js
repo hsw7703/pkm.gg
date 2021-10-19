@@ -26,22 +26,16 @@ function createBuildList(pokemonIndex) {
       const laneP = document.createElement('p');
       const rateOfUseLi = document.createElement('li');
       const rateOfUseP = document.createElement('p');
-      const linkLi = document.createElement('li');
-      const linkP = document.createElement('p');
       
       buildDiv.className = "build";
       buildDesc.className = "build-desc";
-      linkLi.className = "link";
       
       laneLi.append(laneP);
       rateOfUseLi.append(rateOfUseP);
-      linkLi.append(linkP);
-      buildDesc.append(laneLi, rateOfUseLi, linkLi);
+      buildDesc.append(laneLi, rateOfUseLi);
       
       laneP.innerHTML = `<img class="lane-icon" src="./img/positions/${build['position']}.png">${lineMapping[build['position']]}`;
       rateOfUseP.textContent = `사용률 ${parseFloat(build['percent']).toFixed(1)}%`;
-      linkP.textContent = '캐릭터 정보'
-      linkLi.setAttribute('onclick', `location.href='./pokemon-detail.html?pokemon=${data['id']}'`);
 
       const lineDiv = document.createElement('div');
       lineDiv.className = "line";
