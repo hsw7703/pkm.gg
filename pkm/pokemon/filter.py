@@ -30,3 +30,4 @@ def news_filter(types):
     for type in types:
         q |= Q(type=type)
     return (q)
+

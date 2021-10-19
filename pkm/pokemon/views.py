@@ -29,6 +29,7 @@ def get_client_ip(request):
         ip = x_forwarded_for.split(',')[0]
     else:
         ip = request.META.get('REMOTE_ADDR')
+    return (ip)
 
 @api_view(['GET'])
 def pokemonMainAPI(request):
@@ -91,14 +92,9 @@ def ItemUpgradeCostAPI(request):
 @csrf_exempt
 def ContactPage(request):
     if request.POST:
-        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-        if x_forwarded_for:
-            ip = x_forwarded_for.split(',')[0]
-        else:
-            ip = request.META.get('REMOTE_ADDR')
         name = request.POST['user_name']
         msg = request.POST['user_message']
-        models.Contact(name=name, msg=msg, is_check=False, date=timezone.now(), ip=ip).save()
+        models.Contact(name=name, msg=msg, is_check=False, date=timezone.now(), ip=get_client_ip(request)).save()
         return HttpResponseRedirect('https://pkm.gg/contact.html')
 
 from .models import Build, Update, Skill_build, Item_build, Old_build

@@ -120,6 +120,8 @@ class BuildSerializer(serializers.Serializer):
     img = serializers.CharField(max_length=100)
     name_text = serializers.CharField(max_length=20)
     name = serializers.CharField(max_length=50)
+    difficulty = serializers.CharField(max_length=10)
+    difficulty_text = serializers.CharField(max_length=10)
     build = BuildListSerializer(many=True)
 
 #class NewsDetailSerializer(serializers.ModelSerializer):

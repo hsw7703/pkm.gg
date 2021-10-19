@@ -2,10 +2,6 @@ from .models import Pkm_item, Pkm_battle_item, Skill
 
 class PopupItemModel:
     def __init__(self, item):
-#        self.img = item['item_id__img']
-#        self.name = item['item_id__name']
-#        self.name_text = item['item_id__name_text']
-#        self.id = item['item_id']
         self.img = item.img
         self.name = item.name
         self.name_text = item.name_text
@@ -13,10 +9,6 @@ class PopupItemModel:
 
 class PopupBattleItemModel:
     def __init__(self, item):
-#        self.id = item.battle_item_id.id
-#        self.name = item.battle_item_id.name
-#        self.name_text = item.battle_item_id.name_text
-#        self.img = item.battle_item_id.img
         self.id = item.id
         self.name = item.name
         self.name_text = item.name_text
@@ -24,10 +16,6 @@ class PopupBattleItemModel:
 
 class PopupSkillModel:
     def __init__(self, skill):
-#        self.name = skill['name']
-#        self.name_text = skill['name_text']
-#        self.img = skill['img']
-#        self.level = skill['level']
         self.id = skill.id
         self.name = skill.name
         self.name_text = skill.name_text
@@ -64,6 +52,8 @@ class BuildModel:
         self.name_text = builds[0].pkm_id.name_text
         self.name = builds[0].pkm_id.name
         self.id = builds[0].pkm_id.id
+        self.difficulty = builds[0].pkm_id.difficulty
+        self.difficulty_text = builds[0].pkm_id.difficulty_text
         
 class PokemonMainModel:
     def __init__(self, pkm, cursor):
