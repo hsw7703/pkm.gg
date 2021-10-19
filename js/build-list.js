@@ -13,9 +13,15 @@ function createBuildList(pokemonIndex) {
       "central": "중앙 에리어",
       "bottom": "아래 루트",
     };
-
-    const pageTitle = document.querySelector('.page-title-section > .page-title');
-    pageTitle.textContent = `${data['name_text']} 빌드 목록`;
+    
+    const pokemonInfoSection = document.querySelector('.pokemon-info-section');
+    const profileImg = pokemonInfoSection.querySelector('.profile > img');
+    const nameLabel = pokemonInfoSection.querySelectorAll('.profile-desc > .name-label > li');
+    
+    profileImg.src = data['img'];
+    profileImg.setAttribute('onclick', `location.href='./pokemon-detail.html?pokemon=${data['id']}'`);
+    nameLabel[0].textContent = data['name_text'];
+    nameLabel[1].textContent = data['difficulty_text'];
 
     const buildListSection = document.querySelector('.build-list-section');
     
