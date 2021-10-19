@@ -39,6 +39,21 @@ from django.db import connection
 
 from .models import Build
 
+class BuildModel:
+    def __init__(self, build, count):
+        self.skill = []
+        self.item = []
+        self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_1))
+        self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_2))
+        self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_3))
+        self.skill.append(PopupSkillModel(build.skill_build_id.skill_id_4))
+        self.item.append(PopupItemModel(build.item_build_id.item_id_1))
+        self.item.append(PopupItemModel(build.item_build_id.item_id_2))
+        self.item.append(PopupItemModel(build.item_build_id.item_id_3))
+        self.battle_item = PopupBattleItemModel(build.battle_item_id)
+        self.position = build.position
+        self.percent = build.count / count * 100
+
 class PokemonMainModel:
     def __init__(self, pkm, cursor):
         self.id = pkm.id

@@ -16,4 +16,5 @@ urlpatterns = [
     path('item-upgrade-cost/', views.ItemUpgradeCostAPI, name='item-upgrade-cost'),
     path('contact/', views.ContactPage),
     path('build/', views.build),
+    path('build-list/<int:pkm_id>', views.build_list)
 ]

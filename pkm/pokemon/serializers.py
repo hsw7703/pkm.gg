@@ -107,6 +107,13 @@ class NewsMainSerializer(serializers.ModelSerializer):
 class ItemUpgradeSerializer(serializers.Serializer):
     cost = serializers.IntegerField()
 
+class BuildSerializer(serializers.Serializer):
+    skill = PopupSkillSerializer(many=True)
+    item = PopupItemSerializer(many=True)
+    battle_item = PopupBattleItemSerializer()
+    position = serializers.CharField(max_length=10)
+    percent = serializers.FloatField()
+
 #class NewsDetailSerializer(serializers.ModelSerializer):
 #    class Meta:
 #        model = News

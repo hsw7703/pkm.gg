@@ -17,6 +17,10 @@ class ContactAdmin(admin.ModelAdmin):
 class ItemUpgradeCostAdmin(admin.ModelAdmin):
     list_display = ('level', 'cost')
 
+class BuildAdmin(admin.ModelAdmin):
+    list_display = ('pkm_id', 'item_build_id', 'skill_build_id', 'battle_item_id', 'count')
+    search_fields = ['pkm_id__name_text']
+
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(Item)
 admin.site.register(Pkm_item, Pkm_itemAdmin)
@@ -30,7 +34,7 @@ admin.site.register(Contact, ContactAdmin)
 
 from .models import Build, Update, Skill_build, Item_build, Old_build
 
-admin.site.register(Build)
+admin.site.register(Build, BuildAdmin)
 admin.site.register(Old_build)
 admin.site.register(Update)
 admin.site.register(Skill_build)
