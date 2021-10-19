@@ -157,9 +157,10 @@ section.build-section {
 .tab-title {
 	background-color: var(--deep-dark);
 	width: 100%;
-	padding-top: .7rem;
-	padding-bottom: .7rem;
+	padding-top: .9rem;
+	padding-bottom: .9rem;
 	text-align: center;
+	font-size: var(--h5);
 }
 
 .tab-title.active {
@@ -256,7 +257,7 @@ section.skill-section {
 }
 .skill-top .skill-title .skill-summary li {
 	display:flex;
-	padding: 5px 6px;
+	padding: 5px 7px 4px;
 	align-items: center;
 	border-radius: 100px;
 	background-color: var(--sky-blue);
