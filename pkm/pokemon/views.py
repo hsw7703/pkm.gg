@@ -193,6 +193,7 @@ from .serializers import BuildSerializer
 
 @api_view(['GET'])
 def build_list(request, pkm_id):
+    size = 5
     if request.GET:
         size = request.GET['size']
     builds = Build.objects.filter(pkm_id=pkm_id).select_related("skill_build_id__skill_id_1", "skill_build_id__skill_id_2", "skill_build_id__skill_id_3", "skill_build_id__skill_id_4", "item_build_id__item_id_1", "item_build_id__item_id_2", "item_build_id__item_id_3", "battle_item_id").order_by('-count')
