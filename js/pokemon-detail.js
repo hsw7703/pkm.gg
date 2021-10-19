@@ -305,7 +305,7 @@ function selectHeldItemBuild(selectBox) {
         const viewName = fillHeldsItems[i].querySelector('p');
         viewImg.src = './img/plus.png';
         viewImg.removeAttribute('id');
-        viewName.textContent = '';
+        viewName.textContent = '지닌물건';
       }
     })
   })
@@ -414,6 +414,9 @@ function selectedBattleItemBuild(selectBox) {
         viewImg.src = selectBattleItem['img'];
         viewImg.setAttribute('id', `selected_${selectBattleItem['name']}`)
         viewName.textContent = selectBattleItem['name_text'];
+
+        const battleItemSelectBox = document.getElementById('battle-item-select');
+        battleItemSelectBox.classList.remove("active");
     });
   });
 }
@@ -434,10 +437,9 @@ function createBattleItemList() {
     data.forEach((battleItem) => {
       const battleItemLi = document.createElement('li');
       const battleItemImg = document.createElement('img');
-      const battleItemName = document.createElement('p');
       battleItemImg.setAttribute('id', battleItem['name']);
       battleItemImg.src = battleItem['img'];
-      battleItemLi.append(battleItemImg, battleItemName);
+      battleItemLi.append(battleItemImg);
       battleItemList.append(battleItemLi);
     });
 
