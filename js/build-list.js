@@ -34,7 +34,7 @@ function createBuildList(pokemonIndex) {
       rateOfUseLi.append(rateOfUseP);
       buildDesc.append(laneLi, rateOfUseLi);
       
-      laneP.innerHTML = `<img class="lane-icon" src="./img/positions/${build['position']}.png">${lineMapping[build['position']]}`;
+      laneP.innerHTML = `<img class="lane-icon" src="./img/positions/${build['position']}.png"> ${lineMapping[build['position']]}`;
       rateOfUseP.textContent = `사용률 ${parseFloat(build['percent']).toFixed(1)}%`;
 
       const lineDiv = document.createElement('div');
