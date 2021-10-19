@@ -28,6 +28,7 @@ class PopupSkillModel:
 #        self.name_text = skill['name_text']
 #        self.img = skill['img']
 #        self.level = skill['level']
+        self.id = skill.id
         self.name = skill.name
         self.name_text = skill.name_text
         self.img = skill.img
@@ -39,7 +40,7 @@ from django.db import connection
 
 from .models import Build
 
-class BuildModel:
+class BuildListModel:
     def __init__(self, build, count):
         self.skill = []
         self.item = []
@@ -54,6 +55,16 @@ class BuildModel:
         self.position = build.position
         self.percent = build.count / count * 100
 
+class BuildModel:
+    def __init__(self, builds, count):
+        self.build = []
+        for build in builds:
+            self.build.append(BuildListModel(build, count))
+        self.img = builds[0].pkm_id.img
+        self.name_text = builds[0].pkm_id.name_text
+        self.name = builds[0].pkm_id.name
+        self.id = builds[0].pkm_id.id
+        
 class PokemonMainModel:
     def __init__(self, pkm, cursor):
         self.id = pkm.id

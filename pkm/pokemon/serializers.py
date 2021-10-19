@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Item, Battle_item, News
 
 class PopupSkillSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
     name = serializers.CharField(max_length=20)
     name_text = serializers.CharField(max_length=20)
     img = serializers.CharField(max_length=50)
@@ -107,12 +108,19 @@ class NewsMainSerializer(serializers.ModelSerializer):
 class ItemUpgradeSerializer(serializers.Serializer):
     cost = serializers.IntegerField()
 
-class BuildSerializer(serializers.Serializer):
+class BuildListSerializer(serializers.Serializer):
     skill = PopupSkillSerializer(many=True)
     item = PopupItemSerializer(many=True)
     battle_item = PopupBattleItemSerializer()
     position = serializers.CharField(max_length=10)
     percent = serializers.FloatField()
+
+class BuildSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    img = serializers.CharField(max_length=100)
+    name_text = serializers.CharField(max_length=20)
+    name = serializers.CharField(max_length=50)
+    build = BuildListSerializer(many=True)
 
 #class NewsDetailSerializer(serializers.ModelSerializer):
 #    class Meta:

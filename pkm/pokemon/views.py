@@ -246,12 +246,13 @@ from .serializers import BuildSerializer
 
 @api_view(['GET'])
 def build_list(response, pkm_id):
-    builds = Build.objects.filter(pkm_id=pkm_id).select_related("skill_build_id__skill_id_1", "skill_build_id__skill_id_2", "skill_build_id__skill_id_3", "skill_build_id__skill_id_4", "item_build_id__item_id_1", "item_build_id__item_id_2", "item_build_id__item_id_3", "battle_item_id").order_by('-count')[:5]
+    builds = Build.objects.filter(pkm_id=pkm_id).select_related("skill_build_id__skill_id_1", "skill_build_id__skill_id_2", "skill_build_id__skill_id_3", "skill_build_id__skill_id_4", "item_build_id__item_id_1", "item_build_id__item_id_2", "item_build_id__item_id_3", "battle_item_id").order_by('-count')
+    if not builds:
+        raise BadRequest('Invalid request.')
     count = 0
     for build in builds:
         count += build.count
-    build_list = []
-    for build in builds:
-        build_list.append(BuildModel(build, count))
-    serializer = BuildSerializer(build_list, many=True)
+    build = builds[:5]
+    build_list = BuildModel(build, count)
+    serializer = BuildSerializer(build_list)
     return Response(serializer.data)
