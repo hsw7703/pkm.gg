@@ -80,9 +80,9 @@ class PokemonDetailSerializer(serializers.Serializer):
     support = serializers.IntegerField()
     evolution = EvolutionSerializer(many=True)
     skill = SkillSerializer(many=True)
-    recommend_skill = PopupSkillSerializer(many=True)
-    item = PopupItemSerializer(many=True)
-    battle_item = PopupBattleItemSerializer()
+    recommend_skill = PopupSkillSerializer(many=True, required=False)
+    item = PopupItemSerializer(many=True, required=False)
+    battle_item = PopupBattleItemSerializer(required=False)
 
 class ItemMainSerializer(serializers.Serializer):
     id = serializers.IntegerField()

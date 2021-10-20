@@ -22,8 +22,6 @@ class PopupSkillModel:
         self.img = skill.img
         self.level = skill.level
 
-
-
 from django.db import connection
 
 from .models import Build
@@ -166,7 +164,6 @@ class PokemonDetailModel:
             self.item.append(PopupItemModel(build.item_build_id.item_id_3))
             self.battle_item = PopupBattleItemModel(build.battle_item_id)
             self.position = build.position
-
 
 class ItemUpgradeModel:
     def __init__(self, cost):
