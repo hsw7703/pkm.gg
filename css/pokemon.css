@@ -61,6 +61,15 @@ section.index-section {
 	justify-content: space-between;
 }
 
+.detail .build .empty-build {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	min-height: 180px;
+	font-size: var(--h4);
+}
+
 .detail .build li {
 	text-align: center;
 	margin-top: 4.5%;

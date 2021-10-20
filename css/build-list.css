@@ -127,3 +127,11 @@ section.build-list-section {
 	color: var(--sky-blue);
 	font-size: var(--h6);
 }
+
+.build-list-section .build .empty-build {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 50px;
+	font-size: var(--h4);
+}

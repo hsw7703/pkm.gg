@@ -230,3 +230,7 @@ section.page-title-section {
 	border-radius: 10px;
 	cursor: pointer;
 }
+
+.empty-build p {
+	color: var(--sky-blue);
+}
