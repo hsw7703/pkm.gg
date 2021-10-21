@@ -446,3 +446,11 @@ section.skill-section {
 	line-height: var(--h5);
 	/*margin-right: .5%;*/
 }
+
+.build-section .build .empty-build {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 50px;
+	font-size: var(--h4);
+}
