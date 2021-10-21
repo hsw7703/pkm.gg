@@ -449,8 +449,8 @@ section.skill-section {
 
 .build-section .build .empty-build {
 	display: flex;
-	justify-content: center;
+	margin: auto;
 	align-items: center;
-	min-height: 50px;
+	min-height: 180px;
 	font-size: var(--h4);
 }
