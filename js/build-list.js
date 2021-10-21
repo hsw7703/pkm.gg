@@ -27,7 +27,21 @@ function createBuildList( pokemonIndex ) {
             nameLabel[ 1 ].textContent = data[ 'difficulty_text' ];
 
             const buildListSection = document.querySelector( '.build-list-section' );
+            if ( data[ 'build' ].length === 0 ) {
+                const buildDiv = document.createElement( 'div' );
+                const emptyBuildDiv = document.createElement( "div" );
+                const emptyMessage = document.createElement( "p" );
 
+                buildDiv.className = "build";
+                emptyBuildDiv.classList.add( "empty-build" );
+                emptyMessage.textContent = "아직 추천 빌드가 존재하지 않습니다."
+
+                emptyBuildDiv.append( emptyMessage );
+                buildDiv.append( emptyBuildDiv );
+                buildListSection.append( buildDiv );
+
+                return;
+            }
             data[ 'build' ].forEach( ( build ) => {
                 const buildDiv = document.createElement( 'div' );
                 const buildDesc = document.createElement( 'ul' );
