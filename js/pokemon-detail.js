@@ -69,6 +69,19 @@ function createEvolutionDiv( evolutionArray ) {
 function createRecommendBuildData( itemBuild, battleItemBuild, recommendSkill ) {
     // build-section 작업
     const recommendDiv = document.querySelectorAll( '.build-section > .build' )[ 1 ];
+    if ( recommendSkill.length === 0 ) {
+        const emptyBuildDiv = document.createElement( "div" );
+        const emptyMessage = document.createElement( "p" );
+
+        emptyBuildDiv.classList.add( "empty-build" );
+        emptyMessage.textContent = "아직 추천 빌드가 존재하지 않습니다."
+
+        emptyBuildDiv.append( emptyMessage );
+        recommendDiv.append( emptyBuildDiv );
+
+        return;
+    }
+
     recommendSkill.forEach( ( item ) => {
         const rawLi = document.createElement( 'li' );
         const img = document.createElement( 'img' );
@@ -588,6 +601,15 @@ function createPokemonData( pokemonIndex ) {
                     , "cooltime": "0"
                     , "description": data[ "passive_effect" ]
                 , }
+
+
+
+
+
+
+
+
+
                 
                 , {
                     "name_text": "일반 공격"
@@ -596,7 +618,16 @@ function createPokemonData( pokemonIndex ) {
                     , "cooltime": "0"
                     , "description": data[ "attack_effect" ]
                 , }
-		
+
+
+
+
+
+
+
+
+
+                
                 , ];
 
 
