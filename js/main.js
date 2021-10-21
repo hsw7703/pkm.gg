@@ -20,7 +20,8 @@ function createCharacterDetail( ) {
     detailPkmName.className = "name-label";
     detailPkmType.className = "type-label";
     buildDiv.className = "build";
-    lineAreaImg.className = "lane-icon";
+    lineAreaImg.classList.add( "lane-icon" );
+    lineAreaImg.classList.add( "hidden" );
 
     module.createCharacterDetailTag( 4, buildDiv );
     module.createCharacterDetailTag( 3, buildDiv );

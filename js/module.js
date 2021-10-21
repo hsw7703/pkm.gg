@@ -101,35 +101,42 @@ function inputBattleItemData( infoArr, selectedDetailDiv ) {
 
 function inputCharacterData( infoArr, selectedDetailDiv ) {
     const selectedCharacter = infoArr;
+    console.log( selectedDetailDiv );
     const buildDiv = selectedDetailDiv.querySelector( '.build' );
     const emptyBuildDiv = buildDiv.querySelector( '.empty-build' );
-    if ( selectedCharacter.skill.length === 0 ) {
-        emptyBuildDiv.classList.remove( "hidden" );
-        buildDiv.querySelectorAll( 'li' )
-            .forEach( ( li ) => {
-                li.classList.add( "hidden" );
-            } )
-        return;
-    } else {
-        emptyBuildDiv.classList.add( "hidden" );
-        buildDiv.querySelectorAll( 'li' )
-            .forEach( ( li ) => {
-                li.classList.remove( "hidden" );
-            } )
-    }
-
     const itemNameDiv = selectedDetailDiv.querySelector( ".title > .name-label" );
     const itemTypeDiv = selectedDetailDiv.querySelector( ".title > .type-label" );
     const lineAreaImg = selectedDetailDiv.querySelector( '.title > img' );
     const itemDivArr = selectedDetailDiv.querySelectorAll( ".build > li" );
 
+    if ( selectedCharacter.skill.length === 0 ) {
+        const laneIcon = selectedDetailDiv.querySelector( ".lane-icon" );
+        laneIcon.classList.add( "hidden" );
+        emptyBuildDiv.classList.remove( "hidden" );
+        buildDiv.querySelectorAll( 'li' )
+            .forEach( ( li ) => {
+                li.classList.add( "hidden" );
+            } )
+    } else {
+        const laneIcon = selectedDetailDiv.querySelector( ".lane-icon" );
+        laneIcon.classList.remove( "hidden" );
+        emptyBuildDiv.classList.add( "hidden" );
+        buildDiv.querySelectorAll( 'li' )
+            .forEach( ( li ) => {
+                li.classList.remove( "hidden" );
+            } )
+        if ( selectedCharacter.position ) {
+            lineAreaImg.src = `./img/positions/${selectedCharacter.position}.png`;
+        }
+
+        inputCharacterDetailData( selectedCharacter.skill, 0, itemDivArr, selectedCharacter.id );
+        inputCharacterDetailData( selectedCharacter.item, 4, itemDivArr );
+        inputBattleItemDetailData( selectedCharacter.battle_item, 7, itemDivArr );
+    }
+
     itemNameDiv.innerText = selectedCharacter.name_text;
     itemTypeDiv.innerText = selectedCharacter.attack_type_text + " " + selectedCharacter.damage_type_text;
-    lineAreaImg.src = `./img/positions/${selectedCharacter.position}.png`;
 
-    inputCharacterDetailData( selectedCharacter.skill, 0, itemDivArr, selectedCharacter.id );
-    inputCharacterDetailData( selectedCharacter.item, 4, itemDivArr );
-    inputBattleItemDetailData( selectedCharacter.battle_item, 7, itemDivArr );
 
     const detailButtonList = selectedDetailDiv.querySelectorAll( '.detail-button-list > li' );
     const buildListP = detailButtonList[ 0 ].querySelector( 'p' );
