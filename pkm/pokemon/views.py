@@ -110,18 +110,10 @@ def build(request):
         data['item_id'].sort()
         build_checker(data)
 
-#        item = filter.build_item_filter(data['item_id'])
-#        skill = filter.build_skill_filter(data['skill_id'], data['pkm_id'])
-#        battle_item = battle_item_checker(data['battle_item_id'])
         update = models.Update.objects.filter(date__lte=timezone.now()).order_by('-date')[0]
         pkm = models.Pokemon.objects.get(id=data['pkm_id'])
 
         build_func.build_delete(models.Build.objects.filter(pkm_id=pkm.id))
-
-#        item = build_func.item_build_save(item, data['item_id'])
-#        skill = build_func.skill_build_save(skill, data['skill_id'])
-#
-#        build_func.build_save(pkm, skill, item, battle_item, data['position'], update)
         build_func.build_save(data, update)
         return HttpResponse("success")
     return HttpResponse(request, status=401)
@@ -133,15 +125,6 @@ from .serializers import BuildSerializer
 def build_list(request, pkm_id):
     size = 5
     if request.GET:
-        print(request.GET)
         size = int(request.GET['size'])
-    builds = Build.objects.filter(pkm_id=pkm_id).select_related("skill_build_id__skill_id_1", "skill_build_id__skill_id_2", "skill_build_id__skill_id_3", "skill_build_id__skill_id_4", "item_build_id__item_id_1", "item_build_id__item_id_2", "item_build_id__item_id_3", "battle_item_id").order_by('-count')
-    if not builds:
-        raise BadRequest('Invalid request.')
-    count = 0
-    for build in builds:
-        count += build.count
-    build = builds[:size]
-    build_list = BuildModel(build, count)
-    serializer = BuildSerializer(build_list)
-    return Response(serializer.data)
+    builds = filter.build_list_filter(pkm_id)
+    return Response(BuildSerializer(BuildModel(models.Pokemon.objects.get(id=pkm_id), builds[:size], build_func.build_count(builds))).data)

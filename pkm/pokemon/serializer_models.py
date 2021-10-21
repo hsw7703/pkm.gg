@@ -42,16 +42,16 @@ class BuildListModel:
         self.percent = build.count / count * 100
 
 class BuildModel:
-    def __init__(self, builds, count):
+    def __init__(self, pkm, builds, count):
         self.build = []
         for build in builds:
             self.build.append(BuildListModel(build, count))
-        self.img = builds[0].pkm_id.img
-        self.name_text = builds[0].pkm_id.name_text
-        self.name = builds[0].pkm_id.name
-        self.id = builds[0].pkm_id.id
-        self.difficulty = builds[0].pkm_id.difficulty
-        self.difficulty_text = builds[0].pkm_id.difficulty_text
+        self.img = pkm.img
+        self.name_text = pkm.name_text
+        self.name = pkm.name
+        self.id = pkm.id
+        self.difficulty = pkm.difficulty
+        self.difficulty_text = pkm.difficulty_text
         
 class PokemonMainModel:
     def __init__(self, pkm, cursor):

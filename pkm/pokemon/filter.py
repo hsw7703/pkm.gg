@@ -1,5 +1,5 @@
 from django.db.models import Q
-from .models import Item, Skill, Item_build, Skill_build
+from .models import Item, Skill, Item_build, Skill_build, Build
 from django.core.exceptions import BadRequest
 
 def pokemon_filter(get):
@@ -57,3 +57,9 @@ def build_skill_filter(skill_ids, pkm_id):
     q &= Q(skill_id_3 = skill_ids[2])
     q &= Q(skill_id_4 = skill_ids[3])
     return Skill_build.objects.filter(q)
+
+def build_list_filter(pkm_id):
+    builds = Build.objects.filter(pkm_id=pkm_id).select_related("skill_build_id__skill_id_1", "skill_build_id__skill_id_2", "skill_build_id__skill_id_3", "skill_build_id__skill_id_4", "item_build_id__item_id_1", "item_build_id__item_id_2", "item_build_id__item_id_3", "battle_item_id").order_by('-count')
+#    if not builds:
+#        raise BadRequest('Invalid request.')
+    return (builds)

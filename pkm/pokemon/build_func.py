@@ -48,3 +48,9 @@ def build_save(data, update):
             date=timezone.now(),
             update_id=update,
             position=data['position']).save()
+
+def build_count(builds):
+    count = 0
+    for build in builds:
+        count += build.count
+    return count

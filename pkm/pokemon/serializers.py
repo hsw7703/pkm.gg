@@ -122,7 +122,7 @@ class BuildSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=50)
     difficulty = serializers.CharField(max_length=10)
     difficulty_text = serializers.CharField(max_length=10)
-    build = BuildListSerializer(many=True)
+    build = BuildListSerializer(many=True, required=False)
 
 #class NewsDetailSerializer(serializers.ModelSerializer):
 #    class Meta:
