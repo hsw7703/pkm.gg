@@ -127,7 +127,13 @@ function createSkillDiv( skillArray ) {
         const skillName = document.createElement( 'h3' );
         const skillSummary = document.createElement( 'ul' );
         const skillCoolTime = document.createElement( 'li' );
+        const skillCoolTimeText = document.createElement( 'span' );
         const skillType = document.createElement( 'li' );
+        const skillTypeText = document.createElement( 'span' );
+        const skillIcon = document.createElement( 'div' );
+        const skillIconImage = document.createElement( 'img' );
+        const coolTimeIcon = document.createElement( 'div' );
+        const coolTimeIconImage = document.createElement( 'img' );
 
         skillArticle.className = 'skill';
         skillTop.className = 'skill-top';
@@ -136,13 +142,18 @@ function createSkillDiv( skillArray ) {
         skillTitle.className = 'skill-title';
         skillName.className = 'skill-name';
         skillSummary.className = 'skill-summary';
+        skillIcon.className = 'skill-icon';
+        coolTimeIcon.className = 'skill-icon';
 
         skillImage.src = skill[ 'img' ];
-        // skillImage.src = "https://via.placeholder.com/140";
+        if ( skill[ 'type' ] != undefined ) {
+            skillIconImage.src = `./img/skill-icon/${skill['type']}.png`;
+        }
+        coolTimeIconImage.src = './img/skill-icon/cooltime.png';
 
         skillName.textContent = skill[ 'name_text' ];
-        skillCoolTime.textContent = `${skill['cooltime']}초`;
-        skillType.textContent = skill[ 'type_text' ];
+        skillCoolTimeText.textContent = `${skill['cooltime']}초`;
+        skillTypeText.textContent = skill[ 'type_text' ];
 
         const descriptionSplit = skill[ 'description' ].split( '\r\n' );
         for ( let i in descriptionSplit ) {
@@ -158,8 +169,12 @@ function createSkillDiv( skillArray ) {
         skillTitle.append( skillName );
         skillTitle.append( skillSummary );
         skillSummary.append( skillType );
+        skillType.append( skillIcon, skillTypeText );
+        skillIcon.append( skillIconImage );
         if ( skill[ 'cooltime' ] != 0 ) {
             skillSummary.append( skillCoolTime );
+            skillCoolTime.append( coolTimeIcon, skillCoolTimeText );
+            coolTimeIcon.append( coolTimeIconImage );
         }
 
         skillSection.append( skillArticle );
@@ -601,35 +616,17 @@ function createPokemonData( pokemonIndex ) {
                     , "cooltime": "0"
                     , "description": data[ "passive_effect" ]
                 , }
-
-
-
-
-
-
-
-
-
                 
                 , {
                     "name_text": "일반 공격"
+                    , "type": data[ 'attack_type' ]
                     , "type_text": data[ 'damage_type_text' ]
                     , "img": `./img/pokemon/${data['name']}/Attack.png`
                     , "cooltime": "0"
                     , "description": data[ "attack_effect" ]
                 , }
-
-
-
-
-
-
-
-
-
                 
                 , ];
-
 
             createSkillDiv( characterAttack );
             createSkillDiv( data[ 'skill' ] );
