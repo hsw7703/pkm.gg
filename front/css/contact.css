@@ -1,0 +1,54 @@
+section.contact-section {
+	width: 100%;
+}
+
+form {
+	margin: 0 auto;
+	width: 92%;
+}
+
+form .name-form {
+	width: 100%;
+	margin: 5% 0;
+}
+
+form .msg-form {
+	margin: 0 auto;
+}
+
+.label {
+	margin-bottom: 2%;
+}
+
+input, textarea {
+	width: 100%;
+	color: white;
+	border:none;
+	border-radius: 5px;
+	background-color: var(--light-blue);
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	line-height: var(--h2);
+	
+}
+
+textarea {
+	vertical-align: top;
+	height: 20rem;
+	resize: vertical;
+}
+
+.button {
+	text-align: center;
+	width: 100%;
+}
+
+button {
+	color: white;
+	padding: .5rem 1rem;
+	font-size: var(--h4);
+	margin: 4%;
+	background-color: var(--light-blue);
+	border: none;
+	border-radius: 5px;
+}

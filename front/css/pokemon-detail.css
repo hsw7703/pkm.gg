@@ -1,0 +1,465 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+section.info-section {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.character-image {
+	margin: 0 auto;
+	max-width: 250px;
+	padding: 10%;
+	overflow: hidden;
+}
+
+.character-image img {
+	width: 100%;
+}
+
+.name-box {
+	border-radius: 5px;
+	display: flex;
+	background-color: var(--orange);
+}
+
+.name-box .character-name {
+	position: relative;
+	width: 75%;
+	background-color: var(--black);
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	padding: 0.7rem;
+}
+
+.name-box .character-name h2 {
+	font-size: var(--h2);
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+.name-box .difficulty {
+	margin: auto;
+	color: black;
+}
+
+.attribute-list {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+.attribute {
+	width: 32%;
+	border-radius: 5px;
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
+	background-color: var(--main-blue);
+	text-align: center;
+	padding-top: 0.6rem;
+	padding-bottom: 0.6rem;
+	font-size: var(--h5);
+	letter-spacing: 1px;
+}
+
+.ability-list {
+	margin-bottom: 1rem;
+	border-radius: 5px;
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
+	padding: 6%;
+	background-color: var(--main-blue);
+}
+
+.ability {
+	margin-bottom: 1rem;
+	overflow: hidden;
+}
+
+.ability:last-child {
+	margin-bottom: 0;
+}
+
+.ability-title {
+	font-size: var(--h5);
+}
+
+.ability-title span {
+	float: right;
+}
+
+.ability-gauge {
+	margin-top: 0.5rem;
+	background-color: var(--gauge);
+}
+
+.ability-gauge .active-gauge {
+	background-color: var(--gauge-green);
+	height: 7px;
+	color: transparent;
+	border-radius: 0 10px 10px 0;
+}
+
+.evolution-list {
+	display: flex;
+	justify-content: space-around;
+}
+
+.evolution {
+	margin: 1rem auto;
+	width: 40%;
+	text-align: center;
+}
+
+.evolution img {
+	padding: 10px;
+	width: 100%;
+	min-width: 100px;
+	min-height: 100px;
+	border-radius: 50%;
+	background-color: var(--main-blue);
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
+}
+
+.evolution-name {
+	margin-top: 1rem;
+	font-weight: bold;
+	font-size: var(--h4);
+}
+
+.evolution-desc {
+	margin-top: 0.5rem;
+	font-size: var(--h5);
+	color: var(--sky-blue);
+}
+
+section.build-section {
+	margin: 1rem auto;
+	width: 90%;
+	border-radius: 5px;
+	background-color: var(--main-blue);
+	overflow:hidden;
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
+}
+
+.build-tab {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.tab-title {
+	background-color: var(--deep-dark);
+	width: 100%;
+	padding-top: .9rem;
+	padding-bottom: .9rem;
+	text-align: center;
+	font-size: var(--h5);
+}
+
+.tab-title.active {
+	background-color: var(--main-blue);
+}
+
+.build {
+	padding-left: 4%;
+	padding-right: 4%;
+	padding-bottom: 4%;
+	display: none;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.build.active {
+	display: flex;
+}
+
+.build li {
+	position: relative;
+	text-align: center;
+	margin-top: 4.5%;
+	width: 21%;
+}
+
+.build li img {
+	width: 100%;
+	background-color: var(--black);
+	border-radius: 50%;
+	box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.13);
+}
+
+.build li p {
+	width: 100%;
+	text-align: center;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-top: 1rem;
+	font-size: var(--h6);
+}
+
+
+section.skill-section {
+	margin: 0 auto;
+	position: relative;
+	width: 90%;
+}
+
+.skill-list {
+	margin: auto;
+	margin-bottom: 6%;
+}
+
+.skill {
+	margin-top: 6%;
+	padding: 4%;
+	background-color: var(--main-blue);
+	border-radius: 5px;
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
+}
+
+.skill-top {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.skill-top .skill-img {
+	width: 75px;
+	height: 75px;
+	min-width: 75px;
+	min-height: 75px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.skill-top .skill-title {
+	margin-left: 4%;
+}
+
+.skill-top .skill-title .skill-name {
+	font-size: var(--h3);
+	font-weight: bold;
+}
+
+.skill-top .skill-title .skill-summary {
+	margin-top: 0.5rem;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.skill-top .skill-title .skill-summary li {
+	display:flex;
+	padding: 3px 6px 3px 3px;
+	align-items: center;
+	border-radius: 100px;
+	background-color: var(--sky-blue);
+	font-size: var(--h6);
+	margin-right: 10px;
+}
+
+.skill-top .skill-title .skill-summary li .skill-icon {
+	height: var(--h4);
+	margin-right: 4px;
+}
+.skill-top .skill-title .skill-summary li .skill-icon img {
+	height: 100%;
+}
+
+.skill-summary li:last-child {
+	margin-right: 0;
+}
+
+.skill-summary li .skill-type {
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+	background-color: var(--white);
+	border-radius: 50%;
+}
+
+.skill-content {
+	word-break: keep-all;
+	padding: 0 1%;
+	margin-top: 4%;
+	line-height: var(--h3);
+	font-size: var(--h5);
+}
+
+.select-box {
+	display: none;
+	border-radius: 5px;
+	width: 100%;
+	margin: 5% auto 0;
+	background-color: var(--dark-blue);
+}
+
+.select-box.active {
+	display: block;
+}
+
+.select-box p.title {
+	padding: 5px;
+}
+
+.select-box .skill-select {
+	/*margin-top: 1%;*/
+	border-radius: 5px;
+	overflow: hidden;
+	display: flex;
+	justify-content: space-between;
+}
+
+.select-box .skill-select li {
+	overflow: hidden;
+	width: 100%;
+	margin-top: 0;
+	border-left: 1px solid var(--main-blue);
+}
+
+.select-box li p.level {
+	font-size: var(--h5);
+	line-height: var(--h2);
+	margin-bottom: 10%;
+	background-color: var(--deep-dark);
+}
+
+.select-box li:first-child {
+	border: none;
+}
+
+.select-box li p {
+	font-size: var(--h6);
+	padding: 5%;
+	margin-bottom: 5%;
+}
+
+.select-box .skill-select li img {
+	width: 60%;
+}
+
+.select-box li img.active {
+	box-shadow: 0 0 4px 2px var(--light-blue);
+}
+
+.select-box .held-item-list {
+	border-radius: 5px;
+	padding: 1%;
+	width: 100%;
+	margin: auto;
+}
+
+.select-box .battle-item-list {
+	border-radius: 5px;
+	padding: 1%;
+	width: 100%;
+	margin: auto;
+}
+
+.select-box .held-item-list li {
+	display:inline-block;
+	margin: 1.5% 1%;
+	padding: 2%;
+	width: 18%;
+	background-color: var(--light-blue);
+	box-shadow: 0 0 9px 0 rgba(0,0,0,0.13);
+	border-radius: 5px;
+}
+
+.select-box .battle-item-list li {
+	display:inline-block;
+	margin: 1.5% 1%;
+	padding: 2%;
+	width: 18%;
+	background-color: var(--light-blue);
+	box-shadow: 0 0 9px 0 rgba(0,0,0,0.13);
+	border-radius: 5px;
+}
+
+.select-box .battle-item-list li.active {
+	background-color: var(--deep-dark);
+	box-shadow: inset 0 0 9px 0 rgba(0,0,0,0.13);
+}
+
+.select-box .held-item-list li.active {
+	background-color: var(--deep-dark);
+	box-shadow: inset 0 0 9px 0 rgba(0,0,0,0.13);
+}
+
+.select-box .held-item-list li img {
+	width: 100%;
+	padding: 3px;
+	box-shadow: 0 0 9px 0 rgba(0,0,0,0.13);
+}
+
+.select-box .battle-item-list li img {
+	width: 100%;
+	box-shadow: 0 0 9px 0 rgba(0,0,0,0.13);
+}
+
+.select-box-top {
+	display: flex;
+	margin: 4% auto 0;
+	justify-content: space-between;
+	width: 100%;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.select-box-top .area {
+	text-align: center;
+	background-color: var(--light-blue);
+	padding: .8rem .5rem;
+	font-size: var(--h6);
+	width: 100%;
+	border-left: 1px solid var(--sky-blue);
+}
+.select-box-top .area:first-child {
+	border: none;
+}
+
+.select-box-top .area.active {
+	box-shadow: inset 0 0 9px 0px rgba(0,0,0,0.13);
+	background-color: var(--dark-blue);
+}
+
+.submit {
+	width: 20%;
+	box-shadow: 0 0 9px 0px rgba(0,0,0,0.13);
+	text-align: center;
+	background-color: var(--light-blue);
+	padding: .3rem .5rem;
+	border-radius: 5px;
+	font-size: var(--h6);
+	margin: 4% auto 0;
+}
+
+.lane {
+	/*text-align: center;*/
+	margin-top: 4%;
+	/*background-color: black;*/
+	width: 100%;
+	font-size: var(--h6);
+	line-height: var(--h5);
+}
+
+.lane img {
+	height: var(--h6);
+	line-height: var(--h5);
+	/*margin-right: .5%;*/
+}
+
+.build-section .build .empty-build {
+	display: flex;
+	margin: auto;
+	align-items: center;
+	min-height: 180px;
+	font-size: var(--h4);
+}

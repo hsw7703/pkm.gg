@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PKM.GG</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/news.css">
+    <link rel="shortcut icon" href="./img/favicon.png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZQHSTP2QN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-HZQHSTP2QN');
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <a class="logo" href="./index.html">
+				PKM.GG
+			</a>
+        </header>
+        <nav>
+            <ul class="navbar">
+                <li><a href="./index.html">포켓몬</a></li>
+                <li><a href="./item.html">지닌물건</a></li>
+                <li><a href="./battle-item.html">배틀아이템</a></li>
+                <li><a href="./news.html" class="active">뉴스</a></li>
+                <li><a href="./contact.html" id="contact">건의하기</a></li>
+            </ul>
+        </nav>
+        <div class="ads">
+            <img class="ad" alt="광고표시" src="./img/adExample.png">
+        </div>
+        <main>
+            <article class="content">
+                <section class="page-title-section">
+                    <p class="page-title">뉴스</p>
+                    <p class="filter-button">필터</p>
+                </section>
+                <div class="line"></div>
+                <section class="filter-section hidden">
+                    <ul class="filter">
+                        <li class="filter-item">업데이트</li>
+                        <li class="filter-item">진행 이벤트</li>
+                        <li class="filter-item">종료 이벤트</li>
+                        <li class="filter-item">공지</li>
+                        <li class="filter-item">초기화</li>
+                    </ul>
+                </section>
+                <section class="news-list-section">
+                    <ul class="news-list"></ul>
+                </section>
+            </article>
+        </main>
+        <div class="ads">
+            <img class="ad" alt="광고표시" src="./img/adExample.png">
+        </div>
+        <footer>
+            <p class="copyright">PKM.GG isn’t endorsed by Nintendo and doesn’t reflect the views or opinions of Nintendo or anyone officially involved in producing or managing Pokémon Unite. Pokémon Unite and Pokémon are trademarks or registered trademarks of Nintendo.</p>
+            <p class="copyright">Copyright 2021 PKM.GG </p>
+        </footer>
+        <script type="module">
+            import { createNewsData } from './js/news.js'; createNewsData();
+        </script>
+    </div>
+</body>
+
+</html>

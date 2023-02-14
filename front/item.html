@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PKM.GG</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/index.css">
+	<link rel="stylesheet" href="./css/item.css">
+	<link rel="shortcut icon" href="./img/favicon.png">
+	<script data-ad-client="ca-pub-8918998860474491" async
+		src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HZQHSTP2QN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-HZQHSTP2QN');
+	</script>
+	<script type="text/javascript" src="./js/item-calc.js"></script>
+</head>
+
+<body>
+	<div class="wrap">
+		<header>
+			<a class="logo" href="./index.html">
+				PKM.GG
+			</a>
+			<!--<a class="contact">contact us</a>-->
+		</header>
+		<nav>
+			<ul class="navbar">
+				<li><a href="./index.html" id="pokemon">포켓몬</a></li>
+				<li><a href="./item.html" class="active" id="item">지닌물건</a></li>
+				<li><a href="./battle-item.html" id="battle-item">배틀아이템</a></li>
+				<li><a href="./news.html" id="news">뉴스</a></li>
+				<li><a href="./contact.html" id="contact">건의하기</a></li>
+			</ul>
+		</nav>
+		<div class="ads">
+			<img class="ad" alt="광고표시" src="./img/adExample.png">
+		</div>
+		<main>
+			<article class="content">
+				<section class="page-title-section">
+					<p class="page-title">지닌물건</p>
+					<p class="filter-button">필터</p>
+					<p class="filter-button">강화비용 계산기</p>
+				</section>
+				<div class="line"></div>
+				<section class="filter-section hidden">
+					<ul class="filter">
+						<li class="filter-item">스코어</li>
+						<li class="filter-item">공격</li>
+						<li class="filter-item">방어</li>
+						<li class="filter-item">그외</li>
+						<li class="filter-item">초기화</li>
+					</ul>
+				</section>
+				<section class="cost-calc-section hidden">
+					<div class="cost-calc">
+						<select class="level-select" id="from" onchange="calculateCost();">
+							<option value="1" selected>1레벨</option>
+							<option value="2">2레벨</option>
+							<option value="3">3레벨</option>
+							<option value="4">4레벨</option>
+							<option value="5">5레벨</option>
+							<option value="6">6레벨</option>
+							<option value="7">7레벨</option>
+							<option value="8">8레벨</option>
+							<option value="9">9레벨</option>
+							<option value="10">10레벨</option>
+							<option value="11">11레벨</option>
+							<option value="12">12레벨</option>
+							<option value="13">13레벨</option>
+							<option value="14">14레벨</option>
+							<option value="15">15레벨</option>
+							<option value="16">16레벨</option>
+							<option value="17">17레벨</option>
+							<option value="18">18레벨</option>
+							<option value="19">19레벨</option>
+							<option value="20">20레벨</option>
+							<option value="21">21레벨</option>
+							<option value="22">22레벨</option>
+							<option value="23">23레벨</option>
+							<option value="24">24레벨</option>
+							<option value="25">25레벨</option>
+							<option value="26">26레벨</option>
+							<option value="27">27레벨</option>
+							<option value="28">28레벨</option>
+							<option value="29">29레벨</option>
+							<option value="30">30레벨</option>
+						</select>
+						&nbsp~&nbsp
+						<select class="level-select" id="to" onchange="calculateCost();">
+							<option value="1" selected>1레벨</option>
+							<option value="2">2레벨</option>
+							<option value="3">3레벨</option>
+							<option value="4">4레벨</option>
+							<option value="5">5레벨</option>
+							<option value="6">6레벨</option>
+							<option value="7">7레벨</option>
+							<option value="8">8레벨</option>
+							<option value="9">9레벨</option>
+							<option value="10">10레벨</option>
+							<option value="11">11레벨</option>
+							<option value="12">12레벨</option>
+							<option value="13">13레벨</option>
+							<option value="14">14레벨</option>
+							<option value="15">15레벨</option>
+							<option value="16">16레벨</option>
+							<option value="17">17레벨</option>
+							<option value="18">18레벨</option>
+							<option value="19">19레벨</option>
+							<option value="20">20레벨</option>
+							<option value="21">21레벨</option>
+							<option value="22">22레벨</option>
+							<option value="23">23레벨</option>
+							<option value="24">24레벨</option>
+							<option value="25">25레벨</option>
+							<option value="26">26레벨</option>
+							<option value="27">27레벨</option>
+							<option value="28">28레벨</option>
+							<option value="29">29레벨</option>
+							<option value="30" selected>30레벨</option>
+						</select>
+						&nbsp필요 지닌물건 강화 키트
+						<p id="cost">2587개</p>
+					</div>
+				</section>
+				<section class="index-section">
+					<ul class="index"></ul>
+				</section>
+			</article>
+		</main>
+		<div class="ads">
+			<img class="ad" alt="광고표시" src="./img/adExample.png">
+		</div>
+		<footer>
+			<p class="copyright">PKM.GG isn’t endorsed by Nintendo and doesn’t reflect the views or opinions of Nintendo
+				or anyone officially involved in producing or managing Pokémon Unite. Pokémon Unite and Pokémon are
+				trademarks or registered trademarks of Nintendo.</p>
+			<p class="copyright">Copyright 2021 PKM.GG </p>
+		</footer>
+		<script type="module">
+			import { createItemData } from './js/item.js';
+			createItemData();
+		</script>
+	</div>
+</body>
+
+</html>

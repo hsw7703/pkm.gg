@@ -1,0 +1,53 @@
+section.news-list-section {
+	width: 96%;
+	margin: 2% auto;
+}
+
+.content .news-list {
+	display:flex;
+	flex-wrap: wrap;
+	margin: 2% auto;
+}
+
+.content .news:nth-child(1) {
+	margin-top: 2%;
+}
+
+.content .news:nth-last-child(1) {
+	margin-bottom: 2%;
+}
+
+.content .news {
+	position: relative;
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
+	border-radius: 5px;
+	width: 96%;
+	height: 0;
+	padding-bottom: 60%;
+	margin: 3% auto;
+	overflow: hidden;
+}
+
+.content .news .title-box {
+	position: absolute;
+	width: 100%;
+	left : 0;
+	bottom: 0;
+	padding: 2.5% 2% 2%;
+	background-color: var(--black);
+}
+
+.content .news .title {
+	font-size: 0.8rem;
+	letter-spacing: 0.2px;
+}
+
+.content .news .date {
+	font-size: 0.6rem;
+	letter-spacing: 0.5px;
+	margin-bottom: 1.5%;
+}
+
+.content .news img {
+	width: 100%;
+}

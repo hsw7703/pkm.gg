@@ -1,0 +1,52 @@
+.index {
+	display:flex;
+	flex-wrap: wrap;
+}
+
+.index .profile {
+	border-radius: 5px;
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
+	position: relative;
+	margin: 2%;
+	width: 21%;
+	height: auto;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.index .profile .position {
+	position: absolute;
+	left: 0;
+	width: 25%;
+	background-color: none;
+	box-shadow: none;
+	padding: 2px;
+}
+
+.index .profile .label {
+	width: 100%;
+	text-align: center;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	font-size: var(--h5);
+	background-color: rgba(0,0,0,0.6);
+	padding-top: 4px;
+	padding-bottom: 4px;
+	border-radius: 1px;
+}
+
+.index .profile img {
+	padding: 5px;
+	width: 100%;
+	box-shadow: inset 0rem 0rem 0rem 100rem rgba(0, 0, 0, 0.13);
+}
+
+.index .profile.active img {
+	padding: 1px;
+	box-shadow: inset 0rem 0rem 0rem 0rem rgba(0, 0, 0, 0.13);
+}

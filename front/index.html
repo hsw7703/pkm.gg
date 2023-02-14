@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="포켓몬 유나이트의 최신 정보와 추천 빌드를 한눈에 확인 할 수 있습니다">
+	<title>PKM.GG</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/index.css">
+	<link rel="stylesheet" href="./css/pokemon.css">
+	<link rel="shortcut icon" href="./img/favicon.png">
+	<script data-ad-client="ca-pub-8918998860474491" async
+		src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-HZQHSTP2QN"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-HZQHSTP2QN');
+	</script>
+</head>
+
+<body>
+	<div class="wrap">
+		<header>
+			<a class="logo" href="./index.html">
+				PKM.GG
+			</a>
+		</header>
+		<nav>
+			<ul class="navbar">
+				<li><a href="./index.html" class="active" id="pokemon">포켓몬</a></li>
+				<li><a href="./item.html" id="item">지닌물건</a></li>
+				<li><a href="./battle-item.html" id="battle-item">배틀아이템</a></li>
+				<li><a href="./news.html" id="news">뉴스</a></li>
+				<li><a href="./contact.html" id="contact">건의하기</a></li>
+			</ul>
+		</nav>
+		<div class="ads">
+			<img class="ad" alt="광고표시" src="./img/adExample.png">
+		</div>
+		<main>
+			<article class="content">
+				<section class="page-title-section">
+					<p class="page-title">포켓몬</p>
+					<p class="filter-button">필터</p>
+				</section>
+				<div class="line"></div>
+				<section class="filter-section hidden">
+					<ul class="filter">
+						<li class="filter-item">어택형</li>
+						<li class="filter-item">디펜스형</li>
+						<li class="filter-item">스피드형</li>
+						<li class="filter-item">밸런스형</li>
+						<li class="filter-item">서포트형</li>
+						<li class="filter-item">물리공격</li>
+						<li class="filter-item">특수공격</li>
+						<li class="filter-item">근거리</li>
+						<li class="filter-item">원거리</li>
+						<li class="filter-item">초기화</li>
+					</ul>
+				</section>
+				<section class="index-section">
+					<ul class="index"></ul>
+				</section>
+			</article>
+		</main>
+		<script type="module">
+			import { createPokemonData } from './js/main.js';
+			createPokemonData();
+		</script>
+		<div class="ads">
+			<img class="ad" alt="광고표시" src="./img/adExample.png">
+		</div>
+		<footer>
+			<p class="copyright">PKM.GG isn’t endorsed by Nintendo and doesn’t reflect the views or opinions of Nintendo
+				or anyone officially involved in producing or managing Pokémon Unite. Pokémon Unite and Pokémon are
+				trademarks or registered trademarks of Nintendo.</p>
+			<p class="copyright">Copyright 2021 PKM.GG </p>
+		</footer>
+	</div>
+</body>
+
+</html>

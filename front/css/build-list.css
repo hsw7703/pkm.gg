@@ -1,0 +1,137 @@
+.attacker {
+	background-color: rgb(220, 70, 50);
+}
+.all-rounder {
+	background-color: rgb(120, 70, 180);
+}
+.defender {
+	background-color: rgb(180, 240, 80);
+}
+.speedster {
+	background-color: rgb(30, 130, 230);
+}
+.supporter {
+	background-color: rgb(250, 190, 50);
+}
+
+section.pokemon-info-section {
+	width: 94%;
+	margin: 4% auto 0;
+}
+
+section.pokemon-info-section .profile {
+	width: 50%;
+	max-width: 250px;
+	margin: auto;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+section.pokemon-info-section .profile-desc {
+	width: 90%;
+	margin: auto;
+}
+
+section.pokemon-info-section .profile-desc .link-desc {
+	font-size: var(--h6);
+	text-align: center;
+	margin: 2%;
+	color:var(--sky-blue);
+}
+
+section.pokemon-info-section .profile-desc .name-label {
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
+	display: flex;
+	align-items: center;
+	background-color: black;
+	border-radius: 5px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.name-label li:first-child {
+	font-size: var(--h2);
+	font-weight: bold;
+	padding: 10px;
+}
+
+.name-label li:last-child {
+	margin-left: auto;
+	color: black;
+	font-size: var(--h5);
+	line-height: var(--h2);
+	background-color: var(--orange);
+	padding: .8rem 1rem;
+}
+
+section.build-list-section {
+	width: 100%;
+	margin: auto;
+}
+
+.build {
+	padding: 1%;
+	width: 92%;
+	margin: 4% auto;
+	background-color: var(--main-blue);
+	box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.13);
+	border-radius: 5px;
+}
+
+.build .list {
+	display: flex;
+	margin: auto;
+	margin-top: 1%;
+	padding: .3rem 0;
+	justify-content: space-between;
+}
+
+.build .list li {
+	width: 12%;
+	margin: 1%;
+}
+
+.build .list img {
+	background-color: black;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.lane-icon {
+	vertical-align: middle;
+	height: var(--h6);
+	margin-bottom: 2.5%;
+}
+
+.build .build-desc {
+	display: flex;
+	/*vertical-align: middle;*/
+	align-items: center;
+	width: 100%;
+	padding: 2% 2% 3%;
+	margin: auto;
+}
+
+.build .build-desc li {
+	text-align: center;
+	font-size: var(--h5);
+	line-height: var(--h2);
+}
+
+.build .build-desc li:first-child {
+	margin-right: 3%;
+	font-size: var(--h4);
+}
+.build .build-desc li:nth-child(2) {
+	margin-left: auto;
+	color: var(--sky-blue);
+	font-size: var(--h6);
+}
+
+.build-list-section .build .empty-build {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 50px;
+	font-size: var(--h4);
+}

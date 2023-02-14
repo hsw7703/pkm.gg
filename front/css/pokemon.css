@@ -1,0 +1,132 @@
+/*.content {
+	width:%;
+}*/
+
+section.index-section {
+	width: 96%;
+	margin: 2% auto;
+}
+
+.attacker {
+	background-color: rgb(220, 70, 50);
+}
+.all-rounder {
+	background-color: rgb(120, 70, 180);
+}
+.defender {
+	background-color: rgb(180, 240, 80);
+}
+.speedster {
+	background-color: rgb(30, 130, 230);
+}
+.supporter {
+	background-color: rgb(250, 190, 50);
+}
+
+.index .detail {
+	border-radius: 5px;
+	width: 96%;
+	margin: 2% auto;
+	padding: 0 4% 4%;
+	background-color: var(--main-blue);
+	box-shadow: 1px 1px 9px 0px rgba(0, 0, 0, 0.13);
+}
+
+.detail .title {
+	display: flex;
+	align-items: center;
+	margin-top: 5%;
+	margin-bottom: 4%;
+}
+
+.detail .title .lane-icon {
+	height: var(--h3);
+	margin-bottom: 4px;
+	/*vertical-align: middle;*/
+}
+
+.detail .title .name-label {
+	margin-left: .3rem;
+	font-size: var(--h3);
+	font-weight: bold;
+}
+.detail .title .type-label {
+	margin-left: auto;
+	font-size: var(--h5);
+}
+
+.detail .build {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.detail .build .empty-build {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	min-height: 180px;
+	font-size: var(--h4);
+}
+
+.detail .build li {
+	text-align: center;
+	margin-top: 4.5%;
+	width: 21%;
+}
+
+.detail .build li p {
+	text-align: center;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
+	padding-top: 1rem;
+	word-break: keep-all;
+	font-size: var(--h6);
+}
+
+.index .detail .build img {
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.9);
+	border-radius: 50%;
+	box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.13);
+	cursor: pointer;
+}
+
+/*.detail .link {
+	margin: 6% auto 4%;
+	font-size: var(--h5);
+	text-align: right;
+}*/
+
+.detail-button-list {
+	/*margin: 4% 0 0;*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding: 1.5%;
+	background-color: var(--light-blue);
+	box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.13);
+	border-radius: 5px;
+}
+
+.detail-button-list li {
+	border-left: 1px solid var(--sky-blue);
+	/*background-color: var(--light-blue);*/
+	/*box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.13);*/
+	/*border-radius: 5px;*/
+	width: 100%;
+	padding: 0 .7rem;
+	text-align: center;
+	font-size: var(--h5);
+	line-height: var(--h2);
+	cursor: pointer;
+}
+
+.detail-button-list li:first-child {
+	border: none;
+}
